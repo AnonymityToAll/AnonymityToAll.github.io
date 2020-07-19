@@ -2,23 +2,24 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title># 一 | Gridea</title>
-<link rel="shortcut icon" href="https://AnonymityToAll.github.io/favicon.ico?v=1595148651162">
+<title>面试整理 | Gridea</title>
+<link rel="shortcut icon" href="https://AnonymityToAll.github.io/favicon.ico?v=1595150193096">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://AnonymityToAll.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="# 一 | Gridea - Atom Feed" href="https://AnonymityToAll.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="面试整理 | Gridea - Atom Feed" href="https://AnonymityToAll.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="网易互娱-数据分析工程师
+    <meta name="description" content="一
+网易互娱-数据分析工程师
 怎么评估一次活动的收益
 网易严选-数据分析
 
 类似于京东plus会员，为什么定价为149元？（我还想问为什么你们网易严选会员定价和京东会员一样呢）
 商品页面的点击来源有各个渠道，怎么去分析渠道来源转化。
 
-腾讯PC..." />
+腾讯..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -28,7 +29,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://AnonymityToAll.github.io">
-  <img class="avatar" src="https://AnonymityToAll.github.io/images/avatar.png?v=1595148651162" alt="">
+  <img class="avatar" src="https://AnonymityToAll.github.io/images/avatar.png?v=1595150193096" alt="">
   </a>
   <h1 class="site-title">
     Gridea
@@ -81,21 +82,22 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              # 一
+              面试整理
             </h2>
             <div class="post-info">
               <span>
                 2020-07-19
               </span>
               <span>
-                3 min read
+                7 min read
               </span>
               
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h3 id="网易互娱-数据分析工程师">网易互娱-数据分析工程师</h3>
+                <h1 id="一">一</h1>
+<h3 id="网易互娱-数据分析工程师">网易互娱-数据分析工程师</h3>
 <p>怎么评估一次活动的收益</p>
 <h3 id="网易严选-数据分析">网易严选-数据分析</h3>
 <blockquote>
@@ -159,13 +161,149 @@
 <li>主成分分析是降维的</li>
 </ul>
 </blockquote>
+<h3 id="字节">字节</h3>
+<blockquote>
+<h5 id="概述">概述:</h5>
+<blockquote>
+<p>根据给出的信息分析房价特点</p>
+</blockquote>
+<h5 id="算法简述">算法简述：</h5>
+<blockquote>
+<p>主要是给出了一些描述性统计，以及对特征的探索</p>
+</blockquote>
+<h5 id="数据如何处理">数据如何处理</h5>
+<blockquote>
+<p>首先，是处理null数据</p>
+<p>其次，是处理非数值数据</p>
+<p>最后，是标准化消除量纲的影像</p>
+</blockquote>
+<h5 id="特征如何选择">特征如何选择</h5>
+<blockquote>
+<p>产生一个候选子集，再对其进行评价，</p>
+<p>基于评价结果产生下一个候选子集，再对其进行评价，</p>
+<p>直到找不到更好的候选子集</p>
+<p>有两个问题</p>
+<ul>
+<li>一个是如何根据评价结果获取下一个候选特征子集
+<ul>
+<li>先把每个元素看作一个候选子集，选出最好的。然后加入一个特征，再评估</li>
+</ul>
+</li>
+<li>一个是如何评价候选特征子集的好坏
+<ul>
+<li>信息增益越大，意味着特征子集A包含的有助于分类的信息越多</li>
+</ul>
+</li>
+</ul>
+<p>常见的特征选择方法：</p>
+<ul>
+<li>过滤式选择</li>
+<li>包裹式选择</li>
+</ul>
+</blockquote>
+<p>3.为抖音建立指标体系</p>
+<ul>
+<li>用户
+<ul>
+<li>日活跃用户</li>
+<li>新增用户</li>
+<li>用户留存率</li>
+</ul>
+</li>
+<li>功能
+<ul>
+<li>功能活跃用户</li>
+</ul>
+</li>
+<li>参与度
+<ul>
+<li>启动次数</li>
+<li>使用时长</li>
+</ul>
+</li>
+<li>渠道
+<ul>
+<li>ios</li>
+<li>安卓</li>
+</ul>
+</li>
+<li>收入分析
+<ul>
+<li>购买率</li>
+</ul>
+</li>
+</ul>
+<p>4.如果DAU下降如何归因</p>
+<ul>
+<li>看一下数据是不是有效的数据</li>
+<li>拆分数据，逐个分析</li>
+<li>异常范围定位后，进一步做假设</li>
+</ul>
+<p>5.如果抖音增加内容付费功能（付费查看内容）</p>
+<p>（1）如何在功能上线前评估该功能是否应该上线</p>
+<p>前验信息，需要之前的相似的活动的数据分析</p>
+<p>（2）如何在功能上线后评价该功能的效果</p>
+<p>abtest</p>
+<p>（3）该功能上线会存在哪些风险因素</p>
+<p>影响体验</p>
+<p>6.SQL题目现场写代码 （不是窗口，普通的join，group by）</p>
+<p>辛普森悖论</p>
+<blockquote>
+<p>指的是在分组比较中都占优势的一方，在总评中反而成为失势的一方。</p>
+<p>辛普森悖论（Simpson's Paradox）是英国统计学家E.H.辛普森（E.H.Simpson）于1951年提出的悖论，即<strong>在某个条件下的两组数据，分别讨论时都会满足某种性质，可是一旦合并考虑，却可能导致相反的结论</strong>。</p>
+<p><strong>最重要的一点是，要得到科学可信的AB测试试验结果，就必须合理的进行正确的流量分割，保证试验组和对照组里的用户特征是一致的，并且都具有代表性，可以代表总体用户特征。</strong></p>
+</blockquote>
+</blockquote>
+<h3 id="几个知识点">几个知识点</h3>
+<blockquote>
+<p><strong>方案 1 和方案 2，哪个效果更好？</strong></p>
+<ul>
+<li>
+<p>还是要运用假设检验，对于留存率、渗透率等漏斗类指标，采用**<a href="https://link.zhihu.com/?target=https%3A//www.evanmiller.org/ab-testing/chi-squared.html">卡方检验</a>**：</p>
+<ul>
+<li>漏斗类指标：漏斗，简单来讲，就是抽象网站或APP中的某个流程，观察流程中每一步的转化与流失。</li>
+<li>当我们要比较两组或者多组均值有没有显著性差异的时候，我们可以用方差分析。请注意，这里面我们提到是两组或者多组之间的均值比较时，我们用方差分析，想一下什么类型的数据可以求均值呢？是不是只有数值类型的数据才可以求均值。也就是所谓的连续型变量。</li>
+<li>那如果我们要比较两组或者多组之间的分类型变量之间是否有显著性差异呢？这个时候就不可以使用方差分析了，就需要使用专门用于分类变量比较的卡方检验。</li>
+<li>卡方检验</li>
+</ul>
+</li>
+<li>
+<p>对于人均时长类等均值类指标，采用**<a href="https://link.zhihu.com/?target=https%3A//www.evanmiller.org/ab-testing/t-test.html">t 检验</a>**：</p>
+<ul>
+<li>
+<p>t检验（t test）又称学生t检验（Student t-test）可以说是统计推断中非常常见的一种检验方法，用于统计量服从正态分布，但方差未知的情况。</p>
+</li>
+<li>
+<p>T检验是一种适合小样本的统计分析方法，通过比较不同数据的均值，研究两组数据是否存在差异。</p>
+</li>
+<li>
+<p><a href="%5Bhttps://www.zhihu.com/search?type=content&amp;q=t%E6%A3%80%E9%AA%8C%5D(https://www.zhihu.com/search?type=content&amp;q=t%E6%A3%80%E9%AA%8C)">t检验</a></p>
+</li>
+<li>
+<p>T检验怎么用</p>
+<ul>
+<li>
+<p>1.首先要明确检验的目的，是单样本T检验、配对样本的T检验还是独立样本的T检验。</p>
+<p>2.进行正态性检验，独立样本需要进行方差齐性检验</p>
+<p>3.选择合适的检验方法进行检验</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>通过上假设检验，如果结论置信，我们就能够得到方案 1 和方案 2 在哪像指标更好（有显著性差异）， 对于不置信的结论，尽管方案 1 和方案 2 的指标可能略有差异，但可能是数据正常波动产生。</p>
+</li>
+</ul>
+<p><strong>长期来看哪个更好？</strong></p>
+<p>这里就要考虑新奇效应的问题了，一般在实验上线前期，用户因为新鲜感，效果可能都不错，因此在做评估的时候，需要观测指标到稳定态后，再做评估。</p>
+</blockquote>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li>
+<li><a href="#%E4%B8%80">一</a><br>
+*
 <ul>
 <li><a href="#%E7%BD%91%E6%98%93%E4%BA%92%E5%A8%B1-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B7%A5%E7%A8%8B%E5%B8%88">网易互娱-数据分析工程师</a></li>
 <li><a href="#%E7%BD%91%E6%98%93%E4%B8%A5%E9%80%89-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90">网易严选-数据分析</a></li>
@@ -182,8 +320,16 @@
 <li><a href="#%E8%AF%B4%E4%B8%80%E8%AF%B4%E8%81%9A%E7%B1%BB%E5%88%86%E6%9E%90%E5%92%8C%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E7%9A%84%E5%8C%BA%E5%88%AB">说一说聚类分析和主成分分析的区别？</a></li>
 </ul>
 </li>
+<li><a href="#%E5%AD%97%E8%8A%82">字节</a><br>
+*
+<ul>
+<li><a href="#%E6%A6%82%E8%BF%B0">概述:</a></li>
+<li><a href="#%E7%AE%97%E6%B3%95%E7%AE%80%E8%BF%B0">算法简述：</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86">数据如何处理</a></li>
+<li><a href="#%E7%89%B9%E5%BE%81%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9">特征如何选择</a></li>
 </ul>
 </li>
+<li><a href="#%E5%87%A0%E4%B8%AA%E7%9F%A5%E8%AF%86%E7%82%B9">几个知识点</a></li>
 </ul>
 </li>
 </ul>
