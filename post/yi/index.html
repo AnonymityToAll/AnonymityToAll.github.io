@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title># 一 | Gridea</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://AnonymityToAll.github.io/favicon.ico?v=1595148189993">
+<link rel="stylesheet" href="https://AnonymityToAll.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="网易互娱-数据分析工程师
+怎么评估一次活动的收益
+网易严选-数据分析
+
+类似于京东plus会员，为什么定价为149元？（我还想问为什么你们网易严选会员定价和京东会员一样呢）
+商品页面的点击来源有各个渠道，怎么去分析渠道来源转化。
+
+腾讯PC..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://AnonymityToAll.github.io">
+        <img src="https://AnonymityToAll.github.io/images/avatar.png?v=1595148189993" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://AnonymityToAll.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title"># 一</h2>
+            <div class="post-date">2020-07-19</div>
+            
+            <div class="post-content" v-pre>
+              <h3 id="网易互娱-数据分析工程师">网易互娱-数据分析工程师</h3>
+<p>怎么评估一次活动的收益</p>
+<h3 id="网易严选-数据分析">网易严选-数据分析</h3>
+<blockquote>
+<p>类似于京东plus会员，为什么定价为149元？（我还想问为什么你们网易严选会员定价和京东会员一样呢）</p>
+<p>商品页面的点击来源有各个渠道，怎么去分析渠道来源转化。</p>
+</blockquote>
+<h3 id="腾讯pcg-日常-数据分析">腾讯PCG-日常-数据分析</h3>
+<blockquote>
+<h5 id="你认为好的推送内容是什么">你认为好的推送内容是什么？</h5>
+<ul>
+<li>第一，吸引用户点开推送，通过数据得到大多数用户对哪一类消息或奖励更感兴趣。</li>
+<li>第二，推送的内容要简洁明了，可操作性强</li>
+<li>第三，推送具有连续性，保持对前面好的推送的跟进</li>
+</ul>
+<h5 id="在一个内容被推送前有没有什么先验指标去评估">在一个内容被推送前，有没有什么先验指标去评估？</h5>
+<ul>
+<li>连续活跃用户</li>
+<li>用户留存率</li>
+<li>转化率</li>
+<li>付费用户数，付费率</li>
+</ul>
+<h5 id="判断一个内容的浏览量怎么样算异常">判断一个内容的浏览量，怎么样算异常</h5>
+<ul>
+<li>计算第一和第三四分位数，在之外的算异常值</li>
+<li>该技术假定数据是高斯分布，异常值是分布尾部的数据点，</li>
+<li>在DBSCAN聚类技术中，所有数据点都被定义为核心点（Core Points）、边界点（Border Points）或噪声点（Noise Points）。
+<ul>
+<li>核心点是在距离ℇ内至少具有最小包含点数（minPTs）的数据点；</li>
+<li>边界点是核心点的距离ℇ内邻近点，但包含的点数小于最小包含点数（minPTs）；</li>
+<li>所有的其他数据点都是噪声点，也被标识为异常值；</li>
+</ul>
+</li>
+</ul>
+<h5 id="app冷启动阶段怎么推送内容">app冷启动阶段怎么推送内容？</h5>
+<ul>
+<li>打开前显示的界面来推送内容，右上角有跳过</li>
+</ul>
+<h5 id="怎么判断推送的内容用户是否感兴趣我点击率停留时长再具体一点">怎么判断推送的内容用户是否感兴趣？（我：点击率，停留时长？）再具体一点？</h5>
+<ul>
+<li>分流用户
+<ul>
+<li>不影响用户体验的，均分用户</li>
+<li>不确定性强的，小批量实验</li>
+<li>希望收益最大化的，方案一，方案二，无活动（小部分）</li>
+</ul>
+</li>
+<li>通过点击率，留存时长，与推送内容相关的活动的指标来衡量变化</li>
+</ul>
+<h5 id="假设检验">假设检验</h5>
+<ul>
+<li>利用小概率时间几乎不可能发生去证明，假设是错的</li>
+</ul>
+<h5 id="降维的算法有哪些">降维的算法有哪些？</h5>
+<ul>
+<li>主成分分析</li>
+<li>KPCA</li>
+<li>LDA 是一种可作为特征抽取的技术，其目标是向最大化类间差异，最小化类内差异的方向投影，</li>
+</ul>
+<h5 id="说一说聚类分析和主成分分析的区别">说一说聚类分析和主成分分析的区别？</h5>
+<ul>
+<li>主成分分析是降维的</li>
+</ul>
+</blockquote>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://AnonymityToAll.github.io/post/hello-gridea/">
+                  <h3 class="post-title">
+                    Hello Gridea
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

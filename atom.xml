@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://AnonymityToAll.github.io</id>
+    <title>Gridea</title>
+    <updated>2020-07-19T08:43:35.945Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://AnonymityToAll.github.io"/>
+    <link rel="self" href="https://AnonymityToAll.github.io/atom.xml"/>
+    <subtitle>温故而知新</subtitle>
+    <logo>https://AnonymityToAll.github.io/images/avatar.png</logo>
+    <icon>https://AnonymityToAll.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2020, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[# 一]]></title>
+        <id>https://AnonymityToAll.github.io/post/yi/</id>
+        <link href="https://AnonymityToAll.github.io/post/yi/">
+        </link>
+        <updated>2020-07-19T08:20:42.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="网易互娱-数据分析工程师">网易互娱-数据分析工程师</h3>
+<p>怎么评估一次活动的收益</p>
+<h3 id="网易严选-数据分析">网易严选-数据分析</h3>
+<blockquote>
+<p>类似于京东plus会员，为什么定价为149元？（我还想问为什么你们网易严选会员定价和京东会员一样呢）</p>
+<p>商品页面的点击来源有各个渠道，怎么去分析渠道来源转化。</p>
+</blockquote>
+<h3 id="腾讯pcg-日常-数据分析">腾讯PCG-日常-数据分析</h3>
+<blockquote>
+<h5 id="你认为好的推送内容是什么">你认为好的推送内容是什么？</h5>
+<ul>
+<li>第一，吸引用户点开推送，通过数据得到大多数用户对哪一类消息或奖励更感兴趣。</li>
+<li>第二，推送的内容要简洁明了，可操作性强</li>
+<li>第三，推送具有连续性，保持对前面好的推送的跟进</li>
+</ul>
+<h5 id="在一个内容被推送前有没有什么先验指标去评估">在一个内容被推送前，有没有什么先验指标去评估？</h5>
+<ul>
+<li>连续活跃用户</li>
+<li>用户留存率</li>
+<li>转化率</li>
+<li>付费用户数，付费率</li>
+</ul>
+<h5 id="判断一个内容的浏览量怎么样算异常">判断一个内容的浏览量，怎么样算异常</h5>
+<ul>
+<li>计算第一和第三四分位数，在之外的算异常值</li>
+<li>该技术假定数据是高斯分布，异常值是分布尾部的数据点，</li>
+<li>在DBSCAN聚类技术中，所有数据点都被定义为核心点（Core Points）、边界点（Border Points）或噪声点（Noise Points）。
+<ul>
+<li>核心点是在距离ℇ内至少具有最小包含点数（minPTs）的数据点；</li>
+<li>边界点是核心点的距离ℇ内邻近点，但包含的点数小于最小包含点数（minPTs）；</li>
+<li>所有的其他数据点都是噪声点，也被标识为异常值；</li>
+</ul>
+</li>
+</ul>
+<h5 id="app冷启动阶段怎么推送内容">app冷启动阶段怎么推送内容？</h5>
+<ul>
+<li>打开前显示的界面来推送内容，右上角有跳过</li>
+</ul>
+<h5 id="怎么判断推送的内容用户是否感兴趣我点击率停留时长再具体一点">怎么判断推送的内容用户是否感兴趣？（我：点击率，停留时长？）再具体一点？</h5>
+<ul>
+<li>分流用户
+<ul>
+<li>不影响用户体验的，均分用户</li>
+<li>不确定性强的，小批量实验</li>
+<li>希望收益最大化的，方案一，方案二，无活动（小部分）</li>
+</ul>
+</li>
+<li>通过点击率，留存时长，与推送内容相关的活动的指标来衡量变化</li>
+</ul>
+<h5 id="假设检验">假设检验</h5>
+<ul>
+<li>利用小概率时间几乎不可能发生去证明，假设是错的</li>
+</ul>
+<h5 id="降维的算法有哪些">降维的算法有哪些？</h5>
+<ul>
+<li>主成分分析</li>
+<li>KPCA</li>
+<li>LDA 是一种可作为特征抽取的技术，其目标是向最大化类间差异，最小化类内差异的方向投影，</li>
+</ul>
+<h5 id="说一说聚类分析和主成分分析的区别">说一说聚类分析和主成分分析的区别？</h5>
+<ul>
+<li>主成分分析是降维的</li>
+</ul>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Hello Gridea]]></title>
+        <id>https://AnonymityToAll.github.io/post/hello-gridea/</id>
+        <link href="https://AnonymityToAll.github.io/post/hello-gridea/">
+        </link>
+        <updated>2018-12-11T16:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+<!-- more -->
+<p><a href="https://github.com/getgridea/gridea">Github</a><br>
+<a href="https://gridea.dev/">Gridea 主页</a><br>
+<a href="http://fehey.com/">示例网站</a></p>
+<h2 id="特性">特性👇</h2>
+<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
+<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
+<p>🏷️  你可以对文章进行标签分组</p>
+<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
+<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
+<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
+<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
+<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
+<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
+<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
+<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
+<p>未来，它一定会成为你离不开的伙伴</p>
+<p>尽情发挥你的才华吧！</p>
+<p>😘 Enjoy~</p>
+]]></content>
+    </entry>
+</feed>
