@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://AnonymityToAll.github.io</id>
     <title>maktubの圆</title>
-    <updated>2020-07-20T07:06:25.541Z</updated>
+    <updated>2020-07-20T11:19:04.444Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://AnonymityToAll.github.io"/>
     <link rel="self" href="https://AnonymityToAll.github.io/atom.xml"/>
@@ -10,6 +10,118 @@
     <logo>https://AnonymityToAll.github.io/images/avatar.png</logo>
     <icon>https://AnonymityToAll.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, maktubの圆</rights>
+    <entry>
+        <title type="html"><![CDATA[常见宽基]]></title>
+        <id>https://AnonymityToAll.github.io/post/chang-jian-kuan-ji/</id>
+        <link href="https://AnonymityToAll.github.io/post/chang-jian-kuan-ji/">
+        </link>
+        <updated>2020-07-20T09:15:10.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="上证50指数">上证50指数</h2>
+<h3 id="定义">定义</h3>
+<blockquote>
+<p>上证50指数是从上交所挑选沪市规模最大、流动性最好、最具代表性的50只股票组成样本股，以综合反映沪市最具影响力的一批优质大盘企业的整体状态。</p>
+</blockquote>
+<h3 id="对应指数基金">对应指数基金</h3>
+<blockquote>
+<p>挑选原则：</p>
+<ul>
+<li>规模大</li>
+<li>历史长久</li>
+<li>追踪效果还可以</li>
+</ul>
+<p>部分上证50指数基金列表：</p>
+<img src="D:\picture\gridea_note\QQ图片20200720172318.jpg" alt="QQ图片20200720172318" style="zoom:50%;" />
+<img src="D:\picture\gridea_note\QQ图片20200720172309.jpg" alt="QQ图片20200720172309" style="zoom:50%;" />
+<p>场内基金场外基金</p>
+<ul>
+<li>场内基金在证券交易所上市，可以有“申购赎回”和“买入卖出”两套交易体系，其中买入卖出方式需要在证券交易所中进行，是通过股票交易软件来操作的。</li>
+<li>如果基金没有在证券交易所上市，那就是场外基金，它只有”申购赎回“一种交易方式。</li>
+</ul>
+</blockquote>
+<h2 id="沪深300指数">沪深300指数</h2>
+<h3 id="定义-2">定义</h3>
+<blockquote>
+<p>沪深300指数是由中证指数公司开发的，从上交所和深交所挑选规模最大、流动性最好的300只股票。</p>
+</blockquote>
+<h3 id="对应指数基金-2">对应指数基金</h3>
+<blockquote>
+<img src="D:\picture\gridea_note\QQ图片20200720175427.jpg" alt="QQ图片20200720175427" style="zoom: 25%;" />
+<figure data-type="image" tabindex="1"><img src="https://AnonymityToAll.github.io/post-images/1595239923883.jpg" alt="" loading="lazy"></figure>
+</blockquote>
+<h3 id="挑选指数基金的思路">挑选指数基金的思路</h3>
+<blockquote>
+<ul>
+<li>第一条思路：挑选费用最低，误差最小的品种</li>
+<li>第二种思路：寻找有特色的增强型指数基金</li>
+</ul>
+</blockquote>
+<h3 id="关于增强型指数基金">关于增强型指数基金</h3>
+<blockquote>
+<p>理解：</p>
+<p>指数基金的目的是复制指数，不过有时候，股市会出现一些比较明显的能获得超额收益的机会。于是，有的指数基金就会在追踪指数的基础上，去做一些操作来赚取超额收益，例如打新、量化模型等，希望相对于指数获得一些增强收益，这就是增强型指数基金。</p>
+<p>特点：</p>
+<ul>
+<li>增强操作不公开，有一定风险</li>
+<li>主要是指场外指数基金</li>
+</ul>
+</blockquote>
+<h2 id="中证500指数">中证500指数</h2>
+<h3 id="定义-3">定义</h3>
+<blockquote>
+<p>全部沪深300指数的300加公司排除，然后将最近一年日均总市值前300名的企业也排除，在剩下的公司中，选择日均总市值排名前500名的企业，这就是中证500指数。是中型企业的代表。</p>
+</blockquote>
+<h3 id="对应指数基金-3">对应指数基金</h3>
+<blockquote>
+<img src="D:\picture\gridea_note\QQ图片20200720182736.jpg" alt="QQ图片20200720182736" style="zoom: 33%;" />
+<img src="D:\picture\gridea_note\QQ图片20200720182742.jpg" alt="QQ图片20200720182742.jpg" style="zoom: 33%;" />
+</blockquote>
+<h2 id="创业板指数">创业板指数</h2>
+<h3 id="定义-4">定义</h3>
+<blockquote>
+<p>对于盈利不好的小公司，达不到主板上市的条件，国家就给这类公司提供了一个门槛更低的市场，创业板市场。</p>
+</blockquote>
+<h3 id="创业板相关指数">创业板相关指数</h3>
+<blockquote>
+<p>具体：</p>
+<ul>
+<li>创业板综指：是为了衡量创业板所有上市公司的股价平均表现来设立的，代码是399102，它包括创业板的全部的500家企业</li>
+<li>创业板指数：是衡量创业版最主要的100家企业的平均表现而设立的</li>
+<li>创业板50指数</li>
+</ul>
+<p>特点：</p>
+<p>容易暴涨暴跌</p>
+</blockquote>
+<h3 id="对应指数基金-4">对应指数基金</h3>
+<blockquote>
+<img src="D:\picture\gridea_note\QQ图片20200720184101.jpg" alt="QQ图片20200720184101.jpg" style="zoom: 33%;" />
+<img src="D:\picture\gridea_note\QQ图片20200720184109.jpg" alt="QQ图片20200720184109.jpg" style="zoom: 33%;" />
+</blockquote>
+<h2 id="红利指数">红利指数</h2>
+<h3 id="定义-5">定义</h3>
+<blockquote>
+<p>之前的几个指数都是按照市值加权的，市值加权就是股票规模越大，在基金中的权重越大。而策略加权，则是按照别的方式来决定个股权重。<br>
+红利指数，就是按照股息率来决定权重，哪个股票的股息率越高，这个股票的权重就越大。</p>
+</blockquote>
+<h3 id="对应指数">对应指数</h3>
+<blockquote>
+<p>上证红利指数：挑选上交所过去两年平均现金股息率最高的50只股票<br>
+→对应指数基金：华泰柏瑞上证红利ETF 510880</p>
+<p>中证红利指数：同时选上交所以及深交所挑选过去两年平均现金股息率最高的股票，100只<br>
+→090010，161907，100032</p>
+<p>深证红利指数：深交所的高现金股息率的股票，40只<br>
+→159905，481012</p>
+<p>红利机会指数：除了高股息率还有其他的挑选标准，即：最近三年盈利为正，过去12个月的净利润必须为正；过去12个月的净利润必须为正；每个股票权重不超过3%，单个行业不超过33%</p>
+</blockquote>
+<h3 id="特点">特点</h3>
+<blockquote>
+<ul>
+<li>高股息率在牛市更有优势</li>
+<li>能持续发放股息的公司，盈利能力和财务状态好</li>
+<li>提供分红现金流</li>
+</ul>
+</blockquote>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[面试整理]]></title>
         <id>https://AnonymityToAll.github.io/post/yi/</id>
