@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>关于 | maktubの圆</title>
+<title>Leetcode刷题记录 | maktubの圆</title>
 
 <link rel="shortcut icon" href="https://AnonymityToAll.github.io/favicon.ico?v=1595432163937">
 
@@ -83,31 +83,135 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    关于
+                    Leetcode刷题记录
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2019-01-25 ·
+                        · 2020-07-22 ·
                     </time>
+                    
+                        <a href="https://AnonymityToAll.github.io/tag/71v3FxpDF/" class="post-tags">
+                            # leetcode-栈
+                        </a>
                     
                 </div>
                 <div class="post-content">
-                    <blockquote>
-<p>如果能帮到你一点，不胜荣幸🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<p>本站记录站主学习生活</p>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<p>死瘦宅</p>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<p>读书、实况足球 &amp; lpl</p>
-<h2 id="联系我呀">📬 联系我呀</h2>
-<p>微信：17551047092</p>
+                    <p>** 2019年7月22日**</p>
+<h3 id="1o21-删除最外层的括号">1o21 删除最外层的括号</h3>
+<pre><code class="language-c++">class Solution {
+public:
+	string removeOuterParentheses(string S) {
+		string res = &quot;&quot;;
+		stack&lt;char&gt; mystack;
+		for (int i = 0; i &lt; S.size(); i++) {
+			if (S[i] == ')')
+				mystack.pop();
+			if (!mystack.empty())
+				res+=S[i];
+			if (S[i] == '(')
+				mystack.push('(');
+		}
+		return res;
+	}
+};
+</code></pre>
+<p>遍历括号集，如果是右括号，说明栈里面至少有一个左括号，而且这个左括号一定已经加到栈里面了，所以弹出。<br>
+如果，栈是非空的，说明原本栈里面有两个连续的括号，那么说明剩下的左括号跟现在的右括号一块一定是要输出的结果的顺序。<br>
+<strong>抓住的结果的特点是，外层括号（要删除的）一定是连续的两个一块，也就是必然是&quot;((&quot;或者&quot;))&quot;。策略是先把外括号放进来一个，再进行内括号的处理的思路</strong></p>
+<h3 id="1047">1047</h3>
+<pre><code class="language-c++">class Solution {
+public:
+    string removeDuplicates(string S) {
+        stack&lt;char&gt; mystack;
+        string result = &quot;&quot;;
+        for(int i=0; i&lt;S.length(); i++){
+            if(!mystack.empty() &amp;&amp; S[i] == mystack.top()){
+                mystack.pop();
+                continue;
+            }
+            mystack.push(S[i]);
+        }
+        while(!mystack.empty()){
+            result += mystack.top();
+            mystack.pop();
+        }
+        reverse(result.begin(), result.end());
+        return result;
+    }
+};
+</code></pre>
+<p>遇到的问题：超出边界了，要先判断mystack是非空的，同时要放在&amp;&amp;符号前面的位置才可以</p>
+<h3 id="682">682</h3>
+<pre><code class="language-c++">class Solution {
+public:
+    int calPoints(vector&lt;string&gt;&amp; ops) {
+        stack&lt;int&gt; mystack;
+        int result = 0;
+        int num = 0;
+        for(int i=0; i&lt;ops.size(); i++){
+            if(ops[i][0] == '-'){
+                num = stringToInt2(ops[i]);
+                mystack.push(num);
+                //printf(&quot;**%d\n&quot;,num);
+            }
+            else if(ops[i] == &quot;C&quot;){
+                mystack.pop();
+            }
+            else if(ops[i] == &quot;D&quot;){
+                num = mystack.top() * 2;
+                mystack.push(num);
+            }
+            else if(ops[i] == &quot;+&quot;){
+                int temp = mystack.top();
+                mystack.pop();
+                num = mystack.top();
+                mystack.push(temp);
+                mystack.push(temp + num);
+            }
+            else{
+                num = stringToInt(ops[i]);
+                mystack.push(num);
+                //printf(&quot;***%d\n&quot;,num);
+            }
+        }
+        while(!mystack.empty()){
+            result += mystack.top();
+            //printf(&quot;**%d\n&quot;,mystack.top());
+            mystack.pop();
+        }
+        return result;
+    }
+private:
+    int stringToInt(string S){
+        int result = 0;
+        for(int i=0; i&lt;S.length(); i++){
+            result = result*10 + S[i] - '0';
+        }
+        return result;
+    }
+    int stringToInt2(string S){
+        int result = 0;
+        for(int i=1; i&lt;S.length(); i++){
+            result = result*10 + S[i] - '0';
+        }
+        result = 0 - result;
+        return result;
+    }
+};
+</code></pre>
+<p>错误：调试调了很久，总是有些算例不符合，通过printf一点一点找，还好最后通过了</p>
 
                 </div>
             </article>
         </div>
 
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://AnonymityToAll.github.io/post/ji-xiao-ji-da-li-lun-jiang-xi-ban-er/" class="post-title gt-a-link">
+                    极小极大理论讲习班（二）
+                </a>
+            </div>
         
 
         

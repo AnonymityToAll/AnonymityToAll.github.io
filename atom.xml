@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://AnonymityToAll.github.io</id>
     <title>maktubの圆</title>
-    <updated>2020-07-22T11:22:44.249Z</updated>
+    <updated>2020-07-22T15:36:13.899Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://AnonymityToAll.github.io"/>
     <link rel="self" href="https://AnonymityToAll.github.io/atom.xml"/>
@@ -10,6 +10,118 @@
     <logo>https://AnonymityToAll.github.io/images/avatar.png</logo>
     <icon>https://AnonymityToAll.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, maktubの圆</rights>
+    <entry>
+        <title type="html"><![CDATA[Leetcode刷题记录]]></title>
+        <id>https://AnonymityToAll.github.io/post/leetcode-shua-ti-ji-lu/</id>
+        <link href="https://AnonymityToAll.github.io/post/leetcode-shua-ti-ji-lu/">
+        </link>
+        <updated>2020-07-22T11:34:56.000Z</updated>
+        <content type="html"><![CDATA[<p>** 2019年7月22日**</p>
+<h3 id="1o21-删除最外层的括号">1o21 删除最外层的括号</h3>
+<pre><code class="language-c++">class Solution {
+public:
+	string removeOuterParentheses(string S) {
+		string res = &quot;&quot;;
+		stack&lt;char&gt; mystack;
+		for (int i = 0; i &lt; S.size(); i++) {
+			if (S[i] == ')')
+				mystack.pop();
+			if (!mystack.empty())
+				res+=S[i];
+			if (S[i] == '(')
+				mystack.push('(');
+		}
+		return res;
+	}
+};
+</code></pre>
+<p>遍历括号集，如果是右括号，说明栈里面至少有一个左括号，而且这个左括号一定已经加到栈里面了，所以弹出。<br>
+如果，栈是非空的，说明原本栈里面有两个连续的括号，那么说明剩下的左括号跟现在的右括号一块一定是要输出的结果的顺序。<br>
+<strong>抓住的结果的特点是，外层括号（要删除的）一定是连续的两个一块，也就是必然是&quot;((&quot;或者&quot;))&quot;。策略是先把外括号放进来一个，再进行内括号的处理的思路</strong></p>
+<h3 id="1047">1047</h3>
+<pre><code class="language-c++">class Solution {
+public:
+    string removeDuplicates(string S) {
+        stack&lt;char&gt; mystack;
+        string result = &quot;&quot;;
+        for(int i=0; i&lt;S.length(); i++){
+            if(!mystack.empty() &amp;&amp; S[i] == mystack.top()){
+                mystack.pop();
+                continue;
+            }
+            mystack.push(S[i]);
+        }
+        while(!mystack.empty()){
+            result += mystack.top();
+            mystack.pop();
+        }
+        reverse(result.begin(), result.end());
+        return result;
+    }
+};
+</code></pre>
+<p>遇到的问题：超出边界了，要先判断mystack是非空的，同时要放在&amp;&amp;符号前面的位置才可以</p>
+<h3 id="682">682</h3>
+<pre><code class="language-c++">class Solution {
+public:
+    int calPoints(vector&lt;string&gt;&amp; ops) {
+        stack&lt;int&gt; mystack;
+        int result = 0;
+        int num = 0;
+        for(int i=0; i&lt;ops.size(); i++){
+            if(ops[i][0] == '-'){
+                num = stringToInt2(ops[i]);
+                mystack.push(num);
+                //printf(&quot;**%d\n&quot;,num);
+            }
+            else if(ops[i] == &quot;C&quot;){
+                mystack.pop();
+            }
+            else if(ops[i] == &quot;D&quot;){
+                num = mystack.top() * 2;
+                mystack.push(num);
+            }
+            else if(ops[i] == &quot;+&quot;){
+                int temp = mystack.top();
+                mystack.pop();
+                num = mystack.top();
+                mystack.push(temp);
+                mystack.push(temp + num);
+            }
+            else{
+                num = stringToInt(ops[i]);
+                mystack.push(num);
+                //printf(&quot;***%d\n&quot;,num);
+            }
+        }
+        while(!mystack.empty()){
+            result += mystack.top();
+            //printf(&quot;**%d\n&quot;,mystack.top());
+            mystack.pop();
+        }
+        return result;
+    }
+private:
+    int stringToInt(string S){
+        int result = 0;
+        for(int i=0; i&lt;S.length(); i++){
+            result = result*10 + S[i] - '0';
+        }
+        return result;
+    }
+    int stringToInt2(string S){
+        int result = 0;
+        for(int i=1; i&lt;S.length(); i++){
+            result = result*10 + S[i] - '0';
+        }
+        result = 0 - result;
+        return result;
+    }
+};
+</code></pre>
+<p>错误：调试调了很久，总是有些算例不符合，通过printf一点一点找，还好最后通过了</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[极小极大理论讲习班（二）]]></title>
         <id>https://AnonymityToAll.github.io/post/ji-xiao-ji-da-li-lun-jiang-xi-ban-er/</id>
