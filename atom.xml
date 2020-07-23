@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://AnonymityToAll.github.io</id>
     <title>maktubの圆</title>
-    <updated>2020-07-23T03:30:51.407Z</updated>
+    <updated>2020-07-23T03:31:31.714Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://AnonymityToAll.github.io"/>
     <link rel="self" href="https://AnonymityToAll.github.io/atom.xml"/>
@@ -11,7 +11,7 @@
     <icon>https://AnonymityToAll.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, maktubの圆</rights>
     <entry>
-        <title type="html"><![CDATA[极小极大讲习班（三）]]></title>
+        <title type="html"><![CDATA[极小极大理论讲习班（三）]]></title>
         <id>https://AnonymityToAll.github.io/post/ji-xiao-ji-da-jiang-xi-ban-san/</id>
         <link href="https://AnonymityToAll.github.io/post/ji-xiao-ji-da-jiang-xi-ban-san/">
         </link>
