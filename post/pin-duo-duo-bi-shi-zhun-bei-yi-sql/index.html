@@ -1,0 +1,334 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>拼多多笔试准备（一）--sql | maktubの圆</title>
+
+<link rel="shortcut icon" href="https://AnonymityToAll.github.io/favicon.ico?v=1596160198347">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://AnonymityToAll.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            maktubの圆
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+    </div>
+</nav>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    拼多多笔试准备（一）--sql
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2020-07-31 ·
+                    </time>
+                    
+                        <a href="https://AnonymityToAll.github.io/tag/Od3QAJkqt/" class="post-tags">
+                            # 数据分析面试
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h1 id="牛客网题目之中等">牛客网题目之中等</h1>
+<h3 id="sql刷题">sql刷题</h3>
+<h5 id="t3">T3</h5>
+<pre><code class="language-sql">select salaries.*, dept_manager.dept_no
+from salaries inner join dept_manager
+on salaries.emp_no = dept_manager.emp_no
+where salaries.to_date='9999-01-01' and dept_manager.to_date='9999-01-01'
+</code></pre>
+<blockquote>
+<p>说明：</p>
+<pre><code class="language-sql">from salaries inner join dept_manager
+on salaries.emp_no = dept_manager.emp_no
+</code></pre>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>o</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">on</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span></span></span></span>后面跟着两个表相同的部分</p>
+</blockquote>
+<h5 id="t4">T4</h5>
+<p>错误示例：</p>
+<pre><code class="language-sql">select e.last_name, e.first_name, d.dept_no
+from employees as e inner join dept_emp as d
+on employees.emp_no = dept_emp.emp_no
+</code></pre>
+<p>正确示例</p>
+<pre><code class="language-sql">select e.last_name, e.first_name, d.dept_no
+from employees as e inner join dept_emp as d
+on e.emp_no = d.emp_no
+</code></pre>
+<pre><code class="language-sql">select employees.last_name, employees.first_name, dept_emp.dept_no
+from employees inner join dept_emp
+on employees.emp_no = dept_emp.emp_no
+</code></pre>
+<h5 id="t5">T5</h5>
+<pre><code class="language-sql">select e.last_name, e.first_name, d.dept_no
+from employees as e left join dept_emp as d 
+on e.emp_no = d.emp_no
+</code></pre>
+<blockquote>
+<p>刚开始select没有选择dept_no</p>
+</blockquote>
+<h5 id="t6">T6</h5>
+<p>错误示例：</p>
+<pre><code class="language-sql">select e.emp_no, s.salary
+from employees as e join salaries as s 
+on e.emp_no = s.emp_no
+where salaries.from_date = employees.hire_date
+order by e.emp_no desc
+</code></pre>
+<p>正确示例：</p>
+<pre><code class="language-sql">select e.emp_no, s.salary
+from employees as e join salaries as s 
+on e.emp_no = s.emp_no
+where s.from_date = e.hire_date
+order by e.emp_no desc
+</code></pre>
+<pre><code class="language-sql">select employees.emp_no, salaries.salary
+from employees join salaries
+on employees.emp_no = salaries.emp_no
+where salaries.from_date = employees.hire_date
+order by employees.emp_no desc
+</code></pre>
+<h5 id="t7">T7</h5>
+<pre><code class="language-sql">select emp_no, count(distinct salary) as t 
+from salaries
+group by emp_no
+having t &gt; 15
+</code></pre>
+<blockquote>
+<p>count 数的是分组之后的salary数据</p>
+</blockquote>
+<h5 id="t8">T8</h5>
+<pre><code class="language-sql">select distinct salary
+from salaries
+where to_date = '9999-01-01'
+order by salary desc
+</code></pre>
+<h5 id="t9">T9</h5>
+<pre><code class="language-sql">select d.dept_no, d.emp_no, s.salary
+from dept_manager as d join salaries as s 
+on d.emp_no = s.emp_no
+where d.to_date='9999-01-01' and s.to_date='9999-01-01'
+</code></pre>
+<h5 id="t10">T10</h5>
+<pre><code class="language-sql">select emp_no from employees
+where emp_no not in (select emp_no from dept_manager)
+</code></pre>
+<blockquote>
+<p>not in 写成了 in</p>
+</blockquote>
+<h5 id="t11">T11</h5>
+<pre><code class="language-sql">select dept_emp.emp_no, dept_manager.emp_no
+from dept_emp join dept_manager
+on dept_emp.dept_no = dept_manager.dept_no
+where dept_manager.to_date='9999-01-01' and dept_emp.to_date = '9999-01-01' and dept_emp.emp_no &lt;&gt; dept_manager.emp_no
+</code></pre>
+<blockquote>
+<p>出了很多错。</p>
+<ul>
+<li>select 后面跟的有问题</li>
+<li>on 后面的也有问题</li>
+<li>最后where的条件没想出来</li>
+</ul>
+<p>应该先理解清楚题的意思再编程</p>
+</blockquote>
+<h5 id="t12">T12</h5>
+<pre><code class="language-sql">select d.dept_no,s.emp_no,max(s.salary)
+from dept_emp as d inner join salaries as s 
+on d.emp_no = s.emp_no
+where d.to_date = '9999-01-01' and s.to_date = '9999-01-01'
+group by d.dept_no
+</code></pre>
+<blockquote>
+<p>理解错题的意思了，应该是给出每个部门的最高薪水，不是所有部门的最高薪水</p>
+</blockquote>
+<h5 id="t13">T13</h5>
+<pre><code class="language-sql">select title, count(title) as t
+from titles
+group by title
+having t &gt;= 2
+</code></pre>
+<blockquote>
+<p>一次通过！！！</p>
+</blockquote>
+<h5 id="t14">T14</h5>
+<pre><code class="language-sql">select title, count(title) as t
+from (
+    select distinct emp_no, title
+    from titles)
+group by title
+having t &gt;= 2
+</code></pre>
+<blockquote>
+<p>一次通过！！！</p>
+</blockquote>
+<h5 id="t15">T15</h5>
+<pre><code class="language-sql">select * 
+from employees
+where emp_no % 2 = 1 and last_name &lt;&gt; 'Mary'
+order by hire_date desc
+</code></pre>
+<blockquote>
+<p>一次通过！！！</p>
+</blockquote>
+<h5 id="t16">T16</h5>
+<pre><code class="language-sql">select t.title, avg(s.salary) as avg
+from titles as t inner join salaries as s
+on t.emp_no = s.emp_no
+where t.to_date = '9999-01-01' and s.to_date = '9999-01-01'
+group by t.title
+</code></pre>
+<blockquote>
+<p>忘记加where了</p>
+</blockquote>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://AnonymityToAll.github.io/post/du-shu-bi-ji-a-gu-jie-zhi-tou-zi/" class="post-title gt-a-link">
+                    读书笔记--A股价值投资
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: '',
+		appKey: '',
+		avatar: '',
+		pageSize: 5,
+		recordIp: false,
+		placeholder: 'Just Go Go',
+		visitor: false,
+	});
+</script>
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">向死而生</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/AnonymityToAll" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://AnonymityToAll.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+    hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>
