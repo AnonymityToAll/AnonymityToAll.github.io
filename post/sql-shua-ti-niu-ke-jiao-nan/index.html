@@ -6,7 +6,7 @@
 
 <title>SQL刷题-牛客-较难 | maktubの圆</title>
 
-<link rel="shortcut icon" href="https://AnonymityToAll.github.io/favicon.ico?v=1596715927714">
+<link rel="shortcut icon" href="https://AnonymityToAll.github.io/favicon.ico?v=1596871992656">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://AnonymityToAll.github.io/styles/main.css">
@@ -389,6 +389,56 @@ VALUES
 <pre><code class="language-SQL">create table actor_name  as
 select first_name,last_name from actor
 </code></pre>
+<h5 id="t37">T37</h5>
+<pre><code class="language-sql">create unique index uniq_idx_firstname on actor(first_name);
+create index idx_lastname on actor(last_name);
+</code></pre>
+<h5 id="t38">T38</h5>
+<pre><code class="language-sql">CREATE VIEW actor_name_view(first_name_v, last_name_v) AS
+select first_name, last_name
+from actor
+</code></pre>
+<h5 id="t39">T39</h5>
+<pre><code class="language-sql">SELECT * FROM salaries INDEXED BY idx_emp_no WHERE emp_no = 10005
+</code></pre>
+<h5 id="t40">T40</h5>
+<pre><code class="language-sql">ALTER TABLE actor ADD COLUMN create_date datetime not null default('0000-00-00 00:00:00');
+</code></pre>
+<h5 id="t41">T41</h5>
+<pre><code class="language-sql">create trigger audit_log after insert on employees_test
+begin
+    insert into audit values(new.id,new.name);
+end
+</code></pre>
+<h5 id="t42">T42</h5>
+<p>错误示例：</p>
+<pre><code class="language-sql">select min(id) 
+from titles_test
+group by emp_no
+</code></pre>
+<p>正确示例：</p>
+<pre><code class="language-sql">DELETE FROM titles_test WHERE id NOT IN
+(SELECT MIN(id) FROM titles_test GROUP BY emp_no)
+</code></pre>
+<h5 id="t43">T43</h5>
+<pre><code class="language-sql">UPDATE titles_test SET to_date = NULL, from_date = '2001-01-01'WHERE to_date = '9999-01-01';
+</code></pre>
+<h5 id="t44">T44</h5>
+<pre><code class="language-sql">UPDATE titles_test SET emp_no = REPLACE(emp_no,10001,10005) WHERE id = 5
+</code></pre>
+<h5 id="t45">T45</h5>
+<pre><code class="language-sql">alter table titles_test rename to titles_2017;
+</code></pre>
+<h5 id="t46">T46</h5>
+<pre><code class="language-sql">drop table audit;
+create table audit(
+    EMP_no int not null,
+    create_date datetime not null,
+    foreign key(EMP_no)
+    references employees_test(ID)
+);
+</code></pre>
+<h3 id=""></h3>
 
                 </div>
             </article>
