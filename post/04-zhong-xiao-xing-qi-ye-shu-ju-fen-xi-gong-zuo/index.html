@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>第三讲 中小型企业数据分析工作 | maktubの圆</title>
+<title>第四讲 中小型企业数据分析工作 | maktubの圆</title>
 
 <link rel="shortcut icon" href="https://AnonymityToAll.github.io/favicon.ico?v=1597063259188">
 
@@ -83,7 +83,7 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    第三讲 中小型企业数据分析工作
+                    第四讲 中小型企业数据分析工作
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
@@ -96,7 +96,7 @@
                     
                 </div>
                 <div class="post-content">
-                    <p>###三个问题解答</p>
+                    <h3 id="三个问题解答">三个问题解答</h3>
 <h5 id="流量波动">流量波动</h5>
 <blockquote>
 <p>举例：美团外卖近期订单量下降5%，需要分析师给出一些解释并提供下一步建议</p>
@@ -213,6 +213,82 @@
 挑选2家规模较大，知名度高的：保底要进（简历一定要认真写，多打磨）<br>
 挑选2家业内知名公司--尝试</p>
 </blockquote>
+<h1 id="05-数据分析工具介绍">05 数据分析工具介绍</h1>
+<h3 id="数据分析整体流程">数据分析整体流程</h3>
+<ul>
+<li>明确问题：先把问题定义清楚</li>
+<li>搭建框架：再把问题考虑全面，找到主线</li>
+<li>数据提取：mysql，hive，python</li>
+<li>数据处理：excel，r，python</li>
+<li>数据分析：分析方法论</li>
+<li>数据展现：tableau，excel，r，python</li>
+<li>转写报告：文笔功底，整体逻辑性</li>
+<li>报告演讲：沟通能力，表达能力，被提问能力</li>
+<li>报告闭环：最难也是最有价值的</li>
+</ul>
+<h3 id="excel常用操作">excel常用操作</h3>
+<p>能用excel，坚决不用其他工具</p>
+<h5 id="excel-对比分析筛选和色阶">excel--对比分析（筛选和色阶）</h5>
+<blockquote>
+<p>对比分析：所有的数据只有对比才有意义，每年的双11进行消费额对比；实际上工作中，最常见的对比对象就是大盘，比如新上线一个功能，怎么样评估这个功能效果，除了看功能使用人数，更加要做的是这个功能的留存和大盘的留存对比</p>
+</blockquote>
+<h5 id="excel-时间序列拆解分析透视图功能">excel--时间序列拆解分析（透视图功能）</h5>
+<blockquote>
+<p>时间序列二次拆解分析：一般看某指标时，都会把时序周期拉长，看数据趋势，而数据都是波动的，所以都会进行拆解分析，寻找具体波动项。</p>
+</blockquote>
+<h5 id="excel-相关性分析常用函数">excel--相关性分析（常用函数）</h5>
+<blockquote>
+<p>相关性分析：在做某个子产品的时候，都会被问到你这个子产品对大盘的贡献度或影响度，这个时候就可以用相关性去说话。</p>
+</blockquote>
+<h5 id="excel-临界点分析插入图标复杂功能">excel--临界点分析（插入图标复杂功能）</h5>
+<blockquote>
+<p>对于任何一款产品，高活跃用户与低活跃用户在产品使用上必然不同，那么就可能存在某个指标，一旦用户在这个指标的消费超过某个临界值时，后面用户会变得非常粘性，这就是magic number。</p>
+</blockquote>
+<h3 id="sql常见问题不是会而是要闭着眼睛都能写">sql常见问题：不是会，而是要闭着眼睛都能写</h3>
+<blockquote>
+<p>如何训练sql</p>
+<p>利用下班时间，把你怀疑的代码，按照你认为应该的几种逻辑，全部运行一遍，然后看哪一个数据跟当前已知数据最为靠近，然后再去反推为何这样写看着更加合理。</p>
+<p>sql是否熟练：当别人让你快速跑一个数的时候会很开心。</p>
+<p>常见问题</p>
+<blockquote>
+<p>对某一个误认为是数值型但实际是字符串型字段取最大值，采用max函数<br>
+解决方法：</p>
+<pre><code class="language-sql">select max(a+0)
+</code></pre>
+<p>日期处理：日期取年月份，时间戳取日期，日期格式转换等等需求，经常出现各种问题<br>
+解决方法：先百度看看用什么函数来转，在正式跑数据之前，直接select函数(a)测试下一种特殊的日期处理是北京时间和unix时间转换。</p>
+<pre><code class="language-sql">select from_unixtime(time), select from_unixtime(cast(substr(time,1,10) as int))
+</code></pre>
+<p>先聚合再计数：如果要计算某个维度下的用户数，不要直接count(distinct imei)，少用distinct。而应该直接是：</p>
+<pre><code class="language-sql">select city,count(1) as uv from(select city,imei,count(1) from a group by imei) t1 group by city
+</code></pre>
+<p>一列变多行：ab测试中会对一个用户大很多标签，而这些标签都存在一个字段中，所以要看标签维度指标，就要对该字段进行列变行拆解</p>
+<pre><code class="language-sql">select *,b from t1 lateral view explode(a) table as b
+</code></pre>
+<p>取top：要看分类下的top10消费额子分类（窗口函数）</p>
+<pre><code class="language-sql">select *,rank() over(partition by a order by b desc) as rank from table t1
+</code></pre>
+<p>避免数据倾斜：小表放在左边大表放在右边，使用mapjoin，同时对空值进行过滤</p>
+<pre><code class="language-sql">select /*+mapjoin(a)*/ t1.city, t2.type,count(t1.imer) as uv
+from 
+(select imei, city, count(1) as pv from a where imei != &quot;group by imei, city&quot;)t1
+join 
+(select imei, type, count(1) as pv from a where imei != &quot;group by imei, type&quot;)t2
+on t1.imei = t2.imei
+group by t1.city,t2.type
+</code></pre>
+</blockquote>
+</blockquote>
+<h3 id="r语言-python脚本案例">R语言、python脚本案例</h3>
+<blockquote>
+<p>R：<br>
+背景：对于一个产品的重要指标如留存，影响的因素很多，那么就需要找到这些影响因子的重要性，从而知道围绕哪些因素运营来更好的实现。<br>
+换一种方式来季节上面这段话：哪些指标能够区分用户留存还是未留存，越是明显区分，越重要。转化为机器学习语言：对于一个用户，他有一个y（留存/未留存），还有很多x（各种影响因素），需要找到x与y的关系，并给出x的重要性排序。可以用随机森林，逻辑回归，决策树来实现。</p>
+<p>python：<br>
+爬虫<br>
+文本挖掘<br>
+UDF函数</p>
+</blockquote>
 
                 </div>
             </article>
@@ -221,8 +297,8 @@
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://AnonymityToAll.github.io/post/bat-qi-ye-shu-ju-fen-xi-gong-zuo/" class="post-title gt-a-link">
-                    第二讲 BAT企业数据分析工作
+                <a href="https://AnonymityToAll.github.io/post/di-san-jiang-zhong-xiao-xing-qi-ye-shu-ju-fen-xi-gong-zuo/" class="post-title gt-a-link">
+                    第三讲 中小型企业数据分析工作
                 </a>
             </div>
         
