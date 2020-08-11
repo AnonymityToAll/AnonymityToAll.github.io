@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>第二讲 BAT企业数据分析工作 | maktubの圆</title>
+<title>第六讲 流量分析 | maktubの圆</title>
 
 <link rel="shortcut icon" href="https://AnonymityToAll.github.io/favicon.ico?v=1597131473958">
 
@@ -83,87 +83,65 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    第二讲 BAT企业数据分析工作
+                    第六讲 流量分析
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2020-08-08 ·
+                        · 2020-08-11 ·
                     </time>
-                    
-                        <a href="https://AnonymityToAll.github.io/tag/Od3QAJkqt/" class="post-tags">
-                            # 数据分析面试
-                        </a>
                     
                 </div>
                 <div class="post-content">
-                    <h2 id="招聘解析">招聘解析</h2>
-<h5 id="去除神秘感">去除神秘感</h5>
-<p>阿里：对技术要求不是很高，对综合能力要求非常高</p>
-<p>腾讯：埋点，检测异常，ABtest，增长黑客的经验（那本书需要看一看）</p>
-<p>百度：专项，逻辑思维，用户增长</p>
-<p>总：为了用户增长</p>
-<h5 id="看到差距">看到差距</h5>
-<h5 id="如何准备">如何准备</h5>
-<h2 id="日常工作">日常工作</h2>
-<h5 id="数据异常排查">数据异常排查</h5>
-<p>要有标准的排查流程，要有方法论</p>
+                    <h3 id="背景">背景</h3>
+<p>有了指标体系和报表之后，最重要的事情就是每天看各种数据了，这也就是流量分析。<br>
+流量分析的定义：这里流量是最广义的流量，从哪来，经过什么，产生什么价值，如果他波动了，为何波动<br>
+1）渠道分析：从哪来<br>
+2）转化分析：经过什么<br>
+3）价值分析：产生什么价值<br>
+4）波动分析、包括日常的监控分析</p>
+<h3 id="渠道分析">渠道分析</h3>
+<h5 id="常见渠道及其分类">常见渠道及其分类</h5>
 <blockquote>
-<p>1.数据本身有问题<br>
-2.或者业务本身有问题</p>
-<p>数据异常排查之前期准备：</p>
+<p>内部渠道（免费）</p>
 <ul>
-<li>业务理解</li>
-<li>指标口径</li>
-<li>当前数据产出过程</li>
+<li>产品矩阵：头条给抖音带量</li>
 </ul>
-<p>数据异常排除之方法论</p>
+<p>外部渠道（付费）</p>
 <ul>
-<li>判断是否异常
-<ul>
-<li>亲自去看数据的变化</li>
-<li>时间轴一定要拉长（近三个月）</li>
-<li>看这个指标与其他关联的指标是不是也是异常的</li>
-<li>找到关键人物提前沟通一下（找一个人文一下，通过经验判断）</li>
+<li>搜索引擎</li>
+<li>app广告</li>
+<li>社交媒体</li>
+<li>软件市场</li>
 </ul>
-</li>
-<li>最大概率法则归类
-<ul>
-<li>假期效应：开学季、暑假、四大节、当地节日</li>
-<li>热点事件：常规热点如世界杯、突发热点某爆款IP</li>
-<li>活动影响：双11，618</li>
-<li>政策影响：互联网金融监管、快递行业实名</li>
-<li>底层系统故障</li>
-<li>统计口径</li>
-</ul>
-</li>
-<li>闭环
-<ul>
-<li>持续跟踪后续数据</li>
-<li>记录沉淀文档化</li>
-<li>邮件化：只有确认了没有问题的时候再邮件，描述影响范围和主要结论即可</li>
-</ul>
-</li>
-</ul>
+<p>拉新的</p>
 </blockquote>
-<h5 id="融入专项背kpi">融入专项背KPI</h5>
-<p>项目组专题分析有三个特征：</p>
+<h5 id="渠道推广的整个过程">渠道推广的整个过程</h5>
+<blockquote>
+<p>外部渠道→文案展示→落地页→下载→打开→浏览→注册→...→退出</p>
+</blockquote>
+<h5 id="渠道的关键指标及分析方法">渠道的关键指标及分析方法</h5>
+<figure data-type="image" tabindex="1"><img src="https://AnonymityToAll.github.io/post-images/1597131393246.jpg" alt="" loading="lazy"></figure>
+<h3 id="转化及价值分析">转化及价值分析</h3>
+<h5 id="漏斗分析">漏斗分析</h5>
+<figure data-type="image" tabindex="2"><img src="https://AnonymityToAll.github.io/post-images/1597131400723.jpg" alt="" loading="lazy"></figure>
+<h5 id="功能模块价值分析">功能模块价值分析</h5>
 <ul>
-<li>有目标，津贴项目KPI</li>
-<li>有节奏，2-3周时间输出一份完整报告</li>
-<li>有闭环，所有的报告说人话，用大白话</li>
+<li>常规分析</li>
 </ul>
-<p>阐述报告的数量和质量，即落地的点</p>
-<h5 id="还有很多如埋点-指标体系之后再说">还有很多如埋点、指标体系之后再说</h5>
-<h2 id="面试技巧和必问问题">面试技巧和必问问题</h2>
-<p>第一面：最重要的逻辑性，绝对会对着简历上的东西问，哪些渠道，渠道都有啥</p>
-<p>第二面：微笑，带上专题分析报告，结合app提前想好问题，并分析（带着主题）</p>
-<p>第三面：总监面：代表型项目，行业趋势，了解产品宏观区域</p>
-<h5 id="必问的几个问题">必问的几个问题：</h5>
-<ol>
-<li>流量波动：某天数据突然涨了，怎么分析</li>
-<li>三个常用app：套路很深，好好思考</li>
-<li>商业模式：之前产品的cpc，cpm，说到底还是赚钱</li>
-</ol>
+<figure data-type="image" tabindex="3"><img src="https://AnonymityToAll.github.io/post-images/1597131411535.jpg" alt="" loading="lazy"></figure>
+<ul>
+<li>价值分析</li>
+</ul>
+<figure data-type="image" tabindex="4"><img src="https://AnonymityToAll.github.io/post-images/1597131420995.jpg" alt="" loading="lazy"></figure>
+<ul>
+<li>逻辑分析</li>
+</ul>
+<figure data-type="image" tabindex="5"><img src="https://AnonymityToAll.github.io/post-images/1597131444142.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://AnonymityToAll.github.io/post-images/1597131453252.jpg" alt="" loading="lazy"></figure>
+<h5 id="感触">感触</h5>
+<blockquote>
+<p>实事求是，有数据才有结论，一定要有严谨的逻辑推理</p>
+</blockquote>
 
                 </div>
             </article>
@@ -172,8 +150,8 @@
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://AnonymityToAll.github.io/post/di-yi-jiang-guo-qi-shu-ju-fen-xi-gong-zuo/" class="post-title gt-a-link">
-                    第一讲 国企数据分析工作
+                <a href="https://AnonymityToAll.github.io/post/di-wu-jiang-zhi-biao-ti-xi-gou-jian/" class="post-title gt-a-link">
+                    第五讲 指标体系构建
                 </a>
             </div>
         
