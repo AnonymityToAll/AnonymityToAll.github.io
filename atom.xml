@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://AnonymityToAll.github.io</id>
     <title>maktubの圆</title>
-    <updated>2020-08-10T12:41:11.663Z</updated>
+    <updated>2020-08-11T07:00:40.134Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://AnonymityToAll.github.io"/>
     <link rel="self" href="https://AnonymityToAll.github.io/atom.xml"/>
@@ -10,6 +10,75 @@
     <logo>https://AnonymityToAll.github.io/images/avatar.png</logo>
     <icon>https://AnonymityToAll.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, maktubの圆</rights>
+    <entry>
+        <title type="html"><![CDATA[第五讲 指标体系构建]]></title>
+        <id>https://AnonymityToAll.github.io/post/di-wu-jiang-zhi-biao-ti-xi-gou-jian/</id>
+        <link href="https://AnonymityToAll.github.io/post/di-wu-jiang-zhi-biao-ti-xi-gou-jian/">
+        </link>
+        <updated>2020-08-11T06:59:22.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="指标体系的通俗定义和选取原则">指标体系的通俗定义和选取原则</h3>
+<h5 id="背景">背景</h5>
+<blockquote>
+<p>对于某核心数据如日活，只知道数据在变化，但是不知道为何变化。产品为了解释这种现象一会要这个数，一会要那个数。</p>
+<p>年底汇报时，产品跟数据要各种各样的数据，或者数据内部花费大量的时间对各种各样的口径。</p>
+<p>每隔一段时间产品都会拉上数据研发一起对埋点，总是觉得当前的字段不够用，数仓要修改的越来越多，取数越来越慢，错误越来越多</p>
+</blockquote>
+<h5 id="原因解释">原因解释</h5>
+<blockquote>
+<p>根本原因在于缺少指标体系的建设、宣贯、实施。业务方不重视是因为这个活是基建活，离KPI完成太远，只有出问题时才会临时重视，数据方没中是是因为这个活是一个吃力不讨好（做好了没什么，做不好就怼你）的活，可能认为就是一个思维导图而已。</p>
+<p>然而真实答案是：要想把指标体系（各个指标为啥是这些，它们的关系是啥）真正说明白不容易，而如果你说不明白，你怎么判断你自己真的很懂呢，作为埋点、取数、分析的一切前提，这个活如果做不好，会始终发现很乱。</p>
+</blockquote>
+<h5 id="定义以及选取原则">定义以及选取原则</h5>
+<blockquote>
+<p>定义：<strong>在业务的不同阶段</strong>，分析师牵头，业务方协助，指定的一套能从各维度去反映业务状况的一套待实施框架。</p>
+<p>指标选取原则：根本性、可理解性、结构性</p>
+<p>根本性：核心数据一定要理解到位和准确</p>
+<p>可理解性：所有指标要配上业务解释性，如日活的定义是什么，打开还是点击还是进程在</p>
+<p>结构性：能够充分对业务进行解读，如新增用户只是一个大数，我们还需要知道每个渠道的新增用户，每个取到的新增转化率，每个取到的新增用户价值等，</p>
+</blockquote>
+<h3 id="指标体系的四步法">指标体系的四步法</h3>
+<h5 id="指标的构成">指标的构成</h5>
+<blockquote>
+<p>1原子性指标（最基础不可拆分指标）：交易额<br>
+2修饰词，可选，某种场景：如搜索<br>
+3时间段，时间周期：如双11<br>
+4派生指标：双11这一天通过搜索带来的交易额，次日留存，日活，月活，日转化率<br>
+4=1+2+3</p>
+</blockquote>
+<h5 id="1厘清业务阶段和方向">1.厘清业务阶段和方向</h5>
+<blockquote>
+<p>业务阶段：<br>
+创业期 最关注的用户量<br>
+上升期 最关注的优化用户量结构，看留存<br>
+成熟发展期 收入指标</p>
+</blockquote>
+<h5 id="2确定核心指标多去了解业务和市场头部玩家">2.确定核心指标：多去了解业务和市场头部玩家</h5>
+<blockquote>
+<p>最重要的是找到正确的核心指标，这个不是一件容易的事，不是因为这个事情很难，而是所有人都去重新接受一些客观事实很难</p>
+</blockquote>
+<h5 id="3指标核心维度拆解">3.指标核心维度拆解</h5>
+<blockquote>
+<p>核心指标的波动必然是某种维度的波动引起的，所以要监控核心指标，本质上还是要监控维度核心指标，通用的拆解方法都是先对核心指标进行公式计算，再按照业务路径来拆。</p>
+<p>当前的核心指标是停留时长大于3秒的用户数。</p>
+<p>停留时长大于三秒的用户数=打开进入app的用户数*停留时长大于3秒的占比</p>
+<p>打开进入app的用户数</p>
+<ul>
+<li>渠道转化率</li>
+<li>打开方式</li>
+<li>用户画像</li>
+</ul>
+<p>停留时长大于3秒的占比</p>
+<ul>
+<li>停留时长的分布</li>
+<li>停留大于3秒的用户特征和行为特征</li>
+<li>停留小于3秒的用户特征，有无作弊可能</li>
+</ul>
+</blockquote>
+<h5 id="4指标宣贯-存档-落地">4.指标宣贯、存档、落地</h5>
+<figure data-type="image" tabindex="1"><img src="https://AnonymityToAll.github.io/post-images/1597129202180.jpg" alt="" loading="lazy"></figure>
+<h3 id="知乎app指标体系实操">知乎app指标体系实操</h3>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[第四讲 中小型企业数据分析工作]]></title>
         <id>https://AnonymityToAll.github.io/post/04-zhong-xiao-xing-qi-ye-shu-ju-fen-xi-gong-zuo/</id>
@@ -1554,119 +1623,6 @@ m&amp;\le \int_{R^N}{|\nabla u_{\infty}|^2+V\left( x \right) u_{\infty}^2}
 我们用反证法，我们假设<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">u=0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>，然后我们来推出矛盾。<br>
 通过<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>L</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>s</mi><mtext> </mtext><mtext> </mtext><mi>l</mi><mi>e</mi><mi>m</mi><mi>m</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">Lions \,\,lemma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">L</span><span class="mord mathdefault">i</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">m</span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span></span></span></span>的逆反定理我们可以得到结论。</p>
 </blockquote>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Leetcode刷题记录]]></title>
-        <id>https://AnonymityToAll.github.io/post/leetcode-shua-ti-ji-lu/</id>
-        <link href="https://AnonymityToAll.github.io/post/leetcode-shua-ti-ji-lu/">
-        </link>
-        <updated>2020-07-22T11:34:56.000Z</updated>
-        <content type="html"><![CDATA[<p>** 2019年7月22日**</p>
-<h3 id="1o21-删除最外层的括号">1o21 删除最外层的括号</h3>
-<pre><code class="language-c++">class Solution {
-public:
-	string removeOuterParentheses(string S) {
-		string res = &quot;&quot;;
-		stack&lt;char&gt; mystack;
-		for (int i = 0; i &lt; S.size(); i++) {
-			if (S[i] == ')')
-				mystack.pop();
-			if (!mystack.empty())
-				res+=S[i];
-			if (S[i] == '(')
-				mystack.push('(');
-		}
-		return res;
-	}
-};
-</code></pre>
-<p>遍历括号集，如果是右括号，说明栈里面至少有一个左括号，而且这个左括号一定已经加到栈里面了，所以弹出。<br>
-如果，栈是非空的，说明原本栈里面有两个连续的括号，那么说明剩下的左括号跟现在的右括号一块一定是要输出的结果的顺序。<br>
-<strong>抓住的结果的特点是，外层括号（要删除的）一定是连续的两个一块，也就是必然是&quot;((&quot;或者&quot;))&quot;。策略是先把外括号放进来一个，再进行内括号的处理的思路</strong></p>
-<h3 id="1047">1047</h3>
-<pre><code class="language-c++">class Solution {
-public:
-    string removeDuplicates(string S) {
-        stack&lt;char&gt; mystack;
-        string result = &quot;&quot;;
-        for(int i=0; i&lt;S.length(); i++){
-            if(!mystack.empty() &amp;&amp; S[i] == mystack.top()){
-                mystack.pop();
-                continue;
-            }
-            mystack.push(S[i]);
-        }
-        while(!mystack.empty()){
-            result += mystack.top();
-            mystack.pop();
-        }
-        reverse(result.begin(), result.end());
-        return result;
-    }
-};
-</code></pre>
-<p>遇到的问题：超出边界了，要先判断mystack是非空的，同时要放在&amp;&amp;符号前面的位置才可以</p>
-<h3 id="682">682</h3>
-<pre><code class="language-c++">class Solution {
-public:
-    int calPoints(vector&lt;string&gt;&amp; ops) {
-        stack&lt;int&gt; mystack;
-        int result = 0;
-        int num = 0;
-        for(int i=0; i&lt;ops.size(); i++){
-            if(ops[i][0] == '-'){
-                num = stringToInt2(ops[i]);
-                mystack.push(num);
-                //printf(&quot;**%d\n&quot;,num);
-            }
-            else if(ops[i] == &quot;C&quot;){
-                mystack.pop();
-            }
-            else if(ops[i] == &quot;D&quot;){
-                num = mystack.top() * 2;
-                mystack.push(num);
-            }
-            else if(ops[i] == &quot;+&quot;){
-                int temp = mystack.top();
-                mystack.pop();
-                num = mystack.top();
-                mystack.push(temp);
-                mystack.push(temp + num);
-            }
-            else{
-                num = stringToInt(ops[i]);
-                mystack.push(num);
-                //printf(&quot;***%d\n&quot;,num);
-            }
-        }
-        while(!mystack.empty()){
-            result += mystack.top();
-            //printf(&quot;**%d\n&quot;,mystack.top());
-            mystack.pop();
-        }
-        return result;
-    }
-private:
-    int stringToInt(string S){
-        int result = 0;
-        for(int i=0; i&lt;S.length(); i++){
-            result = result*10 + S[i] - '0';
-        }
-        return result;
-    }
-    int stringToInt2(string S){
-        int result = 0;
-        for(int i=1; i&lt;S.length(); i++){
-            result = result*10 + S[i] - '0';
-        }
-        result = 0 - result;
-        return result;
-    }
-};
-</code></pre>
-<p>错误：调试调了很久，总是有些算例不符合，通过printf一点一点找，还好最后通过了<br>
-事后，想了想，好像也没有很严重的错误，都是一些小错误，后面通过不同的算例不断改善程序。</p>
 ]]></content>
     </entry>
 </feed>
