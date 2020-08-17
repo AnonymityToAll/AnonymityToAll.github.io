@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>Hello Gridea | maktubの圆</title>
+<title>SQL刷题-牛客-补充 | maktubの圆</title>
 
 <link rel="shortcut icon" href="https://AnonymityToAll.github.io/favicon.ico?v=1597632765614">
 
@@ -83,45 +83,159 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    Hello Gridea
+                    SQL刷题-牛客-补充
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2018-12-12 ·
+                        · 2020-08-17 ·
                     </time>
                     
-                        <a href="https://AnonymityToAll.github.io/tag/tcgkE2QAl/" class="post-tags">
-                            # Gridea
+                        <a href="https://AnonymityToAll.github.io/tag/Od3QAJkqt/" class="post-tags">
+                            # 数据分析面试
                         </a>
                     
                 </div>
                 <div class="post-content">
-                    <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+                    <h5 id="t48">T48</h5>
+<p>错误示例：</p>
+<pre><code class="language-sql">update salaries
+set salary = salary * 1.1
+where salaries.emp_no = emp_bonus.emp_no and salaries.to_date = '9999-01-01'
+</code></pre>
+<p>正确示例：</p>
+<pre><code class="language-sql">update salaries 
+set salary=salary*1.1 
+where emp_no in (select emp_no from emp_bonus) and to_date='9999-01-01';
+</code></pre>
+<h5 id="t50">T50</h5>
+<pre><code class="language-sql">select last_name || &quot;'&quot; || first_name
+from employees
+</code></pre>
+<p>ps:我就想问，这个题是哪里配的上是”较难“了！！！！！</p>
+<h5 id="t51">T51</h5>
+<pre><code class="language-sql">select length('10,A,B')-length(replace('10,A,B',',','')) 
+as cnt;
+</code></pre>
+<p>好办法</p>
+<h5 id="t52">T52</h5>
+<pre><code class="language-sql">select first_name 
+from employees
+order by substr(first_name, length(first_name)-1, length(first_name)) asc
+</code></pre>
+<h5 id="t53">T53</h5>
+<pre><code class="language-sql">select dept_no,group_concat(emp_no,',') as employees
+from dept_emp
+group by dept_no
+</code></pre>
+<p>主要就是关于group_concat函数的使用</p>
+<h5 id="t54">T54</h5>
+<p>错误示例：</p>
+<pre><code class="language-sql">select avg(salary) as avg_salary
+from salaries
+where salary not in (select max(salary) from salaries where to_date = '9999-01-01')
+and salary not in (select max(salary) from salaries where to_date = '9999-01-01')
+and to_date = '9999-01-01'
+</code></pre>
+<p>正确示例：</p>
+<pre><code class="language-sql">select avg(salary) as avg_salary
+from salaries
+where salary != (select max(salary) from salaries where to_date = '9999-01-01')
+and salary != (select min(salary) from salaries where to_date = '9999-01-01')
+and to_date = '9999-01-01'
+</code></pre>
+<p>其实就是一个地方错了</p>
+<ul>
+<li>min写成了max</li>
+</ul>
+<p>not in 和 != 其实是都可以的</p>
+<h5 id="t55">T55</h5>
+<pre><code class="language-sql">select * from employees
+limit 5, 5
+</code></pre>
+<h5 id="t56">T56</h5>
+<p>错误示例</p>
+<pre><code class="language-sql">select el.emp_no, d.dept_no, eb.btype, eb.received
+from employees as el 
+left join dept_emp as d 
+on el.emp_no = d.emp_no
+left join emp_bonus as eb
+on el.emp_no = eb.emp_no
+</code></pre>
+<p>正确示例：</p>
+<pre><code class="language-sql">select el.emp_no, d.dept_no, eb.btype, eb.received
+from employees as el 
+left join emp_bonus as eb
+on el.emp_no = eb.emp_no
+join dept_emp as d 
+on el.emp_no = d.emp_no
+</code></pre>
+<h5 id="t57">T57</h5>
+<p>EXISTS 运算符用于判断查询子句是否有记录，如果有一条或多条记录存在返回 True，否则返回 False</p>
+<p>错误示例</p>
+<pre><code class="language-sql">select * from employees
+where not exists
+(select emp_no from employees
+where employees.emp_no = dept_emp.emp_no)
+</code></pre>
+<p>正确示例：</p>
+<pre><code class="language-sql">select * from employees
+where emp_no not in
+(select e.emp_no 
+from dept_emp as d inner join employees as e 
+on d.emp_no = e.emp_no)
+</code></pre>
+<p>这里没有用exists</p>
+<pre><code class="language-sql">select * from employees
+where not exists
+(select emp_no from dept_emp
+where employees.emp_no = dept_emp.emp_no)
+</code></pre>
+<p>这里不明白为啥把dept_no改成employees就不行了，筛选之后不是应该是一样的吗</p>
+<h5 id="t59">T59</h5>
+<p>知识点：</p>
+<pre><code class="language-sql">case when sex = '1' then '男'
+     when sex = '2' then '女'
+     else '其他' end&lt;/span&gt;
+</code></pre>
+<p>错误示例：</p>
+<pre><code class="language-sql">select el.emp_no, el.first_name, el.last_name, 
+eb.btype, eb.salary, (case when eb.btype = 1 then eb.salary*1.1,
+when eb.btype = 2 then eb.salary*1.2,
+else eb.salary*1.3 end) bonus
+from employees as el inner join emp_bonus as eb
+on el.emp_no = eb.emp_no
+where to_date = '9999-01-01'
+</code></pre>
+<p>正确示例：</p>
+<pre><code class="language-sql">select el.emp_no, el.first_name, el.last_name, 
+eb.btype, s.salary, 
+(case eb.btype 
+when 1 then s.salary*0.1
+when 2 then s.salary*0.2
+else s.salary*0.3 end) as bonus
+from employees as el inner join emp_bonus as eb
+on el.emp_no = eb.emp_no
+inner join salaries as s 
+on el.emp_no = s.emp_no and s.to_date = '9999-01-01'
+</code></pre>
+<p>错的地方：</p>
+<ul>
+<li>salary是在salaries表下的</li>
+<li>case when 语句 case后面要加东西，同时各个条件之间没有“，”相连</li>
+<li>其次to_date是salaries表下的</li>
+</ul>
 
                 </div>
             </article>
         </div>
 
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://AnonymityToAll.github.io/post/di-liu-jiang-liu-liang-fen-xi/" class="post-title gt-a-link">
+                    第六讲 流量分析
+                </a>
+            </div>
         
 
         

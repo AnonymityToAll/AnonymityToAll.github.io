@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://AnonymityToAll.github.io</id>
     <title>maktubの圆</title>
-    <updated>2020-08-11T07:52:51.490Z</updated>
+    <updated>2020-08-17T02:52:51.279Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://AnonymityToAll.github.io"/>
     <link rel="self" href="https://AnonymityToAll.github.io/atom.xml"/>
@@ -10,6 +10,142 @@
     <logo>https://AnonymityToAll.github.io/images/avatar.png</logo>
     <icon>https://AnonymityToAll.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, maktubの圆</rights>
+    <entry>
+        <title type="html"><![CDATA[SQL刷题-牛客-补充]]></title>
+        <id>https://AnonymityToAll.github.io/post/sql-shua-ti-niu-ke-bu-chong/</id>
+        <link href="https://AnonymityToAll.github.io/post/sql-shua-ti-niu-ke-bu-chong/">
+        </link>
+        <updated>2020-08-17T02:51:20.000Z</updated>
+        <content type="html"><![CDATA[<h5 id="t48">T48</h5>
+<p>错误示例：</p>
+<pre><code class="language-sql">update salaries
+set salary = salary * 1.1
+where salaries.emp_no = emp_bonus.emp_no and salaries.to_date = '9999-01-01'
+</code></pre>
+<p>正确示例：</p>
+<pre><code class="language-sql">update salaries 
+set salary=salary*1.1 
+where emp_no in (select emp_no from emp_bonus) and to_date='9999-01-01';
+</code></pre>
+<h5 id="t50">T50</h5>
+<pre><code class="language-sql">select last_name || &quot;'&quot; || first_name
+from employees
+</code></pre>
+<p>ps:我就想问，这个题是哪里配的上是”较难“了！！！！！</p>
+<h5 id="t51">T51</h5>
+<pre><code class="language-sql">select length('10,A,B')-length(replace('10,A,B',',','')) 
+as cnt;
+</code></pre>
+<p>好办法</p>
+<h5 id="t52">T52</h5>
+<pre><code class="language-sql">select first_name 
+from employees
+order by substr(first_name, length(first_name)-1, length(first_name)) asc
+</code></pre>
+<h5 id="t53">T53</h5>
+<pre><code class="language-sql">select dept_no,group_concat(emp_no,',') as employees
+from dept_emp
+group by dept_no
+</code></pre>
+<p>主要就是关于group_concat函数的使用</p>
+<h5 id="t54">T54</h5>
+<p>错误示例：</p>
+<pre><code class="language-sql">select avg(salary) as avg_salary
+from salaries
+where salary not in (select max(salary) from salaries where to_date = '9999-01-01')
+and salary not in (select max(salary) from salaries where to_date = '9999-01-01')
+and to_date = '9999-01-01'
+</code></pre>
+<p>正确示例：</p>
+<pre><code class="language-sql">select avg(salary) as avg_salary
+from salaries
+where salary != (select max(salary) from salaries where to_date = '9999-01-01')
+and salary != (select min(salary) from salaries where to_date = '9999-01-01')
+and to_date = '9999-01-01'
+</code></pre>
+<p>其实就是一个地方错了</p>
+<ul>
+<li>min写成了max</li>
+</ul>
+<p>not in 和 != 其实是都可以的</p>
+<h5 id="t55">T55</h5>
+<pre><code class="language-sql">select * from employees
+limit 5, 5
+</code></pre>
+<h5 id="t56">T56</h5>
+<p>错误示例</p>
+<pre><code class="language-sql">select el.emp_no, d.dept_no, eb.btype, eb.received
+from employees as el 
+left join dept_emp as d 
+on el.emp_no = d.emp_no
+left join emp_bonus as eb
+on el.emp_no = eb.emp_no
+</code></pre>
+<p>正确示例：</p>
+<pre><code class="language-sql">select el.emp_no, d.dept_no, eb.btype, eb.received
+from employees as el 
+left join emp_bonus as eb
+on el.emp_no = eb.emp_no
+join dept_emp as d 
+on el.emp_no = d.emp_no
+</code></pre>
+<h5 id="t57">T57</h5>
+<p>EXISTS 运算符用于判断查询子句是否有记录，如果有一条或多条记录存在返回 True，否则返回 False</p>
+<p>错误示例</p>
+<pre><code class="language-sql">select * from employees
+where not exists
+(select emp_no from employees
+where employees.emp_no = dept_emp.emp_no)
+</code></pre>
+<p>正确示例：</p>
+<pre><code class="language-sql">select * from employees
+where emp_no not in
+(select e.emp_no 
+from dept_emp as d inner join employees as e 
+on d.emp_no = e.emp_no)
+</code></pre>
+<p>这里没有用exists</p>
+<pre><code class="language-sql">select * from employees
+where not exists
+(select emp_no from dept_emp
+where employees.emp_no = dept_emp.emp_no)
+</code></pre>
+<p>这里不明白为啥把dept_no改成employees就不行了，筛选之后不是应该是一样的吗</p>
+<h5 id="t59">T59</h5>
+<p>知识点：</p>
+<pre><code class="language-sql">case when sex = '1' then '男'
+     when sex = '2' then '女'
+     else '其他' end&lt;/span&gt;
+</code></pre>
+<p>错误示例：</p>
+<pre><code class="language-sql">select el.emp_no, el.first_name, el.last_name, 
+eb.btype, eb.salary, (case when eb.btype = 1 then eb.salary*1.1,
+when eb.btype = 2 then eb.salary*1.2,
+else eb.salary*1.3 end) bonus
+from employees as el inner join emp_bonus as eb
+on el.emp_no = eb.emp_no
+where to_date = '9999-01-01'
+</code></pre>
+<p>正确示例：</p>
+<pre><code class="language-sql">select el.emp_no, el.first_name, el.last_name, 
+eb.btype, s.salary, 
+(case eb.btype 
+when 1 then s.salary*0.1
+when 2 then s.salary*0.2
+else s.salary*0.3 end) as bonus
+from employees as el inner join emp_bonus as eb
+on el.emp_no = eb.emp_no
+inner join salaries as s 
+on el.emp_no = s.emp_no and s.to_date = '9999-01-01'
+</code></pre>
+<p>错的地方：</p>
+<ul>
+<li>salary是在salaries表下的</li>
+<li>case when 语句 case后面要加东西，同时各个条件之间没有“，”相连</li>
+<li>其次to_date是salaries表下的</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[第六讲 流量分析]]></title>
         <id>https://AnonymityToAll.github.io/post/di-liu-jiang-liu-liang-fen-xi/</id>
@@ -1234,62 +1370,6 @@ group by t.title
 </blockquote>
 <h3 id="挖掘自己能力圈内的个股-第二轮筛选">挖掘自己能力圈内的个股--第二轮筛选</h3>
 <p>财报不能用来作为指导投资的唯一依据，但可以作为重要依据来筛选企业</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[编程珠玑（C2）]]></title>
-        <id>https://AnonymityToAll.github.io/post/bian-cheng-zhu-ji-c2/</id>
-        <link href="https://AnonymityToAll.github.io/post/bian-cheng-zhu-ji-c2/">
-        </link>
-        <updated>2020-07-23T08:32:21.000Z</updated>
-        <content type="html"><![CDATA[<h3 id="第二章">第二章</h3>
-<ol>
-<li>
-<p>关于二分搜索</p>
-<blockquote>
-<p>问题：给你99个不重复的数字，告诉你它是1到100之间的数字，然后让你找到缺失的那个数字，你怎么找。<br>
-解决：排序-&gt;二分搜索</p>
-</blockquote>
-</li>
-<li>
-<p>基本操作的威力</p>
-<blockquote>
-<p>问题：将一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>元一维向量向左旋转<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>个位置。比如<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>=</mo><mn>8</mn><mo separator="true">,</mo><mi>i</mi><mo>=</mo><mn>3</mn><mo separator="true">,</mo><mi>a</mi><mi>b</mi><mi>c</mi><mi>d</mi><mi>e</mi><mi>f</mi><mi>g</mi><mi>h</mi></mrow><annotation encoding="application/x-tex">n=8,i=3,abcdefgh</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord">8</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord">3</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">b</span><span class="mord mathdefault">c</span><span class="mord mathdefault">d</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">h</span></span></span></span>旋转为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>e</mi><mi>f</mi><mi>g</mi><mi>h</mi><mi>a</mi><mi>b</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">defghabc</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">h</span><span class="mord mathdefault">a</span><span class="mord mathdefault">b</span><span class="mord mathdefault">c</span></span></span></span>。<br>
-解决：</p>
-<ul>
-<li>
-<p>一</p>
-<ul>
-<li>把前<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>元素复制到临时数组里</li>
-<li>把后<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>−</mo><mi>i</mi></mrow><annotation encoding="application/x-tex">n-i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>个元素向左移动<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>个位置</li>
-<li>然后把<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>个元素放到最后</li>
-</ul>
-<p>说明：</p>
-<p>这种方法会花费很大空间</p>
-</li>
-<li>
-<p>二</p>
-<ul>
-<li>设计一个函数，把向量最后一位移到最前面</li>
-<li>调用这个函数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>次即可</li>
-</ul>
-<p>说明：</p>
-<p>这种方法会花费很多时间</p>
-</li>
-<li>
-<p>三</p>
-<ul>
-<li>设前<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>个元素为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span>,后面的元素为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span></span></span></span>，先转置<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span>，再转置<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span></span></span></span>，再转置<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>a</mi><mi>T</mi></msup><msup><mi>b</mi><mi>T</mi></msup></mrow><annotation encoding="application/x-tex">a^Tb^T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413309999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413309999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413309999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span></span></span></span>，得到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">ba</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span><span class="mord mathdefault">a</span></span></span></span></li>
-<li>翻转代码在时间和空间上都很高效，而且代码非常简短</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-</li>
-<li>
-<p>d</p>
-</li>
-</ol>
 ]]></content>
     </entry>
 </feed>
