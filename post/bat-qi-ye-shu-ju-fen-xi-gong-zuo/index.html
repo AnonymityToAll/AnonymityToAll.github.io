@@ -1,10 +1,17 @@
-<!doctype html>
-<html amp lang="">
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>第二讲 BAT企业数据分析工作 | maktubの圆</title>
+<link rel="shortcut icon" href="https://AnonymityToAll.github.io/favicon.ico?v=1598185693596">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://AnonymityToAll.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="第二讲 BAT企业数据分析工作 | maktubの圆 - Atom Feed" href="https://AnonymityToAll.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
-<head>
-  <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="招聘解析
+
+
+    <meta name="description" content="招聘解析
 去除神秘感
 阿里：对技术要求不是很高，对综合能力要求非常高
 腾讯：埋点，检测异常，ABtest，增长黑客的经验（那本书需要看一看）
@@ -15,165 +22,93 @@
 日常工作
 数据异常排查
 要有..." />
-<link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
-<link rel="preconnect dns-prefetch" href="https://cdn.jsdelivr.net/" crossorigin>
-<script async src="https://cdn.ampproject.org/v0.js"></script>
-<title>第二讲 BAT企业数据分析工作 | maktubの圆</title>
-
-
-  
-
+    <meta name="keywords" content="数据分析面试" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://AnonymityToAll.github.io">
+  <img class="avatar" src="https://AnonymityToAll.github.io/images/avatar.png?v=1598185693596" alt="">
+  </a>
+  <h1 class="site-title">
+    maktubの圆
+  </h1>
+  <p class="site-description">
+    向死而生
+  </p>
+  <div class="menu-container">
     
-
-
-<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
-<noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
-<link rel="canonical" href="https://AnonymityToAll.github.io/post/bat-qi-ye-shu-ju-fen-xi-gong-zuo/" />
-<link rel="shortcut icon" href="https://AnonymityToAll.github.io/favicon.ico?v=1598100821840">
-
-<meta name="author" content="">
-
-<meta itemprop="name" content="第二讲 BAT企业数据分析工作 | maktubの圆">
-<meta itemprop="description" content="招聘解析
-去除神秘感
-阿里：对技术要求不是很高，对综合能力要求非常高
-腾讯：埋点，检测异常，ABtest，增长黑客的经验（那本书需要看一看）
-百度：专项，逻辑思维，用户增长
-总：为了用户增长
-看到差距
-如何准备
-日常工作
-数据异常排查
-要有...">
-<meta itemprop="image" content="https://AnonymityToAll.github.io/post-images/bat-qi-ye-shu-ju-fen-xi-gong-zuo.jpg">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="第二讲 BAT企业数据分析工作 | maktubの圆">
-<meta name="twitter:description" content="招聘解析
-去除神秘感
-阿里：对技术要求不是很高，对综合能力要求非常高
-腾讯：埋点，检测异常，ABtest，增长黑客的经验（那本书需要看一看）
-百度：专项，逻辑思维，用户增长
-总：为了用户增长
-看到差距
-如何准备
-日常工作
-数据异常排查
-要有...">
-<meta name="twitter:image" content="https://AnonymityToAll.github.io/post-images/bat-qi-ye-shu-ju-fen-xi-gong-zuo.jpg" />
-<meta name="twitter:image:alt" content="第二讲 BAT企业数据分析工作 | maktubの圆" />
-
-
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://AnonymityToAll.github.io/post/bat-qi-ye-shu-ju-fen-xi-gong-zuo/">
-<meta property="og:title" content="第二讲 BAT企业数据分析工作 | maktubの圆">
-<meta property="og:description" content="招聘解析
-去除神秘感
-阿里：对技术要求不是很高，对综合能力要求非常高
-腾讯：埋点，检测异常，ABtest，增长黑客的经验（那本书需要看一看）
-百度：专项，逻辑思维，用户增长
-总：为了用户增长
-看到差距
-如何准备
-日常工作
-数据异常排查
-要有...">
-<meta property="og:image" content="https://AnonymityToAll.github.io/post-images/bat-qi-ye-shu-ju-fen-xi-gong-zuo.jpg">
-<meta property="og:image:alt" content="第二讲 BAT企业数据分析工作 | maktubの圆" />
-<meta property="og:site_name" content="maktubの圆">
-<meta property="og:locale" content="zh_CN">
-<meta property="tag" content="第二讲 BAT企业数据分析工作 | maktubの圆" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="alternate" type="application/atom+xml" title="第二讲 BAT企业数据分析工作 | maktubの圆 - Atom Feed" href="https://AnonymityToAll.github.io/atom.xml">
-
-
-
-  
-
-
-
-  
-
-
-</head>
-
-<body>
-  <input type="checkbox" id="header-menu-button">
-  <header id="commonTop">
-  <div class="top-container">
-    <div class="title-menus-area">
-      <a class="blog-title" href="https://AnonymityToAll.github.io">maktubの圆</a>
-      <label for="header-menu-button" class="top-menus">
-        <nav class="menu-menu-1-container">
-          <ul id="menu-menu-1" class="menu">
-            
-            
-            <li>
-              <a href="/" aria-current="page">首页</a></li>
-            
-            
-            
-            <li>
-              <a href="/archives" aria-current="page">归档</a></li>
-            
-            
-            
-            <li>
-              <a href="/tags" aria-current="page">标签</a></li>
-            
-            
-            
-            <li>
-              <a href="/post/about" aria-current="page">关于</a></li>
-            
-            
-          </ul>
-        </nav>
-      </label>
-    </div>
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
     
   </div>
-</header>
-  <main>
-    <div class="main-container">
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/AnonymityToAll?tab=repositories" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
 
-      <div class="article-info">
-        
-          <div class="flex-box meta-category">
-            <a class="post-cate" href="https://AnonymityToAll.github.io/tag/Od3QAJkqt/">数据分析面试</a></div>
-          
-        <h2 class="article-title">
-          <a href="https://AnonymityToAll.github.io/post/bat-qi-ye-shu-ju-fen-xi-gong-zuo/">第二讲 BAT企业数据分析工作</a>
-        </h2>
-        <div class="flex-box">
-          <div class="flex-box post-meta-box">
-            <a class="post-meta" href="https://AnonymityToAll.github.io"><span
-                class="iconfont icon-mr-postmeta"></span></a>
-            <span class="post-meta"><span class="iconfont icon-mr-postmeta"></span>2020 年 08	月 8日</span>
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              第二讲 BAT企业数据分析工作
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-08-08
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://AnonymityToAll.github.io/tag/Od3QAJkqt/" class="post-tag">
+                  # 数据分析面试
+                </a>
+              
+            </div>
             
-
-
-          </div>
-        </div>
-      </div>
-      <div class="content">
-        <h2 id="招聘解析">招聘解析</h2>
+              <img class="post-feature-image" src="https://AnonymityToAll.github.io/post-images/bat-qi-ye-shu-ju-fen-xi-gong-zuo.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="招聘解析">招聘解析</h2>
 <h5 id="去除神秘感">去除神秘感</h5>
 <p>阿里：对技术要求不是很高，对综合能力要求非常高</p>
 <p>腾讯：埋点，检测异常，ABtest，增长黑客的经验（那本书需要看一看）</p>
@@ -242,91 +177,98 @@
 <li>商业模式：之前产品的cpc，cpm，说到底还是赚钱</li>
 </ol>
 
-      </div>
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E6%8B%9B%E8%81%98%E8%A7%A3%E6%9E%90">招聘解析</a><br>
+*<br>
+*<br>
+* <a href="#%E5%8E%BB%E9%99%A4%E7%A5%9E%E7%A7%98%E6%84%9F">去除神秘感</a><br>
+* <a href="#%E7%9C%8B%E5%88%B0%E5%B7%AE%E8%B7%9D">看到差距</a><br>
+* <a href="#%E5%A6%82%E4%BD%95%E5%87%86%E5%A4%87">如何准备</a></li>
+<li><a href="#%E6%97%A5%E5%B8%B8%E5%B7%A5%E4%BD%9C">日常工作</a><br>
+*<br>
+*<br>
+* <a href="#%E6%95%B0%E6%8D%AE%E5%BC%82%E5%B8%B8%E6%8E%92%E6%9F%A5">数据异常排查</a><br>
+* <a href="#%E8%9E%8D%E5%85%A5%E4%B8%93%E9%A1%B9%E8%83%8Ckpi">融入专项背KPI</a><br>
+* <a href="#%E8%BF%98%E6%9C%89%E5%BE%88%E5%A4%9A%E5%A6%82%E5%9F%8B%E7%82%B9-%E6%8C%87%E6%A0%87%E4%BD%93%E7%B3%BB%E4%B9%8B%E5%90%8E%E5%86%8D%E8%AF%B4">还有很多如埋点、指标体系之后再说</a></li>
+<li><a href="#%E9%9D%A2%E8%AF%95%E6%8A%80%E5%B7%A7%E5%92%8C%E5%BF%85%E9%97%AE%E9%97%AE%E9%A2%98">面试技巧和必问问题</a><br>
+*<br>
+*<br>
+* <a href="#%E5%BF%85%E9%97%AE%E7%9A%84%E5%87%A0%E4%B8%AA%E9%97%AE%E9%A2%98">必问的几个问题：</a></li>
+</ul>
+</li>
+</ul>
 
-      
-      <nav class="post-nav">
-        
-        <div class="nav-previous">
-          <a class="post-nav-link-active" title="第三讲 中小型企业数据分析工作" href="https://AnonymityToAll.github.io/post/di-san-jiang-zhong-xiao-xing-qi-ye-shu-ju-fen-xi-gong-zuo/">上一篇文章</a>
-        </div>
-        
-        
-        <div class="nav-next">
-          <a class="post-nav-link-active" title="第一讲 国企数据分析工作" href="https://AnonymityToAll.github.io/post/di-yi-jiang-guo-qi-shu-ju-fen-xi-gong-zuo/">下一篇文章</a>
-          
-
-        </div>
-      </nav>
-      
-
-      
-      
-
-      <div class="post-tags">
-        
-        <a href="https://AnonymityToAll.github.io/tag/Od3QAJkqt/" rel="tag">数据分析面试</a>        
-               
-      </div>
-
-
-        
-
-    </div>
-
-    <div class="sidebar">
-  <aside id="profile-2" class="widget widget_profile">
-    <div class="profile-box">
-      <div class="profile-avatar">
-        <amp-img src="https://AnonymityToAll.github.io/images/avatar.png?v=1598100821840" alt="avatar"
-          layout="fill"></amp-img>
-      </div>
-      <div class="profile-content">
-        <div class="amp-wp-681d4ff">
-          向死而生
+              </div>
+            </div>
+          </article>
         </div>
 
-      </div>
-    </div>
-  </aside>
-  
-    
-  
-     
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://AnonymityToAll.github.io/post/di-yi-jiang-guo-qi-shu-ju-fen-xi-gong-zuo/">
+              <h3 class="post-title">
+                第一讲 国企数据分析工作
+              </h3>
+            </a>
+          </div>
+        
 
+        
 
-  <aside id="linkcat-2" class="widget widget_links">
-  <h4 class="widget-title">友链</h4>
-  <ul class="xoxo blogroll">
-    
-  </ul>
-</aside>
-
-
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://AnonymityToAll.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
 </div>
-    <div class="scrolltop-wrap">
-  <span tabindex="0" role="button" class="go-top" on="tap:commonTop.scrollTo(duration=500, position=top)">
-    <span class="iconfont"></span>
-  </span>
-</div>
-  </main>
-  <footer>
-  <div class="footer-container">
-    <div class="footer-menus">
+
+      </div>
     </div>
-    <div class="footer-copyright">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-      
-      
 
-    </div>
-  </div>
-</footer>
+    <script>
+      hljs.initHighlightingOnLoad()
 
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
 
-  
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
 
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
 
-</body>
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
 
+    </script>
+  </body>
 </html>

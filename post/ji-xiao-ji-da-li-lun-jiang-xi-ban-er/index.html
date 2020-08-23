@@ -1,155 +1,108 @@
-<!doctype html>
-<html amp lang="">
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>极小极大理论讲习班（二） | maktubの圆</title>
+<link rel="shortcut icon" href="https://AnonymityToAll.github.io/favicon.ico?v=1598185693596">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://AnonymityToAll.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="极小极大理论讲习班（二） | maktubの圆 - Atom Feed" href="https://AnonymityToAll.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
-<head>
-  <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="1.有界区域上的问题
+
+
+    <meta name="description" content="1.有界区域上的问题
 第一个问题
 考虑下面的问题：
 (1.1)−Δu=∣u∣p−2u,u=0,u  on  ∂Ω-\Delta u=|u|^{p-2}u,u=\text{0,}u\,\, on\,\, \partial \Omega
 \ta..." />
-<link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
-<link rel="preconnect dns-prefetch" href="https://cdn.jsdelivr.net/" crossorigin>
-<script async src="https://cdn.ampproject.org/v0.js"></script>
-<title>极小极大理论讲习班（二） | maktubの圆</title>
-
-
-  
-
+    <meta name="keywords" content="数学-极小极大" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://AnonymityToAll.github.io">
+  <img class="avatar" src="https://AnonymityToAll.github.io/images/avatar.png?v=1598185693596" alt="">
+  </a>
+  <h1 class="site-title">
+    maktubの圆
+  </h1>
+  <p class="site-description">
+    向死而生
+  </p>
+  <div class="menu-container">
     
-
-
-<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
-<noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
-<link rel="canonical" href="https://AnonymityToAll.github.io/post/ji-xiao-ji-da-li-lun-jiang-xi-ban-er/" />
-<link rel="shortcut icon" href="https://AnonymityToAll.github.io/favicon.ico?v=1598100821840">
-
-<meta name="author" content="">
-
-<meta itemprop="name" content="极小极大理论讲习班（二） | maktubの圆">
-<meta itemprop="description" content="1.有界区域上的问题
-第一个问题
-考虑下面的问题：
-(1.1)−Δu=∣u∣p−2u,u=0,u  on  ∂Ω-\Delta u=|u|^{p-2}u,u=\text{0,}u\,\, on\,\, \partial \Omega
-\ta...">
-<meta itemprop="image" content="https://AnonymityToAll.github.io/post-images/ji-xiao-ji-da-li-lun-jiang-xi-ban-er.jpg">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="极小极大理论讲习班（二） | maktubの圆">
-<meta name="twitter:description" content="1.有界区域上的问题
-第一个问题
-考虑下面的问题：
-(1.1)−Δu=∣u∣p−2u,u=0,u  on  ∂Ω-\Delta u=|u|^{p-2}u,u=\text{0,}u\,\, on\,\, \partial \Omega
-\ta...">
-<meta name="twitter:image" content="https://AnonymityToAll.github.io/post-images/ji-xiao-ji-da-li-lun-jiang-xi-ban-er.jpg" />
-<meta name="twitter:image:alt" content="极小极大理论讲习班（二） | maktubの圆" />
-
-
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://AnonymityToAll.github.io/post/ji-xiao-ji-da-li-lun-jiang-xi-ban-er/">
-<meta property="og:title" content="极小极大理论讲习班（二） | maktubの圆">
-<meta property="og:description" content="1.有界区域上的问题
-第一个问题
-考虑下面的问题：
-(1.1)−Δu=∣u∣p−2u,u=0,u  on  ∂Ω-\Delta u=|u|^{p-2}u,u=\text{0,}u\,\, on\,\, \partial \Omega
-\ta...">
-<meta property="og:image" content="https://AnonymityToAll.github.io/post-images/ji-xiao-ji-da-li-lun-jiang-xi-ban-er.jpg">
-<meta property="og:image:alt" content="极小极大理论讲习班（二） | maktubの圆" />
-<meta property="og:site_name" content="maktubの圆">
-<meta property="og:locale" content="zh_CN">
-<meta property="tag" content="极小极大理论讲习班（二） | maktubの圆" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="alternate" type="application/atom+xml" title="极小极大理论讲习班（二） | maktubの圆 - Atom Feed" href="https://AnonymityToAll.github.io/atom.xml">
-
-
-
-  
-
-
-
-  
-
-
-</head>
-
-<body>
-  <input type="checkbox" id="header-menu-button">
-  <header id="commonTop">
-  <div class="top-container">
-    <div class="title-menus-area">
-      <a class="blog-title" href="https://AnonymityToAll.github.io">maktubの圆</a>
-      <label for="header-menu-button" class="top-menus">
-        <nav class="menu-menu-1-container">
-          <ul id="menu-menu-1" class="menu">
-            
-            
-            <li>
-              <a href="/" aria-current="page">首页</a></li>
-            
-            
-            
-            <li>
-              <a href="/archives" aria-current="page">归档</a></li>
-            
-            
-            
-            <li>
-              <a href="/tags" aria-current="page">标签</a></li>
-            
-            
-            
-            <li>
-              <a href="/post/about" aria-current="page">关于</a></li>
-            
-            
-          </ul>
-        </nav>
-      </label>
-    </div>
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
     
   </div>
-</header>
-  <main>
-    <div class="main-container">
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/AnonymityToAll?tab=repositories" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
 
-      <div class="article-info">
-        
-          <div class="flex-box meta-category">
-            <a class="post-cate" href="https://AnonymityToAll.github.io/tag/QJd2piAhH/">数学-极小极大</a></div>
-          
-        <h2 class="article-title">
-          <a href="https://AnonymityToAll.github.io/post/ji-xiao-ji-da-li-lun-jiang-xi-ban-er/">极小极大理论讲习班（二）</a>
-        </h2>
-        <div class="flex-box">
-          <div class="flex-box post-meta-box">
-            <a class="post-meta" href="https://AnonymityToAll.github.io"><span
-                class="iconfont icon-mr-postmeta"></span></a>
-            <span class="post-meta"><span class="iconfont icon-mr-postmeta"></span>2020 年 07	月 22日</span>
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              极小极大理论讲习班（二）
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-07-22
+              </span>
+              <span>
+                7 min read
+              </span>
+              
+                <a href="https://AnonymityToAll.github.io/tag/QJd2piAhH/" class="post-tag">
+                  # 数学-极小极大
+                </a>
+              
+            </div>
             
-
-
-          </div>
-        </div>
-      </div>
-      <div class="content">
-        <h1 id="1有界区域上的问题">1.有界区域上的问题</h1>
+              <img class="post-feature-image" src="https://AnonymityToAll.github.io/post-images/ji-xiao-ji-da-li-lun-jiang-xi-ban-er.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="1有界区域上的问题">1.有界区域上的问题</h1>
 <h3 id="第一个问题">第一个问题</h3>
 <p>考虑下面的问题：</p>
 <p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mtable side="right"><mlabeledtr><mtd><mtext>(1.1)</mtext></mtd><mtd><mrow><mo>−</mo><mi mathvariant="normal">Δ</mi><mi>u</mi><mo>=</mo><mi mathvariant="normal">∣</mi><mi>u</mi><msup><mi mathvariant="normal">∣</mi><mrow><mi>p</mi><mo>−</mo><mn>2</mn></mrow></msup><mi>u</mi><mo separator="true">,</mo><mi>u</mi><mo>=</mo><mtext>0,</mtext><mi>u</mi><mtext> </mtext><mtext> </mtext><mi>o</mi><mi>n</mi><mtext> </mtext><mtext> </mtext><mi mathvariant="normal">∂</mi><mi mathvariant="normal">Ω</mi></mrow></mtd></mlabeledtr></mtable><annotation encoding="application/x-tex">-\Delta u=|u|^{p-2}u,u=\text{0,}u\,\, on\,\, \partial \Omega
@@ -236,91 +189,85 @@ m = inf_\mathscr{M}L(u)
 </ul>
 <p>上面考虑的都是有界空间的例子，第三条的紧嵌入是满足的，就保证了<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>还在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="script">M</mi></mrow><annotation encoding="application/x-tex">\mathscr{M}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7em;vertical-align:0em;"></span><span class="mord"><span class="mord mathscr" style="margin-right:0.15981em;">M</span></span></span></span></span>中。</p>
 
-      </div>
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#1%E6%9C%89%E7%95%8C%E5%8C%BA%E5%9F%9F%E4%B8%8A%E7%9A%84%E9%97%AE%E9%A2%98">1.有界区域上的问题</a><br>
+*
+<ul>
+<li><a href="#%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%97%AE%E9%A2%98">第一个问题</a></li>
+<li><a href="#%E6%80%BB%E7%BB%93%E6%AD%A5%E9%AA%A4">总结步骤</a></li>
+</ul>
+</li>
+</ul>
 
-      
-      <nav class="post-nav">
-        
-        <div class="nav-previous">
-          <a class="post-nav-link-active" title="Leetcode刷题记录" href="https://AnonymityToAll.github.io/post/leetcode-shua-ti-ji-lu/">上一篇文章</a>
-        </div>
-        
-        
-        <div class="nav-next">
-          <a class="post-nav-link-active" title="极小极大理论讲习班（一）" href="https://AnonymityToAll.github.io/post/ji-xiao-ji-da-li-lun-jiang-xi-ban-yi/">下一篇文章</a>
-          
-
-        </div>
-      </nav>
-      
-
-      
-      
-
-      <div class="post-tags">
-        
-        <a href="https://AnonymityToAll.github.io/tag/QJd2piAhH/" rel="tag">数学-极小极大</a>        
-               
-      </div>
-
-
-        
-
-    </div>
-
-    <div class="sidebar">
-  <aside id="profile-2" class="widget widget_profile">
-    <div class="profile-box">
-      <div class="profile-avatar">
-        <amp-img src="https://AnonymityToAll.github.io/images/avatar.png?v=1598100821840" alt="avatar"
-          layout="fill"></amp-img>
-      </div>
-      <div class="profile-content">
-        <div class="amp-wp-681d4ff">
-          向死而生
+              </div>
+            </div>
+          </article>
         </div>
 
-      </div>
-    </div>
-  </aside>
-  
-    
-  
-     
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://AnonymityToAll.github.io/post/ji-xiao-ji-da-li-lun-jiang-xi-ban-yi/">
+              <h3 class="post-title">
+                极小极大理论讲习班（一）
+              </h3>
+            </a>
+          </div>
+        
 
+        
 
-  <aside id="linkcat-2" class="widget widget_links">
-  <h4 class="widget-title">友链</h4>
-  <ul class="xoxo blogroll">
-    
-  </ul>
-</aside>
-
-
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://AnonymityToAll.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
 </div>
-    <div class="scrolltop-wrap">
-  <span tabindex="0" role="button" class="go-top" on="tap:commonTop.scrollTo(duration=500, position=top)">
-    <span class="iconfont"></span>
-  </span>
-</div>
-  </main>
-  <footer>
-  <div class="footer-container">
-    <div class="footer-menus">
+
+      </div>
     </div>
-    <div class="footer-copyright">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-      
-      
 
-    </div>
-  </div>
-</footer>
+    <script>
+      hljs.initHighlightingOnLoad()
 
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
 
-  
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
 
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
 
-</body>
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
 
+    </script>
+  </body>
 </html>

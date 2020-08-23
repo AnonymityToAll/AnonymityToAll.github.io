@@ -1,10 +1,17 @@
-<!doctype html>
-<html amp lang="">
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>概率论与数理统计相关概念 | maktubの圆</title>
+<link rel="shortcut icon" href="https://AnonymityToAll.github.io/favicon.ico?v=1598185693596">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://AnonymityToAll.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="概率论与数理统计相关概念 | maktubの圆 - Atom Feed" href="https://AnonymityToAll.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
-<head>
-  <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="🐶2020-8-18🐶
+
+
+    <meta name="description" content="🐶2020-8-18🐶
 
 离散程度
 偏度
@@ -13,159 +20,93 @@
 
 对称的：均值和中位数相等
 右偏的：如果一组数据仅有一个峰且数值向右延伸的程度要大于向左延..." />
-<link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
-<link rel="preconnect dns-prefetch" href="https://cdn.jsdelivr.net/" crossorigin>
-<script async src="https://cdn.ampproject.org/v0.js"></script>
-<title>概率论与数理统计相关概念 | maktubの圆</title>
-
-
-  
-
+    <meta name="keywords" content="数据分析面试" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://AnonymityToAll.github.io">
+  <img class="avatar" src="https://AnonymityToAll.github.io/images/avatar.png?v=1598185693596" alt="">
+  </a>
+  <h1 class="site-title">
+    maktubの圆
+  </h1>
+  <p class="site-description">
+    向死而生
+  </p>
+  <div class="menu-container">
     
-
-
-<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
-<noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
-<link rel="canonical" href="https://AnonymityToAll.github.io/post/gai-lu-lun-yu-shu-li-tong-ji-xiang-guan-gai-nian/" />
-<link rel="shortcut icon" href="https://AnonymityToAll.github.io/favicon.ico?v=1598100821840">
-
-<meta name="author" content="">
-
-<meta itemprop="name" content="概率论与数理统计相关概念 | maktubの圆">
-<meta itemprop="description" content="🐶2020-8-18🐶
-
-离散程度
-偏度
-
-一组数据的另一个特征就是形状，通常我们可以观察到的形状有四种类型：对称的，正偏的，负偏的以及双峰的。
-
-对称的：均值和中位数相等
-右偏的：如果一组数据仅有一个峰且数值向右延伸的程度要大于向左延...">
-<meta itemprop="image" content="https://AnonymityToAll.github.io/post-images/gai-lu-lun-yu-shu-li-tong-ji-xiang-guan-gai-nian.jpg">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="概率论与数理统计相关概念 | maktubの圆">
-<meta name="twitter:description" content="🐶2020-8-18🐶
-
-离散程度
-偏度
-
-一组数据的另一个特征就是形状，通常我们可以观察到的形状有四种类型：对称的，正偏的，负偏的以及双峰的。
-
-对称的：均值和中位数相等
-右偏的：如果一组数据仅有一个峰且数值向右延伸的程度要大于向左延...">
-<meta name="twitter:image" content="https://AnonymityToAll.github.io/post-images/gai-lu-lun-yu-shu-li-tong-ji-xiang-guan-gai-nian.jpg" />
-<meta name="twitter:image:alt" content="概率论与数理统计相关概念 | maktubの圆" />
-
-
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://AnonymityToAll.github.io/post/gai-lu-lun-yu-shu-li-tong-ji-xiang-guan-gai-nian/">
-<meta property="og:title" content="概率论与数理统计相关概念 | maktubの圆">
-<meta property="og:description" content="🐶2020-8-18🐶
-
-离散程度
-偏度
-
-一组数据的另一个特征就是形状，通常我们可以观察到的形状有四种类型：对称的，正偏的，负偏的以及双峰的。
-
-对称的：均值和中位数相等
-右偏的：如果一组数据仅有一个峰且数值向右延伸的程度要大于向左延...">
-<meta property="og:image" content="https://AnonymityToAll.github.io/post-images/gai-lu-lun-yu-shu-li-tong-ji-xiang-guan-gai-nian.jpg">
-<meta property="og:image:alt" content="概率论与数理统计相关概念 | maktubの圆" />
-<meta property="og:site_name" content="maktubの圆">
-<meta property="og:locale" content="zh_CN">
-<meta property="tag" content="概率论与数理统计相关概念 | maktubの圆" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="alternate" type="application/atom+xml" title="概率论与数理统计相关概念 | maktubの圆 - Atom Feed" href="https://AnonymityToAll.github.io/atom.xml">
-
-
-
-  
-
-
-
-  
-
-
-</head>
-
-<body>
-  <input type="checkbox" id="header-menu-button">
-  <header id="commonTop">
-  <div class="top-container">
-    <div class="title-menus-area">
-      <a class="blog-title" href="https://AnonymityToAll.github.io">maktubの圆</a>
-      <label for="header-menu-button" class="top-menus">
-        <nav class="menu-menu-1-container">
-          <ul id="menu-menu-1" class="menu">
-            
-            
-            <li>
-              <a href="/" aria-current="page">首页</a></li>
-            
-            
-            
-            <li>
-              <a href="/archives" aria-current="page">归档</a></li>
-            
-            
-            
-            <li>
-              <a href="/tags" aria-current="page">标签</a></li>
-            
-            
-            
-            <li>
-              <a href="/post/about" aria-current="page">关于</a></li>
-            
-            
-          </ul>
-        </nav>
-      </label>
-    </div>
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
     
   </div>
-</header>
-  <main>
-    <div class="main-container">
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/AnonymityToAll?tab=repositories" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
 
-      <div class="article-info">
-        
-          <div class="flex-box meta-category">
-            <a class="post-cate" href="https://AnonymityToAll.github.io/tag/Od3QAJkqt/">数据分析面试</a></div>
-          
-        <h2 class="article-title">
-          <a href="https://AnonymityToAll.github.io/post/gai-lu-lun-yu-shu-li-tong-ji-xiang-guan-gai-nian/">概率论与数理统计相关概念</a>
-        </h2>
-        <div class="flex-box">
-          <div class="flex-box post-meta-box">
-            <a class="post-meta" href="https://AnonymityToAll.github.io"><span
-                class="iconfont icon-mr-postmeta"></span></a>
-            <span class="post-meta"><span class="iconfont icon-mr-postmeta"></span>2020 年 08	月 18日</span>
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              概率论与数理统计相关概念
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-08-18
+              </span>
+              <span>
+                15 min read
+              </span>
+              
+                <a href="https://AnonymityToAll.github.io/tag/Od3QAJkqt/" class="post-tag">
+                  # 数据分析面试
+                </a>
+              
+            </div>
             
-
-
-          </div>
-        </div>
-      </div>
-      <div class="content">
-        <p>🐶2020-8-18🐶</p>
+              <img class="post-feature-image" src="https://AnonymityToAll.github.io/post-images/gai-lu-lun-yu-shu-li-tong-ji-xiang-guan-gai-nian.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>🐶2020-8-18🐶</p>
 <!-- more -->
 <h3 id="离散程度">离散程度</h3>
 <h5 id="偏度">偏度</h5>
@@ -373,87 +314,140 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
 <p>在实际工作中，我们会遇到多个总体均值的比较问题，处理这类问题通常采用所谓的方差分析方法。</p>
 </blockquote>
 
-      </div>
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E7%A6%BB%E6%95%A3%E7%A8%8B%E5%BA%A6">离散程度</a><br>
+*
+<ul>
+<li><a href="#%E5%81%8F%E5%BA%A6">偏度</a></li>
+</ul>
+</li>
+<li><a href="#%E6%A6%82%E7%8E%87%E8%AE%BA%E6%A6%82%E5%BF%B5%E7%BA%B5%E8%A7%88">概率论概念纵览</a><br>
+*
+<ul>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%A6%82%E7%8E%87">什么是概率</a></li>
+<li><a href="#%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%AE%9A%E7%90%86">贝叶斯定理</a></li>
+</ul>
+</li>
+<li><a href="#%E7%A6%BB%E6%95%A3%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83">离散概率分布</a><br>
+*
+<ul>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83">什么是概率分布</a></li>
+<li><a href="#%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83%E7%9A%84%E5%B9%B3%E5%9D%87%E6%95%B0-%E6%96%B9%E5%B7%AE%E4%B8%8E%E6%A0%87%E5%87%86%E5%B7%AE">概率分布的平均数、方差与标准差</a></li>
+<li><a href="#%E4%BA%8C%E9%A1%B9%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83">二项概率分布</a></li>
+<li><a href="#%E8%B6%85%E5%87%A0%E4%BD%95%E5%88%86%E5%B8%83">超几何分布</a></li>
+<li><a href="#%E6%B3%8A%E6%9D%BE%E5%88%86%E5%B8%83">泊松分布</a></li>
+<li><a href="#%E6%AD%A3%E6%80%81%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83">正态概率分布</a></li>
+<li><a href="#%E4%BC%BD%E9%A9%AC%E5%88%86%E5%B8%83">伽马分布</a></li>
+<li><a href="#%E8%B4%9D%E5%A1%94%E5%88%86%E5%B8%83">贝塔分布</a></li>
+</ul>
+</li>
+<li><a href="#%E6%8A%BD%E6%A0%B7%E6%96%B9%E6%B3%95%E4%B8%8E%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86">抽样方法与中心极限定理</a><br>
+*
+<ul>
+<li><a href="#%E6%A0%B7%E6%9C%AC%E5%9D%87%E5%80%BC%E7%9A%84%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83">样本均值的抽样分布</a></li>
+<li><a href="#%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B">大数定律</a></li>
+<li><a href="#%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86">中心极限定理</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BC%B0%E8%AE%A1%E4%B8%8E%E7%BD%AE%E4%BF%A1%E5%8C%BA%E9%97%B4">估计与置信区间</a><br>
+*
+<ul>
+<li><a href="#%E7%82%B9%E4%BC%B0%E8%AE%A1%E4%B8%8E%E7%BD%AE%E4%BF%A1%E5%8C%BA%E9%97%B4">点估计与置信区间</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8D%95%E6%A0%B7%E6%9C%AC%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C">单样本假设检验</a><br>
+*
+<ul>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C">什么是假设检验</a></li>
+<li><a href="#%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C%E7%9A%84%E4%BA%94%E4%B8%AA%E6%AD%A5%E9%AA%A4">假设检验的五个步骤</a></li>
+<li><a href="#%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C%E4%B8%AD%E7%9A%84p%E5%80%BC">假设检验中的p值</a></li>
+</ul>
+</li>
+<li><a href="#%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90">方差分析</a><br>
+*
+<ul>
+<li><a href="#%E5%BC%95%E5%85%A5">引入：</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
-      
-      <nav class="post-nav">
-        
-        
-        <div class="nav-next">
-          <a class="post-nav-link-active" title="SQL刷题-牛客-补充" href="https://AnonymityToAll.github.io/post/sql-shua-ti-niu-ke-bu-chong/">下一篇文章</a>
-          
-
+              </div>
+            </div>
+          </article>
         </div>
-      </nav>
-      
-
-      
-      
-
-      <div class="post-tags">
-        
-        <a href="https://AnonymityToAll.github.io/tag/Od3QAJkqt/" rel="tag">数据分析面试</a>        
-               
-      </div>
-
 
         
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://AnonymityToAll.github.io/post/sql-shua-ti-niu-ke-bu-chong/">
+              <h3 class="post-title">
+                SQL刷题-牛客-补充
+              </h3>
+            </a>
+          </div>
+        
 
-    </div>
+        
 
-    <div class="sidebar">
-  <aside id="profile-2" class="widget widget_profile">
-    <div class="profile-box">
-      <div class="profile-avatar">
-        <amp-img src="https://AnonymityToAll.github.io/images/avatar.png?v=1598100821840" alt="avatar"
-          layout="fill"></amp-img>
-      </div>
-      <div class="profile-content">
-        <div class="amp-wp-681d4ff">
-          向死而生
-        </div>
-
-      </div>
-    </div>
-  </aside>
-  
-    
-  
-     
-
-
-  <aside id="linkcat-2" class="widget widget_links">
-  <h4 class="widget-title">友链</h4>
-  <ul class="xoxo blogroll">
-    
-  </ul>
-</aside>
-
-
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://AnonymityToAll.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
 </div>
-    <div class="scrolltop-wrap">
-  <span tabindex="0" role="button" class="go-top" on="tap:commonTop.scrollTo(duration=500, position=top)">
-    <span class="iconfont"></span>
-  </span>
-</div>
-  </main>
-  <footer>
-  <div class="footer-container">
-    <div class="footer-menus">
+
+      </div>
     </div>
-    <div class="footer-copyright">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-      
-      
 
-    </div>
-  </div>
-</footer>
+    <script>
+      hljs.initHighlightingOnLoad()
 
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
 
-  
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
 
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
 
-</body>
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
 
+    </script>
+  </body>
 </html>

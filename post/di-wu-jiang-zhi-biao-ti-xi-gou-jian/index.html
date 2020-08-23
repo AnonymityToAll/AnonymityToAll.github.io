@@ -1,159 +1,109 @@
-<!doctype html>
-<html amp lang="">
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>第五讲 指标体系构建 | maktubの圆</title>
+<link rel="shortcut icon" href="https://AnonymityToAll.github.io/favicon.ico?v=1598185693596">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://AnonymityToAll.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="第五讲 指标体系构建 | maktubの圆 - Atom Feed" href="https://AnonymityToAll.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
-<head>
-  <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="指标体系的通俗定义和选取原则
+
+
+    <meta name="description" content="指标体系的通俗定义和选取原则
 背景
 
 对于某核心数据如日活，只知道数据在变化，但是不知道为何变化。产品为了解释这种现象一会要这个数，一会要那个数。
 年底汇报时，产品跟数据要各种各样的数据，或者数据内部花费大量的时间对各种各样的口径。
 每隔一..." />
-<link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
-<link rel="preconnect dns-prefetch" href="https://cdn.jsdelivr.net/" crossorigin>
-<script async src="https://cdn.ampproject.org/v0.js"></script>
-<title>第五讲 指标体系构建 | maktubの圆</title>
-
-
-  
-
+    <meta name="keywords" content="数据分析面试" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://AnonymityToAll.github.io">
+  <img class="avatar" src="https://AnonymityToAll.github.io/images/avatar.png?v=1598185693596" alt="">
+  </a>
+  <h1 class="site-title">
+    maktubの圆
+  </h1>
+  <p class="site-description">
+    向死而生
+  </p>
+  <div class="menu-container">
     
-
-
-<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
-<noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
-<link rel="canonical" href="https://AnonymityToAll.github.io/post/di-wu-jiang-zhi-biao-ti-xi-gou-jian/" />
-<link rel="shortcut icon" href="https://AnonymityToAll.github.io/favicon.ico?v=1598100821840">
-
-<meta name="author" content="">
-
-<meta itemprop="name" content="第五讲 指标体系构建 | maktubの圆">
-<meta itemprop="description" content="指标体系的通俗定义和选取原则
-背景
-
-对于某核心数据如日活，只知道数据在变化，但是不知道为何变化。产品为了解释这种现象一会要这个数，一会要那个数。
-年底汇报时，产品跟数据要各种各样的数据，或者数据内部花费大量的时间对各种各样的口径。
-每隔一...">
-<meta itemprop="image" content="https://AnonymityToAll.github.io/post-images/di-wu-jiang-zhi-biao-ti-xi-gou-jian.jpg">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="第五讲 指标体系构建 | maktubの圆">
-<meta name="twitter:description" content="指标体系的通俗定义和选取原则
-背景
-
-对于某核心数据如日活，只知道数据在变化，但是不知道为何变化。产品为了解释这种现象一会要这个数，一会要那个数。
-年底汇报时，产品跟数据要各种各样的数据，或者数据内部花费大量的时间对各种各样的口径。
-每隔一...">
-<meta name="twitter:image" content="https://AnonymityToAll.github.io/post-images/di-wu-jiang-zhi-biao-ti-xi-gou-jian.jpg" />
-<meta name="twitter:image:alt" content="第五讲 指标体系构建 | maktubの圆" />
-
-
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://AnonymityToAll.github.io/post/di-wu-jiang-zhi-biao-ti-xi-gou-jian/">
-<meta property="og:title" content="第五讲 指标体系构建 | maktubの圆">
-<meta property="og:description" content="指标体系的通俗定义和选取原则
-背景
-
-对于某核心数据如日活，只知道数据在变化，但是不知道为何变化。产品为了解释这种现象一会要这个数，一会要那个数。
-年底汇报时，产品跟数据要各种各样的数据，或者数据内部花费大量的时间对各种各样的口径。
-每隔一...">
-<meta property="og:image" content="https://AnonymityToAll.github.io/post-images/di-wu-jiang-zhi-biao-ti-xi-gou-jian.jpg">
-<meta property="og:image:alt" content="第五讲 指标体系构建 | maktubの圆" />
-<meta property="og:site_name" content="maktubの圆">
-<meta property="og:locale" content="zh_CN">
-<meta property="tag" content="第五讲 指标体系构建 | maktubの圆" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="alternate" type="application/atom+xml" title="第五讲 指标体系构建 | maktubの圆 - Atom Feed" href="https://AnonymityToAll.github.io/atom.xml">
-
-
-
-  
-
-
-
-  
-
-
-</head>
-
-<body>
-  <input type="checkbox" id="header-menu-button">
-  <header id="commonTop">
-  <div class="top-container">
-    <div class="title-menus-area">
-      <a class="blog-title" href="https://AnonymityToAll.github.io">maktubの圆</a>
-      <label for="header-menu-button" class="top-menus">
-        <nav class="menu-menu-1-container">
-          <ul id="menu-menu-1" class="menu">
-            
-            
-            <li>
-              <a href="/" aria-current="page">首页</a></li>
-            
-            
-            
-            <li>
-              <a href="/archives" aria-current="page">归档</a></li>
-            
-            
-            
-            <li>
-              <a href="/tags" aria-current="page">标签</a></li>
-            
-            
-            
-            <li>
-              <a href="/post/about" aria-current="page">关于</a></li>
-            
-            
-          </ul>
-        </nav>
-      </label>
-    </div>
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
     
   </div>
-</header>
-  <main>
-    <div class="main-container">
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/AnonymityToAll?tab=repositories" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
 
-      <div class="article-info">
-        
-          <div class="flex-box meta-category">
-            <a class="post-cate" href="https://AnonymityToAll.github.io/tag/Od3QAJkqt/">数据分析面试</a></div>
-          
-        <h2 class="article-title">
-          <a href="https://AnonymityToAll.github.io/post/di-wu-jiang-zhi-biao-ti-xi-gou-jian/">第五讲 指标体系构建</a>
-        </h2>
-        <div class="flex-box">
-          <div class="flex-box post-meta-box">
-            <a class="post-meta" href="https://AnonymityToAll.github.io"><span
-                class="iconfont icon-mr-postmeta"></span></a>
-            <span class="post-meta"><span class="iconfont icon-mr-postmeta"></span>2020 年 08	月 11日</span>
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              第五讲 指标体系构建
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-08-11
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+                <a href="https://AnonymityToAll.github.io/tag/Od3QAJkqt/" class="post-tag">
+                  # 数据分析面试
+                </a>
+              
+            </div>
             
-
-
-          </div>
-        </div>
-      </div>
-      <div class="content">
-        <h3 id="指标体系的通俗定义和选取原则">指标体系的通俗定义和选取原则</h3>
+              <img class="post-feature-image" src="https://AnonymityToAll.github.io/post-images/di-wu-jiang-zhi-biao-ti-xi-gou-jian.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h3 id="指标体系的通俗定义和选取原则">指标体系的通俗定义和选取原则</h3>
 <h5 id="背景">背景</h5>
 <blockquote>
 <p>对于某核心数据如日活，只知道数据在变化，但是不知道为何变化。产品为了解释这种现象一会要这个数，一会要那个数。</p>
@@ -215,91 +165,105 @@
 <figure data-type="image" tabindex="1"><img src="https://AnonymityToAll.github.io/post-images/1597129202180.jpg" alt="" loading="lazy"></figure>
 <h3 id="知乎app指标体系实操">知乎app指标体系实操</h3>
 
-      </div>
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E6%8C%87%E6%A0%87%E4%BD%93%E7%B3%BB%E7%9A%84%E9%80%9A%E4%BF%97%E5%AE%9A%E4%B9%89%E5%92%8C%E9%80%89%E5%8F%96%E5%8E%9F%E5%88%99">指标体系的通俗定义和选取原则</a><br>
+*
+<ul>
+<li><a href="#%E8%83%8C%E6%99%AF">背景</a></li>
+<li><a href="#%E5%8E%9F%E5%9B%A0%E8%A7%A3%E9%87%8A">原因解释</a></li>
+<li><a href="#%E5%AE%9A%E4%B9%89%E4%BB%A5%E5%8F%8A%E9%80%89%E5%8F%96%E5%8E%9F%E5%88%99">定义以及选取原则</a></li>
+</ul>
+</li>
+<li><a href="#%E6%8C%87%E6%A0%87%E4%BD%93%E7%B3%BB%E7%9A%84%E5%9B%9B%E6%AD%A5%E6%B3%95">指标体系的四步法</a><br>
+*
+<ul>
+<li><a href="#%E6%8C%87%E6%A0%87%E7%9A%84%E6%9E%84%E6%88%90">指标的构成</a></li>
+<li><a href="#1%E5%8E%98%E6%B8%85%E4%B8%9A%E5%8A%A1%E9%98%B6%E6%AE%B5%E5%92%8C%E6%96%B9%E5%90%91">1.厘清业务阶段和方向</a></li>
+<li><a href="#2%E7%A1%AE%E5%AE%9A%E6%A0%B8%E5%BF%83%E6%8C%87%E6%A0%87%E5%A4%9A%E5%8E%BB%E4%BA%86%E8%A7%A3%E4%B8%9A%E5%8A%A1%E5%92%8C%E5%B8%82%E5%9C%BA%E5%A4%B4%E9%83%A8%E7%8E%A9%E5%AE%B6">2.确定核心指标：多去了解业务和市场头部玩家</a></li>
+<li><a href="#3%E6%8C%87%E6%A0%87%E6%A0%B8%E5%BF%83%E7%BB%B4%E5%BA%A6%E6%8B%86%E8%A7%A3">3.指标核心维度拆解</a></li>
+<li><a href="#4%E6%8C%87%E6%A0%87%E5%AE%A3%E8%B4%AF-%E5%AD%98%E6%A1%A3-%E8%90%BD%E5%9C%B0">4.指标宣贯、存档、落地</a></li>
+</ul>
+</li>
+<li><a href="#%E7%9F%A5%E4%B9%8Eapp%E6%8C%87%E6%A0%87%E4%BD%93%E7%B3%BB%E5%AE%9E%E6%93%8D">知乎app指标体系实操</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
-      
-      <nav class="post-nav">
-        
-        <div class="nav-previous">
-          <a class="post-nav-link-active" title="第六讲 流量分析" href="https://AnonymityToAll.github.io/post/di-liu-jiang-liu-liang-fen-xi/">上一篇文章</a>
-        </div>
-        
-        
-        <div class="nav-next">
-          <a class="post-nav-link-active" title="第四讲 中小型企业数据分析工作" href="https://AnonymityToAll.github.io/post/04-zhong-xiao-xing-qi-ye-shu-ju-fen-xi-gong-zuo/">下一篇文章</a>
-          
-
-        </div>
-      </nav>
-      
-
-      
-      
-
-      <div class="post-tags">
-        
-        <a href="https://AnonymityToAll.github.io/tag/Od3QAJkqt/" rel="tag">数据分析面试</a>        
-               
-      </div>
-
-
-        
-
-    </div>
-
-    <div class="sidebar">
-  <aside id="profile-2" class="widget widget_profile">
-    <div class="profile-box">
-      <div class="profile-avatar">
-        <amp-img src="https://AnonymityToAll.github.io/images/avatar.png?v=1598100821840" alt="avatar"
-          layout="fill"></amp-img>
-      </div>
-      <div class="profile-content">
-        <div class="amp-wp-681d4ff">
-          向死而生
+              </div>
+            </div>
+          </article>
         </div>
 
-      </div>
-    </div>
-  </aside>
-  
-    
-  
-     
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://AnonymityToAll.github.io/post/04-zhong-xiao-xing-qi-ye-shu-ju-fen-xi-gong-zuo/">
+              <h3 class="post-title">
+                第四讲 中小型企业数据分析工作
+              </h3>
+            </a>
+          </div>
+        
 
+        
 
-  <aside id="linkcat-2" class="widget widget_links">
-  <h4 class="widget-title">友链</h4>
-  <ul class="xoxo blogroll">
-    
-  </ul>
-</aside>
-
-
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://AnonymityToAll.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
 </div>
-    <div class="scrolltop-wrap">
-  <span tabindex="0" role="button" class="go-top" on="tap:commonTop.scrollTo(duration=500, position=top)">
-    <span class="iconfont"></span>
-  </span>
-</div>
-  </main>
-  <footer>
-  <div class="footer-container">
-    <div class="footer-menus">
+
+      </div>
     </div>
-    <div class="footer-copyright">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-      
-      
 
-    </div>
-  </div>
-</footer>
+    <script>
+      hljs.initHighlightingOnLoad()
 
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
 
-  
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
 
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
 
-</body>
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
 
+    </script>
+  </body>
 </html>
