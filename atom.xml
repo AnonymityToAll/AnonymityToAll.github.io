@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://AnonymityToAll.github.io</id>
     <title>maktubの圆</title>
-    <updated>2020-08-23T12:28:16.950Z</updated>
+    <updated>2020-08-24T12:15:50.193Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://AnonymityToAll.github.io"/>
     <link rel="self" href="https://AnonymityToAll.github.io/atom.xml"/>
@@ -45,6 +45,52 @@
 <ol>
 <li>数据透视表插入计算字段：数据透视表工具-分析-计算字段</li>
 <li>已知列表名字如何同时建多个列表：根据列表名字进行分类汇总-选项-显示报表筛选页-选中所有新建的表格-复制粘贴空白部分即可</li>
+</ol>
+<h3 id="section7">section7</h3>
+<ol>
+<li>&amp;：连接两个文本型的数据，同时通过&amp;&quot;&quot;可以把数值型数据变成文本型的数据</li>
+<li>使用函数的时候，参数要注意是否是绝对引用，比如rank函数的第二个参数一般都是绝对引用</li>
+<li>如何对多个不连续的片段求和：定位条件定位空值-开始选项卡使用求和选项</li>
+</ol>
+<h3 id="section8">section8</h3>
+<ol>
+<li>and和or的格式是and\or(a, b)</li>
+</ol>
+<h3 id="section9">section9</h3>
+<ol>
+<li>countif可以识别的最大位数是15位，如果超过了15位，就需要加一个&amp;&quot;*&quot;</li>
+<li>将某列设置为禁止输入重复数据：数据有效性-countif()&lt;=1</li>
+<li>重复值标红：条件格式-突出显示-其他规则</li>
+</ol>
+<h3 id="section10">section10</h3>
+<ol>
+<li>sumif可以一定程度上替代vlookup函数使用</li>
+</ol>
+<h3 id="section11">section11</h3>
+<ol>
+<li>问题：个税那里没算出来</li>
+</ol>
+<h3 id="section12">section12</h3>
+<ol>
+<li>
+<p>vlookup的反向查找用match（返回查找的东西在查找区域的第几行）加index（返回查找区域内固定行的位置的值）</p>
+</li>
+<li>
+<p>vlookup查找多列：</p>
+<pre><code class="language-excel">VLOOKUP($A3,数据源!$A:$K,MATCH(B$2,数据源!$A$1:$K$1,0),0)
+</code></pre>
+<p>主要是match函数的使用以及绝对引用与相对引用的使用</p>
+</li>
+</ol>
+<h3 id="section13">section13</h3>
+<ol>
+<li>excel中的日期：1对应的是1900-1-1，其他数字以它为基准进行加减，日期本质上还是一个数字，只不过表现形式是日期的格式</li>
+<li>一个月的最后一天即：下个月的第0天</li>
+<li>一个月的的天数即：这个月最后一天的日期</li>
+</ol>
+<h3 id="section17">section17</h3>
+<ol>
+<li>mod(小数，1)=小数的小数部分</li>
 </ol>
 ]]></content>
     </entry>
