@@ -1,0 +1,387 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title> s华为机试 | maktubの圆</title>
+<link rel="shortcut icon" href="https://AnonymityToAll.github.io/favicon.ico?v=1600327090378">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://AnonymityToAll.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title=" s华为机试 | maktubの圆 - Atom Feed" href="https://AnonymityToAll.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="最长上升子序列
+错误示例：
+#include&lt;iostream&gt;
+#include&lt;stdio.h&gt;
+#include&lt;vector&gt;
+ 
+using namespace std; //动态规划
+ 
+in..." />
+    <meta name="keywords" content="牛客" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://AnonymityToAll.github.io">
+  <img class="avatar" src="https://AnonymityToAll.github.io/images/avatar.png?v=1600327090378" alt="">
+  </a>
+  <h1 class="site-title">
+    maktubの圆
+  </h1>
+  <p class="site-description">
+    向死而生
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/AnonymityToAll?tab=repositories" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+               s华为机试
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-09-17
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+                <a href="https://AnonymityToAll.github.io/tag/_eJbgubBi/" class="post-tag">
+                  # 牛客
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://AnonymityToAll.github.io/post-images/s-hua-wei-ji-shi.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h3 id="最长上升子序列">最长上升子序列</h3>
+<p>错误示例：</p>
+<pre><code class="language-c++">#include&lt;iostream&gt;
+#include&lt;stdio.h&gt;
+#include&lt;vector&gt;
+ 
+using namespace std; //动态规划
+ 
+int main(){
+    int N;
+    int result = 0;
+    while(cin &gt;&gt; N){
+        vector&lt;int&gt; dp(N, 1);
+        vector&lt;int&gt; nums(N, 0);
+        for (int i=0; i&lt;N; i++){
+            cin &gt;&gt; nums[i];
+            for (int j=0; j&lt;i; j++){
+                if(nums[j] &lt; nums[i]){
+                    dp[i] = max(dp[i], dp[j]+1);
+                }
+            } 
+            result = max(result, dp[i]);
+        }
+        cout&lt;&lt;result&lt;&lt;endl;
+    }
+    
+    return 0;
+}
+</code></pre>
+<p>错误解析：</p>
+<blockquote>
+<p>我惊了，把int result放到while里面竟然行了。。。有点懵</p>
+</blockquote>
+<p>正确示例1：</p>
+<pre><code class="language-c++">#include&lt;iostream&gt;
+#include&lt;stdio.h&gt;
+#include&lt;vector&gt;
+
+using namespace std; //动态规划
+
+int main(){
+    int N;
+    while(cin&gt;&gt;N){
+    	vector&lt;int&gt; Data(N,0);
+        vector&lt;int&gt; Dp(N,1);
+        int ret = 0;
+        for(int i=0; i&lt;N; ++i){
+            cin &gt;&gt; Data[i];
+            for(int j=0; j&lt;i; j++){
+                if(Data[i]&gt;Data[j])
+                    Dp[i] = max(Dp[i],Dp[j]+1);
+            }
+            ret = max(ret,Dp[i]);
+        }
+        cout&lt;&lt; ret&lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre>
+<p>正确示例2：</p>
+<pre><code class="language-c++">#include&lt;iostream&gt;
+#include&lt;stdio.h&gt;
+#include&lt;vector&gt;
+ 
+using namespace std; //动态规划
+ 
+int main(){
+    int N;
+    while(cin &gt;&gt; N){
+        vector&lt;int&gt; array(N+1, 0);
+        vector&lt;int&gt; nums(N, 0);
+        int len = 1;
+        cin &gt;&gt; nums[0];
+        array[len] = nums[0];
+        for (int i=1; i&lt;N; i++){
+            cin &gt;&gt; nums[i];
+            if(nums[i]&gt;array[len]){
+                array[++len] = nums[i];
+            }
+            else{
+                int left = 1;
+                int right = len;
+                int pos = 0;
+                while(left &lt;= right){
+                    int mid = (left + right) / 2;
+                    if (array[mid] &lt; nums[i]){
+                        pos = mid;
+                        left = mid + 1;
+                    }
+                    else{
+                        right = mid - 1;
+                    }
+                }
+                array[pos+1] = nums[i];
+            }
+        }
+        cout&lt;&lt;len&lt;&lt;endl;
+    }
+    
+    return 0;
+}
+</code></pre>
+<h3 id="统计字符串字符出现次数">统计字符串字符出现次数</h3>
+<pre><code class="language-c++">#include&lt;stdio.h&gt;
+#include&lt;string&gt;
+#include&lt;vector&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+
+using namespace std;
+
+int main(){
+    string str;
+    string result = &quot;&quot;;
+    while(cin &gt;&gt; str){ 
+        //cout &lt;&lt; &quot;*****&quot; &lt;&lt; str &lt;&lt; &quot;*****&quot; &lt;&lt; endl;
+        int max = 0;
+        int a[256] = {0};
+        for(int i=0; str[i]!='\0'; i++){
+            int num = str[i];
+            a[num]++;
+            //cout &lt;&lt; str[i] &lt;&lt; &quot;*&quot;;
+        }
+        for (int j=0; j&lt;256; j++){
+            if (max &lt; a[j]){
+                max = a[j];
+            }
+        }
+        while(max!=0){
+            for (int k=0; k&lt;256; k++){
+                if (max == a[k]){
+                    char c = k;
+                    result.append(1, c);
+                    //cout &lt;&lt; result &lt;&lt; &quot;**&quot;;
+                }
+            }
+            max--;
+        }
+        cout &lt;&lt; result &lt;&lt; endl;
+        result = &quot;&quot;;
+        str = &quot;&quot;;
+    }
+    
+    return 0;
+}
+</code></pre>
+<p>注意：</p>
+<blockquote>
+<p>在牛客网这kd的系统中，需要</p>
+<ol>
+<li>使用while(cin &gt;&gt; str){}。</li>
+<li>因为有多次输入，所以全局变量要在下次使用之前清零。</li>
+</ol>
+</blockquote>
+<h3 id="输入整型数组和标识符排序">输入整型数组和标识符，排序</h3>
+<pre><code class="language-c++">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+using namespace std;
+
+bool cmp(int a, int b){
+    return a &gt; b;
+}
+
+int main(void){
+    int N = 0;
+    while(cin &gt;&gt; N){
+        vector&lt;int&gt; nums(N, 0);
+        for (int i=0; i&lt;N; i++){
+            cin &gt;&gt; nums[i];
+        }
+        int flag = 0;
+        cin &gt;&gt; flag;
+        if (flag == 0){
+            sort(nums.begin(), nums.end());
+        }
+        else{
+            sort(nums.begin(), nums.end(), cmp);
+        }
+        for (int j=0; j&lt;N; j++){
+            cout &lt;&lt; nums[j] &lt;&lt; ' ';
+        }
+        cout &lt;&lt; endl;
+    }
+    return 0;
+}
+</code></pre>
+<p>注意：</p>
+<blockquote>
+<p>一直不通过竟然是因为：cout没有out endl。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。</p>
+</blockquote>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97">最长上升子序列</a></li>
+<li><a href="#%E7%BB%9F%E8%AE%A1%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AD%97%E7%AC%A6%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0">统计字符串字符出现次数</a></li>
+<li><a href="#%E8%BE%93%E5%85%A5%E6%95%B4%E5%9E%8B%E6%95%B0%E7%BB%84%E5%92%8C%E6%A0%87%E8%AF%86%E7%AC%A6%E6%8E%92%E5%BA%8F">输入整型数组和标识符，排序</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://AnonymityToAll.github.io/post/excel-xue-xi/">
+              <h3 class="post-title">
+                excel学习
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://AnonymityToAll.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
