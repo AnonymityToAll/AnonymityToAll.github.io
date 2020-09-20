@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://AnonymityToAll.github.io</id>
     <title>maktubの圆</title>
-    <updated>2020-09-17T07:18:13.907Z</updated>
+    <updated>2020-09-20T08:43:41.057Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://AnonymityToAll.github.io"/>
     <link rel="self" href="https://AnonymityToAll.github.io/atom.xml"/>
@@ -11,7 +11,559 @@
     <icon>https://AnonymityToAll.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, maktubの圆</rights>
     <entry>
-        <title type="html"><![CDATA[ s华为机试]]></title>
+        <title type="html"><![CDATA[leetcode 刷题记录-二叉树]]></title>
+        <id>https://AnonymityToAll.github.io/post/leetcode-shua-ti-ji-lu-er-cha-shu/</id>
+        <link href="https://AnonymityToAll.github.io/post/leetcode-shua-ti-ji-lu-er-cha-shu/">
+        </link>
+        <updated>2020-09-20T08:41:49.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="1左叶子之和">1.左叶子之和</h3>
+<h5 id="code">code</h5>
+<pre><code class="language-c++">/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    int sumOfLeftLeaves(TreeNode* root) {
+        if (!root){
+            return 0;
+        }
+        queue&lt;TreeNode*&gt; Q;
+        Q.push(root);
+        int s = 0;
+        while(!Q.empty()){
+            TreeNode* node = Q.front();
+            TreeNode* temp;
+            Q.pop();
+            if(node-&gt;left){
+                temp = node-&gt;left;
+                if((temp-&gt;left == NULL) &amp;&amp; (temp-&gt;right == NULL)){
+                    s += temp-&gt;val;
+                }
+                Q.push(temp);
+            }
+            if(node-&gt;right){
+                Q.push(node-&gt;right);
+            }
+        }
+        return s;
+    }
+};
+</code></pre>
+<h5 id="nice">nice</h5>
+<blockquote>
+<ol>
+<li>queue的基本操作：pop,back,front,push,empty,size</li>
+</ol>
+</blockquote>
+<h3 id="2最小高度树-null">2.最小高度树--null</h3>
+<h5 id="code-2">code</h5>
+<pre><code class="language-c++">/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* sortedArrayToBST(vector&lt;int&gt;&amp; nums) {   // 将数组中点作为当前树的根
+        if(nums.size()==0){
+            return NULL;
+        }
+        int mid = nums.size()/2;
+        TreeNode *r = new TreeNode(nums[mid]);  // 创建根节点
+        vector&lt;int&gt; left(nums.begin(), nums.end()-(nums.size()-mid));
+        vector&lt;int&gt; right(nums.begin()+mid+1, nums.end()); 
+        r-&gt;left = sortedArrayToBST(left);
+        r-&gt;right = sortedArrayToBST(right);
+        return r;
+    }
+};
+</code></pre>
+<h5 id="nice-2">nice</h5>
+<blockquote>
+<ol>
+<li>原来还可以这么新建vector：vector nums(other_nums.begin(), other_nums.end());</li>
+<li>关于新建树的节点：Treenode *r = Treenode(x)</li>
+</ol>
+</blockquote>
+<h3 id="3二叉树深度">3.二叉树深度</h3>
+<h5 id="code-3">code：</h5>
+<pre><code class="language-c++">/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+        if(!root){
+            return 0;
+        }
+        int len = 0;
+        queue&lt;TreeNode*&gt; Q;
+        Q.push(root);
+        while(!Q.empty()){
+            int n = Q.size();
+            for(int i=0; i&lt;n; i++){
+                TreeNode* node = Q.front();
+                Q.pop();
+                if(node-&gt;left){
+                    Q.push(node-&gt;left);
+                }
+                if(node-&gt;right){
+                    Q.push(node-&gt;right);
+                }
+            }
+            len++;
+        }
+        return len;
+    }
+};
+</code></pre>
+<h5 id="nice-3">nice:</h5>
+<blockquote>
+<ol>
+<li>记录二叉树深度需要在层次遍历的基础上多一个循环</li>
+</ol>
+</blockquote>
+<h3 id="4二叉树镜像">4.二叉树镜像</h3>
+<h5 id="code-4">code:</h5>
+<pre><code class="language-c++">/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* mirrorTree(TreeNode* root) {
+        if(!root){
+            return NULL;
+        }
+        helper(root);
+        return root;
+    }
+    void helper(TreeNode* root){
+        if(!root){
+            return;
+        }
+        TreeNode* node = root-&gt;left;
+        root-&gt;left = root-&gt;right;
+        root-&gt;right = node;
+        helper(root-&gt;left);
+        helper(root-&gt;right);
+    }
+};
+</code></pre>
+<h5 id="nice-4">nice:</h5>
+<blockquote>
+<ol>
+<li>递归记得写base case</li>
+</ol>
+</blockquote>
+<h3 id="5翻转二叉树">5.翻转二叉树</h3>
+<p>我其实就想问问，这个题跟上一个题有啥区别呢</p>
+<h3 id="6合并二叉树">6.合并二叉树</h3>
+<h3 id="code-5">code:</h3>
+<pre><code class="language-c++">/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* mergeTrees(TreeNode* t1, TreeNode* t2) {
+        if(!t1 &amp;&amp; !t2){
+            return NULL;
+        }
+        queue&lt;TreeNode*&gt; Q1;
+        Q1.push(t1);
+        queue&lt;TreeNode*&gt; Q2;
+        Q2.push(t2);
+        if(t1 &amp;&amp; t2){
+            t1-&gt;val = t2-&gt;val + t1-&gt;val;
+        }
+        else if(t2){
+            return t2;
+        }
+        else if(t1){
+            return t1;
+        }
+        while(!Q1.empty() &amp;&amp; !Q2.empty()){
+            TreeNode* node1 = Q1.front();
+            TreeNode* node2 = Q2.front();
+            Q1.pop();
+            Q2.pop();
+            if(node1-&gt;left &amp;&amp; node2-&gt;left){
+                node1-&gt;left-&gt;val = node1-&gt;left-&gt;val + node2-&gt;left-&gt;val;
+                Q1.push(node1-&gt;left);
+                Q2.push(node2-&gt;left);
+            }
+            else if(node2-&gt;left){
+                node1-&gt;left = node2-&gt;left;
+            }
+            if(node1-&gt;right &amp;&amp; node2-&gt;right){
+                node1-&gt;right-&gt;val = node1-&gt;right-&gt;val + node2-&gt;right-&gt;val;
+                Q1.push(node1-&gt;right);
+                Q2.push(node2-&gt;right);
+            }
+            else if(node2-&gt;right){
+                node1-&gt;right = node2-&gt;right;
+            }
+        }
+        return t1;
+    }
+};
+</code></pre>
+<h5 id="nice-5">nice:</h5>
+<blockquote>
+<ol>
+<li>用递归之前先想想递归行不行</li>
+</ol>
+</blockquote>
+<h3 id="7二叉搜索树的范围和">7.二叉搜索树的范围和</h3>
+<h5 id="code-6">code:</h5>
+<pre><code class="language-c++">/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    int rangeSumBST(TreeNode* root, int L, int R) {
+        if(!root){
+            return 0;
+        }
+        int s = 0;
+        int t = 0;
+        vector&lt;int&gt; trace;
+        helper(root, trace);
+        for (int i=0; i&lt;trace.size(); i++){
+            if(trace[i]==L){
+                t = 1;
+            }
+            s += t*trace[i];
+            if(trace[i]==R){
+                break;
+            }
+        }
+        return s;
+    }
+    void helper(TreeNode* root, vector&lt;int&gt;&amp; trace){
+        if(!root){
+            return;
+        }
+        helper(root-&gt;left, trace);
+        trace.push_back(root-&gt;val);
+        helper(root-&gt;right, trace);
+    }
+};
+</code></pre>
+<h3 id="nice-6">nice:</h3>
+<blockquote>
+<p>一种思路有问题就换一种思路</p>
+</blockquote>
+<h3 id="8二叉树深度-null">8.二叉树深度--null</h3>
+<h5 id="code-7">code：</h5>
+<h6 id="dfs">DFS：</h6>
+<pre><code class="language-c++">/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    int maxLevel = 0;
+
+    int maxDepth(TreeNode* root) {
+        if (!root) {
+            return 0;
+        }
+        dfs(root, 1);
+        return maxLevel;
+    }
+
+    void dfs(TreeNode* root, int level) {
+        if (!root)
+            return;
+        if (level &gt; maxLevel) maxLevel = level;
+        dfs(root-&gt;left, level + 1);
+        dfs(root-&gt;right, level + 1);
+    }
+};
+</code></pre>
+<h5 id="nice-7">nice:</h5>
+<blockquote>
+<ol>
+<li>pull是没有left和right的，会报错</li>
+<li>宽搜</li>
+<li>把层数放在函数里面表示</li>
+</ol>
+</blockquote>
+<h3 id="子集每日一题">子集（每日一题）</h3>
+<h5 id="code-8">code：</h5>
+<pre><code class="language-c++">class Solution {
+public:
+    vector&lt;vector&lt;int&gt;&gt; subsets(vector&lt;int&gt;&amp; nums) {
+        vector&lt;int&gt; item;
+        vector&lt;vector&lt;int&gt;&gt; result;
+        result.push_back(item);
+        if(nums.size() == 0){
+            return result;
+        }
+        helper(0, item, result, nums);
+        return result;
+    }
+    void helper(int i, vector&lt;int&gt;&amp; item,
+    vector&lt;vector&lt;int&gt;&gt;&amp; result,
+    vector&lt;int&gt; nums){
+        if(i &gt;= nums.size()){
+            return;
+        }
+        item.push_back(nums[i]);
+        result.push_back(item);
+        helper(i+1, item, result, nums);
+        item.pop_back();
+        helper(i+1, item, result, nums);
+    }
+};
+</code></pre>
+<h3 id="9n叉树的后序遍历">9.N叉树的后序遍历</h3>
+<pre><code class="language-c++">/*
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    vector&lt;Node*&gt; children;
+
+    Node() {}
+
+    Node(int _val) {
+        val = _val;
+    }
+
+    Node(int _val, vector&lt;Node*&gt; _children) {
+        val = _val;
+        children = _children;
+    }
+};
+*/
+
+class Solution {
+public:
+    vector&lt;int&gt; postorder(Node* root) {
+        vector&lt;int&gt; result;
+        if(!root){
+            result;
+        }
+        helper(root, result);
+        return result;
+    }
+    void helper(Node* root, vector&lt;int&gt;&amp; result){
+        if(!root){
+            return;
+        }
+        vector&lt;Node*&gt; chi = root-&gt;children;
+        for(int i=0; i&lt;chi.size(); i++){
+            helper(chi[i], result);
+        }
+        result.push_back(root-&gt;val);
+    }
+};
+</code></pre>
+<h5 id="nice-8">nice:</h5>
+<blockquote>
+<p>二叉树的前序，中序，后序遍历的迭代实现还需要看。</p>
+</blockquote>
+<h3 id="10-二叉搜索树中查找元素">10. 二叉搜索树中查找元素</h3>
+<h5 id="code-9">code:</h5>
+<pre><code class="language-c++">/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* searchBST(TreeNode* root, int val) {
+        if(!root){
+            return NULL;
+        }
+        TreeNode* result = NULL;
+        helper(root, val, result);
+        return result;
+    }
+    void helper(TreeNode* root, int val, TreeNode*&amp; result){
+        if(!root){
+            return;
+        }
+        int value = root-&gt;val;
+        if(val == value){
+            result = root;
+        }
+        else if(val &lt; value){
+            helper(root-&gt;left, val, result);
+        }
+        else if(val &gt; value){
+            helper(root-&gt;right, val, result);
+        }
+    }
+};
+</code></pre>
+<h5 id="nice-9">nice:</h5>
+<blockquote>
+<ol>
+<li>一定要注意最后要求的返回值是不是形参</li>
+<li>递归就不要返回值了</li>
+</ol>
+</blockquote>
+<h3 id="11二叉搜索树查找第k大的数">11.	二叉搜索树查找第k大的数</h3>
+<h5 id="code-10">code：</h5>
+<pre><code class="language-c++">/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* result = NULL;
+    int kthLargest(TreeNode* root, int k) {
+        if(!root){
+            return 0;
+        }
+        vector&lt;TreeNode*&gt; trace;
+        helper(root, k, trace);
+        return result-&gt;val;
+    }
+    void helper(TreeNode* root, int k,
+    vector&lt;TreeNode*&gt;&amp; trace){
+        if(trace.size() == k){
+            result = trace.back();
+            return;
+        }
+        if(!root){
+            return;
+        }
+        helper(root-&gt;right, k, trace);
+        trace.push_back(root);
+        helper(root-&gt;left, k, trace);
+    }
+};
+</code></pre>
+<h5 id="nice-10">nice:</h5>
+<blockquote>
+<ol>
+<li>递归中的return只是其中一个小的过程的return</li>
+</ol>
+</blockquote>
+<h3 id="12最近公共祖先">12.最近公共祖先</h3>
+<h5 id="code-11">code:</h5>
+<pre><code class="language-c++">/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if(!root || !p || !q){
+            return NULL;
+        }
+        TreeNode* result = root;
+        // 找到从根节点到p的路径
+        vector&lt;TreeNode*&gt; vec;
+        vector&lt;TreeNode*&gt; tracep;
+        DFS(root, p, tracep, vec);
+        // 找到从根节点到q的路径
+        vec.clear();
+        vector&lt;TreeNode*&gt; traceq;
+        DFS(root, q, traceq, vec);
+        // 正着遍历两个vector，到最后一个相等的
+        int len_p = tracep.size();
+        int len_q = traceq.size();
+        if(len_p &gt; len_q){
+            for(int i=0; i&lt;len_q; i++){
+                if(tracep[i]-&gt;val == traceq[i]-&gt;val){
+                    result = tracep[i];
+                }
+            }
+        }
+        else{
+            for(int i=0; i&lt;len_p; i++){
+                if(tracep[i]-&gt;val == traceq[i]-&gt;val){
+                    result = tracep[i];
+                }
+            }
+        }
+        return result;
+    }
+    void DFS(TreeNode* root, TreeNode* node, vector&lt;TreeNode*&gt;&amp; trace
+    , vector&lt;TreeNode*&gt;&amp; vec){
+        if(!root){
+            return;
+        }
+        vec.push_back(root);
+        if(root == node){
+            //vec.push_back(node);
+            trace = vec;
+            return;
+        }
+        DFS(root-&gt;left, node, trace, vec);
+        DFS(root-&gt;right, node, trace, vec);
+        vec.pop_back();
+    }
+};
+</code></pre>
+<h5 id="nice-11">nice:</h5>
+<blockquote>
+<ol>
+<li>变量命名一定要明确，要不然很容易误用</li>
+<li>pop_back()要放在最后面</li>
+</ol>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ 华为机试]]></title>
         <id>https://AnonymityToAll.github.io/post/s-hua-wei-ji-shi/</id>
         <link href="https://AnonymityToAll.github.io/post/s-hua-wei-ji-shi/">
         </link>
@@ -1416,111 +1968,6 @@ UDF函数</p>
 <li>三个常用app：套路很深，好好思考</li>
 <li>商业模式：之前产品的cpc，cpm，说到底还是赚钱</li>
 </ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[第一讲 国企数据分析工作]]></title>
-        <id>https://AnonymityToAll.github.io/post/di-yi-jiang-guo-qi-shu-ju-fen-xi-gong-zuo/</id>
-        <link href="https://AnonymityToAll.github.io/post/di-yi-jiang-guo-qi-shu-ju-fen-xi-gong-zuo/">
-        </link>
-        <updated>2020-08-08T08:43:11.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="招聘解析">招聘解析</h2>
-<h5 id="工行">工行</h5>
-<ul>
-<li>职责模糊</li>
-<li>要求技术化</li>
-<li>氛围相对保守</li>
-</ul>
-<h5 id="招行">招行</h5>
-<ul>
-<li>职责具体</li>
-<li>要求宽泛</li>
-<li>追求创新</li>
-</ul>
-<h5 id="广发">广发</h5>
-<ul>
-<li>业务线比较杂</li>
-<li>SAS语言</li>
-<li>要求模糊运气重要</li>
-</ul>
-<h5 id="电信">电信</h5>
-<ul>
-<li>各种报</li>
-<li>专题分析</li>
-<li>独立思考</li>
-<li>基本就是大部分数据分析师做的事情</li>
-</ul>
-<h2 id="常规工作">常规工作</h2>
-<h5 id="日周月报">日周月报</h5>
-<ul>
-<li>日报
-<ul>
-<li>各种数据资源整理</li>
-<li>数据敏感性</li>
-<li>数据波动解释</li>
-<li>给优化建议</li>
-</ul>
-</li>
-<li>周报
-<ul>
-<li>看发展趋势</li>
-</ul>
-</li>
-<li>月报
-<ul>
-<li>一定要有接下来发展的建议</li>
-</ul>
-</li>
-</ul>
-<h5 id="临时数据">临时数据</h5>
-<p>管理层需要：</p>
-<ul>
-<li>不能立刻就做，但是也不能拖</li>
-<li>了解背景（问问leader是在什么背景下需要的）</li>
-<li>核对再核对（只能一遍）</li>
-<li>简单明了</li>
-<li>反思到思考</li>
-</ul>
-<p>业务执行人员需要：</p>
-<ul>
-<li>永无止境、失控，要完一个还要一个</li>
-<li>为何要这么做</li>
-<li>怎么样闭环</li>
-</ul>
-<p>解决：<br>
-坚决不做提数机器，针对每一个业务但点问题，先追根溯源，简历该业务类的分析框架，由点到面，彻底解决该类问题；同时在这个过程中，要不断利用互惠原则和社交技巧</p>
-<h5 id="常规工作优化">常规工作优化</h5>
-<ul>
-<li>机器人发日报（python）</li>
-<li>目标建立（杂事中仍然自我清醒）</li>
-<li>寻找领导帮助</li>
-</ul>
-<h2 id="专题分析">专题分析</h2>
-<h5 id="需求解读">需求解读</h5>
-<p>至少百分之20的时间在沟通需求上</p>
-<h5 id="建立逻辑树">建立逻辑树</h5>
-<h5 id="sql提数及分析">sql提数及分析</h5>
-<ul>
-<li>组成部分</li>
-<li>数量比较</li>
-<li>有何变化</li>
-<li>各项分布</li>
-<li>各项相关性</li>
-<li>其他深层次挖掘</li>
-</ul>
-<h5 id="撰写报告">撰写报告</h5>
-<ul>
-<li>90图加10文</li>
-<li>标题即结论（结论前置）</li>
-<li>讲故事（知道领导想听什么，面试带着好的报告效果会很好）</li>
-</ul>
-<h2 id="软技能及面试技巧">软技能及面试技巧</h2>
-<ul>
-<li>吹水力</li>
-<li>展示力</li>
-<li>时间管理力</li>
-<li>预判力</li>
-</ul>
 ]]></content>
     </entry>
 </feed>
