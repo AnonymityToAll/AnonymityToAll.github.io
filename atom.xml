@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://AnonymityToAll.github.io</id>
     <title>maktubの圆</title>
-    <updated>2020-09-20T08:43:41.057Z</updated>
+    <updated>2020-09-21T01:52:51.990Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://AnonymityToAll.github.io"/>
     <link rel="self" href="https://AnonymityToAll.github.io/atom.xml"/>
@@ -10,6 +10,92 @@
     <logo>https://AnonymityToAll.github.io/images/avatar.png</logo>
     <icon>https://AnonymityToAll.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, maktubの圆</rights>
+    <entry>
+        <title type="html"><![CDATA[leetcode刷题--回溯]]></title>
+        <id>https://AnonymityToAll.github.io/post/leetcode-shua-ti-hui-su/</id>
+        <link href="https://AnonymityToAll.github.io/post/leetcode-shua-ti-hui-su/">
+        </link>
+        <updated>2020-09-21T01:51:40.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="1生成字符串">1.生成字符串</h3>
+<h5 id="code">code:</h5>
+<pre><code class="language-c++">class Solution {
+public:
+    vector&lt;string&gt; permutation(string S) {
+        vector&lt;string&gt; result;
+        if (S.length() == 0){
+            result.push_back(&quot;&quot;);
+            return result;
+        }
+        string item;
+        helper(S,  item, result);
+        return result;
+    }
+    void helper(string S, 
+    string item, vector&lt;string&gt;&amp; result){
+        if(item.size() &gt;= S.length()){
+            result.push_back(item);
+            return;
+        }
+        for (int i=0; i&lt;S.length(); i++){
+            if(item.find(S[i]) != -1){
+                continue;
+            }
+            item += S[i];
+            helper(S, used, item, result);
+            item.pop_back();
+        }
+    }
+};
+</code></pre>
+<h5 id="nice">nice:</h5>
+<blockquote>
+<p>回溯框架：</p>
+<pre><code class="language-c++">def trackback(result, [选择列表], 路径){
+ 如果满足条件： 
+     result.add(路径);
+ for x in [选择列表]:
+     如果选择非法:
+         continue;
+     做选择;
+     trackback(result, [选择列表], 路径);
+     撤销选择;
+}
+</code></pre>
+</blockquote>
+<h3 id="2生成n对合法括号">2.生成n对合法括号</h3>
+<h5 id="code-2">code：</h5>
+<pre><code class="language-c++">class Solution {
+public:
+    vector&lt;string&gt; generateParenthesis(int n) {
+        vector&lt;string&gt; result;
+        if (n == 0){
+            result.push_back(&quot;&quot;);
+            return result;
+        }
+        helper(&quot;&quot;, result, n, n);
+        return result;
+    }
+    void helper(string item, vector&lt;string&gt;&amp; result, int left, int right){
+        if(0 == right &amp;&amp; left == 0){
+            result.push_back(item);
+            return;
+        }
+        if(left &gt; 0){
+            helper(item+'(', result, left-1, right);
+        }
+        if(left &lt; right){
+            helper(item+')', result, left, right-1);
+        }
+    }
+};
+</code></pre>
+<h5 id="nice-2">nice:</h5>
+<blockquote>
+<p>说实话，不太懂，递归还是有点生疏。</p>
+<p>做到这个题应该就要明白了，其实所谓回溯就是暴力穷举，大多数题目可能可以用回溯做出来，但是时间复杂度会很高。所以还是先做动态规划的几个问题吧。</p>
+</blockquote>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[leetcode 刷题记录-二叉树]]></title>
         <id>https://AnonymityToAll.github.io/post/leetcode-shua-ti-ji-lu-er-cha-shu/</id>
@@ -1892,82 +1978,6 @@ UDF函数</p>
 挑选2家规模较大，知名度高的：保底要进（简历一定要认真写，多打磨）<br>
 挑选2家业内知名公司--尝试</p>
 </blockquote>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[第二讲 BAT企业数据分析工作]]></title>
-        <id>https://AnonymityToAll.github.io/post/bat-qi-ye-shu-ju-fen-xi-gong-zuo/</id>
-        <link href="https://AnonymityToAll.github.io/post/bat-qi-ye-shu-ju-fen-xi-gong-zuo/">
-        </link>
-        <updated>2020-08-08T15:01:28.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="招聘解析">招聘解析</h2>
-<h5 id="去除神秘感">去除神秘感</h5>
-<p>阿里：对技术要求不是很高，对综合能力要求非常高</p>
-<p>腾讯：埋点，检测异常，ABtest，增长黑客的经验（那本书需要看一看）</p>
-<p>百度：专项，逻辑思维，用户增长</p>
-<p>总：为了用户增长</p>
-<h5 id="看到差距">看到差距</h5>
-<h5 id="如何准备">如何准备</h5>
-<h2 id="日常工作">日常工作</h2>
-<h5 id="数据异常排查">数据异常排查</h5>
-<p>要有标准的排查流程，要有方法论</p>
-<blockquote>
-<p>1.数据本身有问题<br>
-2.或者业务本身有问题</p>
-<p>数据异常排查之前期准备：</p>
-<ul>
-<li>业务理解</li>
-<li>指标口径</li>
-<li>当前数据产出过程</li>
-</ul>
-<p>数据异常排除之方法论</p>
-<ul>
-<li>判断是否异常
-<ul>
-<li>亲自去看数据的变化</li>
-<li>时间轴一定要拉长（近三个月）</li>
-<li>看这个指标与其他关联的指标是不是也是异常的</li>
-<li>找到关键人物提前沟通一下（找一个人文一下，通过经验判断）</li>
-</ul>
-</li>
-<li>最大概率法则归类
-<ul>
-<li>假期效应：开学季、暑假、四大节、当地节日</li>
-<li>热点事件：常规热点如世界杯、突发热点某爆款IP</li>
-<li>活动影响：双11，618</li>
-<li>政策影响：互联网金融监管、快递行业实名</li>
-<li>底层系统故障</li>
-<li>统计口径</li>
-</ul>
-</li>
-<li>闭环
-<ul>
-<li>持续跟踪后续数据</li>
-<li>记录沉淀文档化</li>
-<li>邮件化：只有确认了没有问题的时候再邮件，描述影响范围和主要结论即可</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<h5 id="融入专项背kpi">融入专项背KPI</h5>
-<p>项目组专题分析有三个特征：</p>
-<ul>
-<li>有目标，津贴项目KPI</li>
-<li>有节奏，2-3周时间输出一份完整报告</li>
-<li>有闭环，所有的报告说人话，用大白话</li>
-</ul>
-<p>阐述报告的数量和质量，即落地的点</p>
-<h5 id="还有很多如埋点-指标体系之后再说">还有很多如埋点、指标体系之后再说</h5>
-<h2 id="面试技巧和必问问题">面试技巧和必问问题</h2>
-<p>第一面：最重要的逻辑性，绝对会对着简历上的东西问，哪些渠道，渠道都有啥</p>
-<p>第二面：微笑，带上专题分析报告，结合app提前想好问题，并分析（带着主题）</p>
-<p>第三面：总监面：代表型项目，行业趋势，了解产品宏观区域</p>
-<h5 id="必问的几个问题">必问的几个问题：</h5>
-<ol>
-<li>流量波动：某天数据突然涨了，怎么分析</li>
-<li>三个常用app：套路很深，好好思考</li>
-<li>商业模式：之前产品的cpc，cpm，说到底还是赚钱</li>
-</ol>
 ]]></content>
     </entry>
 </feed>
