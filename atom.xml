@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://AnonymityToAll.github.io</id>
     <title>maktubの圆</title>
-    <updated>2020-09-21T01:52:51.990Z</updated>
+    <updated>2020-11-12T11:34:48.540Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://AnonymityToAll.github.io"/>
     <link rel="self" href="https://AnonymityToAll.github.io/atom.xml"/>
@@ -10,6 +10,487 @@
     <logo>https://AnonymityToAll.github.io/images/avatar.png</logo>
     <icon>https://AnonymityToAll.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, maktubの圆</rights>
+    <entry>
+        <title type="html"><![CDATA[pytorch学习-1]]></title>
+        <id>https://AnonymityToAll.github.io/post/pytorch-xue-xi-1/</id>
+        <link href="https://AnonymityToAll.github.io/post/pytorch-xue-xi-1/">
+        </link>
+        <updated>2020-11-12T11:33:21.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="pytorch-tutorial-tutorial-01-basics-pytorch_basics-mainpy">pytorch-tutorial-tutorial-01-basics-pytorch_basics-main.py</h1>
+<h3 id="第一个例子说明如何自动计算偏导数">第一个例子，说明如何自动计算偏导数</h3>
+<ol>
+<li>
+<p>在运行代码</p>
+<pre><code class="language-python">x = torch.tensor(1, requires_grad=True)
+</code></pre>
+<p>时，出现问题</p>
+<blockquote>
+<p>RuntimeError: Only Tensors of floating point and complex dtype can require gradients</p>
+</blockquote>
+<p>代码应改为</p>
+<pre><code class="language-python">x = torch.tensor(1., requires_grad=True)
+</code></pre>
+</li>
+<li>
+<p>pytorch 自动求偏导数的步骤</p>
+<pre><code class="language-python"># 自变量，也就是被求导的对象在创建时，要记得把requires_grad=True
+x = torch.tensor(1., requires_grad=True)
+w = torch.tensor(2., requires_grad=True)
+b = torch.tensor(3., requires_grad=True)
+# 给出自变量和因变量之间的函数表达式
+y = w * x + b
+# 然后就让y分别对它们求导即可
+y.backward()
+</code></pre>
+</li>
+</ol>
+<h3 id="第二个例子说明如何使用模型">第二个例子，说明如何使用模型</h3>
+<ol>
+<li>
+<p>torch.randn(m, n)</p>
+<p>标准正态分布，随机抽取m*n个数</p>
+</li>
+<li>
+<p>torch.rand(m, n)</p>
+<p>均匀分布，随机抽取m*n个数</p>
+</li>
+<li>
+<p>nn.linear(in_features,  out_features,  bias)</p>
+<p>官方文档：https://pytorch.org/docs/master/generated/torch.nn.Linear.html#torch.nn.Linear</p>
+<pre><code class="language-python">linear = nn.linear(3, 2)
+</code></pre>
+<p>我的理解是生成一个全连接层。3代表样本的维数，2代表输出的维数。</p>
+</li>
+<li>
+<p>建立损失函数以及优化函数</p>
+<pre><code class="language-python">criterion = nn.MSELoss()
+optimizer = torch.optim.SGD(linear.parameters(), lr=0.01)
+</code></pre>
+</li>
+<li>
+<p>计算wx+b</p>
+<pre><code class="language-python">pred = linear(x)
+</code></pre>
+</li>
+<li>
+<p>计算损失函数</p>
+<pre><code class="language-python">loss = creterion(pred, y)
+</code></pre>
+</li>
+<li>
+<p>损失函数的值为</p>
+<pre><code class="language-python">loss.item()
+</code></pre>
+</li>
+<li>
+<p>显示损失函数对w，b的偏导数</p>
+<pre><code class="language-python">loss.backward()
+# 它们的结果分别是
+linear.weight.grad
+linear.bias.grad
+</code></pre>
+</li>
+<li>
+<p>用优化函数优化</p>
+<pre><code class="language-python">optimizer.step() # 优化一步
+</code></pre>
+</li>
+<li>
+<p>看一下优化之后的损失函数值</p>
+<pre><code class="language-python">pred = linear(x)
+loss = criterion(pred, y)
+</code></pre>
+</li>
+</ol>
+<h3 id="如何从numpy中载入数据">如何从numpy中载入数据</h3>
+<pre><code class="language-python">import numpy as np
+import torch
+x = np.array([[1, 3], [5, 6]])
+y = torch.from_numpy(x)
+z = y.numpy()
+</code></pre>
+<h3 id="输入pipline">输入pipline</h3>
+<ol>
+<li>导入数据</li>
+</ol>
+<pre><code class="language-python"># 将数据下载下来
+from torchvision import transforms
+train_dataset = torchvision.datasets.CIFAR10(root='../../data/',
+                                             train=True, 
+                                             transform=transforms.ToTensor(),
+                                             download=True)
+</code></pre>
+<p>torchvision.datasets说明：https://pytorch.org/docs/stable/torchvision/datasets.html</p>
+<p>参数说明：</p>
+<blockquote>
+<ul>
+<li>
+<p><strong>root</strong> (<em>string</em>) – Root directory of dataset where directory <code>cifar-10-batches-py</code> exists or will be saved to if download is set to True.</p>
+<p>cifar-10-baches-py存放的根目录，或者如果download被设定为True时，cifar-10-baches-py将要被保存的位置</p>
+</li>
+<li>
+<p><strong>train</strong> (<a href="https://docs.python.org/3/library/functions.html#bool"><em>bool</em></a><em>,</em> <em>optional</em>) – If True, creates dataset from training set, otherwise creates from test set.</p>
+<p>如果设置为True，从训练集里面创建dataset，否则从测试集里面创建dataset</p>
+<p><strong>啥意思？？？？？？？？？？？？？？？？</strong></p>
+</li>
+<li>
+<p><strong>transform</strong> (<em>callable</em>*,* <em>optional</em>) – A function/transform that takes in an PIL image and returns a transformed version. E.g, <code>transforms.RandomCrop</code></p>
+<p>一个函数，输入是PIL图片，然后返回一个转换之后的版本，例如transforms.RandomCrop</p>
+</li>
+<li>
+<p><strong>target_transform</strong> (<em>callable</em>*,* <em>optional</em>) – A function/transform that takes in the target and transforms it.</p>
+</li>
+<li>
+<p><strong>download</strong> (<a href="https://docs.python.org/3/library/functions.html#bool"><em>bool</em></a><em>,</em> <em>optional</em>) – If true, downloads the dataset from the internet and puts it in root directory. If dataset is already downloaded, it is not downloaded again.</p>
+<p>如果为True，则从互联网下载数据并把它放到根目录里面。如果它已经被下载了，那么则不再下载</p>
+</li>
+</ul>
+</blockquote>
+<ol start="2">
+<li>
+<p>数据说明</p>
+<blockquote>
+<p>该数据是：一堆彩色图片，若干个图片都是同一类东西。</p>
+<pre><code class="language-python">train_dataset.data.shape
+# (50000, 32, 32, 3)
+len(train_dataset.targets)
+# 50000
+# 50000 张彩色图片
+</code></pre>
+<p>参考：https://www.cnblogs.com/Jerry-Dong/p/8109938.html</p>
+</blockquote>
+</li>
+<li>
+<p>转换数据</p>
+<pre><code class="language-python"># 把train_dataset类的数据转换成tensor类的数据
+# 这里只是起到演示作用
+# image是图片数据，labels是该类图片数据的标识
+image, labels = train_dataset[0]
+# 载入数据
+# 并把数据分成不同的批次
+# 每个批次包含64个数据
+# shuffle的意思是shuffle (bool, optional) – set to True to have the data reshuffled at every epoch (default: False).意思是每一个epoch之后，数据都会重新洗牌
+#（1）iteration：表示1次迭代，每次迭代更新1次网络结构的参数；
+#（2）batch_size：1次迭代所使用的样本量；
+#（3）epoch：1个epoch表示过了1遍训练集中的所有样本。
+train_loader = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=64, shuffle=True)
+# 把train_loader变成迭代器
+data_iter = iter(train_loader)
+image, labels = data_iter.next()
+# 迭代训练集来训练数据
+for image, labels in train_loader:
+    # 执行训练的操作
+    pass
+# 这里的image和labels是64维的，也就是说是包含64个样本的
+</code></pre>
+</li>
+</ol>
+<h3 id="自定义数据集的输入管道">自定义数据集的输入管道</h3>
+<ol>
+<li>
+<p>你的自定义数据集应该是这样的</p>
+<pre><code class="language-python">class CustomDataset(torch.utils.data.Dataset):
+    def __init__(self):
+        # TODO
+        # 1. Initialize file paths or a list of file names. 
+        # 初始化文件路径或文件名字的列表
+        pass
+    def __getitem__(self, index):
+        # TODO
+        # 1. Read one data from file (e.g. using numpy.fromfile, PIL.Image.open).
+        # 从文件中读一个数据
+        # 用numpy.fromfile, PIL.Image.open
+        # 2. Preprocess the data (e.g. torchvision.Transform).
+        # 转换数据到合适的类型
+        # 3. Return a data pair (e.g. image and label).
+        # 返回一个数据对
+        pass
+    def __len__(self):
+        # You should change 0 to the total size of your dataset.
+        # 给出数据的长度
+        return 0 
+</code></pre>
+</li>
+<li>
+<p>从自定义数据集中读取数据</p>
+<pre><code class="language-python">custom_dataset = CustomDataset()
+train_loader = torch.utils.data.DataLoader(dataset=custom_dataset,
+                                           batch_size=64, 
+                                           shuffle=False)
+</code></pre>
+</li>
+<li>
+<p>预训练模型</p>
+<pre><code class="language-python">'''
+    预训练的意思是对一些需要耗费时间和资源很多的任务，一些已经做好的人把他们做的参数设置共享出来，大家可以直接使用他们的结果。
+    微调的意思是。。不太懂
+'''
+# Download and load the pretrained ResNet-18.
+resnet = torchvision.models.resnet18(pretrained=True)
+
+# If you want to finetune only the top layer of the model, set as below.
+for param in resnet.parameters():
+    param.requires_grad = False
+
+# Replace the top layer for finetuning.
+resnet.fc = nn.Linear(resnet.fc.in_features, 100)  # 100 is an example.
+
+# Forward pass.
+images = torch.randn(64, 3, 224, 224)
+outputs = resnet(images)
+print (outputs.size())     # (64, 100)
+</code></pre>
+</li>
+</ol>
+<h3 id="保存以及加载模型">保存以及加载模型</h3>
+<pre><code class="language-python"># Save and load the entire model.
+torch.save(resnet, 'model.ckpt')
+model = torch.load('model.ckpt')
+
+# Save and load only the model parameters (recommended).
+torch.save(resnet.state_dict(), 'params.ckpt')
+resnet.load_state_dict(torch.load('params.ckpt'))
+</code></pre>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="pytorch-tutorial-tutorial-01-basics-pytorch_basics-mainpy">pytorch-tutorial-tutorial-01-basics-pytorch_basics-main.py</h1>
+<h3 id="第一个例子说明如何自动计算偏导数">第一个例子，说明如何自动计算偏导数</h3>
+<ol>
+<li>
+<p>在运行代码</p>
+<pre><code class="language-python">x = torch.tensor(1, requires_grad=True)
+</code></pre>
+<p>时，出现问题</p>
+<blockquote>
+<p>RuntimeError: Only Tensors of floating point and complex dtype can require gradients</p>
+</blockquote>
+<p>代码应改为</p>
+<pre><code class="language-python">x = torch.tensor(1., requires_grad=True)
+</code></pre>
+</li>
+<li>
+<p>pytorch 自动求偏导数的步骤</p>
+<pre><code class="language-python"># 自变量，也就是被求导的对象在创建时，要记得把requires_grad=True
+x = torch.tensor(1., requires_grad=True)
+w = torch.tensor(2., requires_grad=True)
+b = torch.tensor(3., requires_grad=True)
+# 给出自变量和因变量之间的函数表达式
+y = w * x + b
+# 然后就让y分别对它们求导即可
+y.backward()
+</code></pre>
+</li>
+</ol>
+<h3 id="第二个例子说明如何使用模型">第二个例子，说明如何使用模型</h3>
+<ol>
+<li>
+<p>torch.randn(m, n)</p>
+<p>标准正态分布，随机抽取m*n个数</p>
+</li>
+<li>
+<p>torch.rand(m, n)</p>
+<p>均匀分布，随机抽取m*n个数</p>
+</li>
+<li>
+<p>nn.linear(in_features,  out_features,  bias)</p>
+<p>官方文档：https://pytorch.org/docs/master/generated/torch.nn.Linear.html#torch.nn.Linear</p>
+<pre><code class="language-python">linear = nn.linear(3, 2)
+</code></pre>
+<p>我的理解是生成一个全连接层。3代表样本的维数，2代表输出的维数。</p>
+</li>
+<li>
+<p>建立损失函数以及优化函数</p>
+<pre><code class="language-python">criterion = nn.MSELoss()
+optimizer = torch.optim.SGD(linear.parameters(), lr=0.01)
+</code></pre>
+</li>
+<li>
+<p>计算wx+b</p>
+<pre><code class="language-python">pred = linear(x)
+</code></pre>
+</li>
+<li>
+<p>计算损失函数</p>
+<pre><code class="language-python">loss = creterion(pred, y)
+</code></pre>
+</li>
+<li>
+<p>损失函数的值为</p>
+<pre><code class="language-python">loss.item()
+</code></pre>
+</li>
+<li>
+<p>显示损失函数对w，b的偏导数</p>
+<pre><code class="language-python">loss.backward()
+# 它们的结果分别是
+linear.weight.grad
+linear.bias.grad
+</code></pre>
+</li>
+<li>
+<p>用优化函数优化</p>
+<pre><code class="language-python">optimizer.step() # 优化一步
+</code></pre>
+</li>
+<li>
+<p>看一下优化之后的损失函数值</p>
+<pre><code class="language-python">pred = linear(x)
+loss = criterion(pred, y)
+</code></pre>
+</li>
+</ol>
+<h3 id="如何从numpy中载入数据">如何从numpy中载入数据</h3>
+<pre><code class="language-python">import numpy as np
+import torch
+x = np.array([[1, 3], [5, 6]])
+y = torch.from_numpy(x)
+z = y.numpy()
+</code></pre>
+<h3 id="输入pipline">输入pipline</h3>
+<ol>
+<li>导入数据</li>
+</ol>
+<pre><code class="language-python"># 将数据下载下来
+from torchvision import transforms
+train_dataset = torchvision.datasets.CIFAR10(root='../../data/',
+                                             train=True, 
+                                             transform=transforms.ToTensor(),
+                                             download=True)
+</code></pre>
+<p>torchvision.datasets说明：https://pytorch.org/docs/stable/torchvision/datasets.html</p>
+<p>参数说明：</p>
+<blockquote>
+<ul>
+<li>
+<p><strong>root</strong> (<em>string</em>) – Root directory of dataset where directory <code>cifar-10-batches-py</code> exists or will be saved to if download is set to True.</p>
+<p>cifar-10-baches-py存放的根目录，或者如果download被设定为True时，cifar-10-baches-py将要被保存的位置</p>
+</li>
+<li>
+<p><strong>train</strong> (<a href="https://docs.python.org/3/library/functions.html#bool"><em>bool</em></a><em>,</em> <em>optional</em>) – If True, creates dataset from training set, otherwise creates from test set.</p>
+<p>如果设置为True，从训练集里面创建dataset，否则从测试集里面创建dataset</p>
+<p><strong>啥意思？？？？？？？？？？？？？？？？</strong></p>
+</li>
+<li>
+<p><strong>transform</strong> (<em>callable</em>*,* <em>optional</em>) – A function/transform that takes in an PIL image and returns a transformed version. E.g, <code>transforms.RandomCrop</code></p>
+<p>一个函数，输入是PIL图片，然后返回一个转换之后的版本，例如transforms.RandomCrop</p>
+</li>
+<li>
+<p><strong>target_transform</strong> (<em>callable</em>*,* <em>optional</em>) – A function/transform that takes in the target and transforms it.</p>
+</li>
+<li>
+<p><strong>download</strong> (<a href="https://docs.python.org/3/library/functions.html#bool"><em>bool</em></a><em>,</em> <em>optional</em>) – If true, downloads the dataset from the internet and puts it in root directory. If dataset is already downloaded, it is not downloaded again.</p>
+<p>如果为True，则从互联网下载数据并把它放到根目录里面。如果它已经被下载了，那么则不再下载</p>
+</li>
+</ul>
+</blockquote>
+<ol start="2">
+<li>
+<p>数据说明</p>
+<blockquote>
+<p>该数据是：一堆彩色图片，若干个图片都是同一类东西。</p>
+<pre><code class="language-python">train_dataset.data.shape
+# (50000, 32, 32, 3)
+len(train_dataset.targets)
+# 50000
+# 50000 张彩色图片
+</code></pre>
+<p>参考：https://www.cnblogs.com/Jerry-Dong/p/8109938.html</p>
+</blockquote>
+</li>
+<li>
+<p>转换数据</p>
+<pre><code class="language-python"># 把train_dataset类的数据转换成tensor类的数据
+# 这里只是起到演示作用
+# image是图片数据，labels是该类图片数据的标识
+image, labels = train_dataset[0]
+# 载入数据
+# 并把数据分成不同的批次
+# 每个批次包含64个数据
+# shuffle的意思是shuffle (bool, optional) – set to True to have the data reshuffled at every epoch (default: False).意思是每一个epoch之后，数据都会重新洗牌
+#（1）iteration：表示1次迭代，每次迭代更新1次网络结构的参数；
+#（2）batch_size：1次迭代所使用的样本量；
+#（3）epoch：1个epoch表示过了1遍训练集中的所有样本。
+train_loader = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=64, shuffle=True)
+# 把train_loader变成迭代器
+data_iter = iter(train_loader)
+image, labels = data_iter.next()
+# 迭代训练集来训练数据
+for image, labels in train_loader:
+    # 执行训练的操作
+    pass
+# 这里的image和labels是64维的，也就是说是包含64个样本的
+</code></pre>
+</li>
+</ol>
+<h3 id="自定义数据集的输入管道">自定义数据集的输入管道</h3>
+<ol>
+<li>
+<p>你的自定义数据集应该是这样的</p>
+<pre><code class="language-python">class CustomDataset(torch.utils.data.Dataset):
+    def __init__(self):
+        # TODO
+        # 1. Initialize file paths or a list of file names. 
+        # 初始化文件路径或文件名字的列表
+        pass
+    def __getitem__(self, index):
+        # TODO
+        # 1. Read one data from file (e.g. using numpy.fromfile, PIL.Image.open).
+        # 从文件中读一个数据
+        # 用numpy.fromfile, PIL.Image.open
+        # 2. Preprocess the data (e.g. torchvision.Transform).
+        # 转换数据到合适的类型
+        # 3. Return a data pair (e.g. image and label).
+        # 返回一个数据对
+        pass
+    def __len__(self):
+        # You should change 0 to the total size of your dataset.
+        # 给出数据的长度
+        return 0 
+</code></pre>
+</li>
+<li>
+<p>从自定义数据集中读取数据</p>
+<pre><code class="language-python">custom_dataset = CustomDataset()
+train_loader = torch.utils.data.DataLoader(dataset=custom_dataset,
+                                           batch_size=64, 
+                                           shuffle=False)
+</code></pre>
+</li>
+<li>
+<p>预训练模型</p>
+<pre><code class="language-python">'''
+    预训练的意思是对一些需要耗费时间和资源很多的任务，一些已经做好的人把他们做的参数设置共享出来，大家可以直接使用他们的结果。
+    微调的意思是。。不太懂
+'''
+# Download and load the pretrained ResNet-18.
+resnet = torchvision.models.resnet18(pretrained=True)
+
+# If you want to finetune only the top layer of the model, set as below.
+for param in resnet.parameters():
+    param.requires_grad = False
+
+# Replace the top layer for finetuning.
+resnet.fc = nn.Linear(resnet.fc.in_features, 100)  # 100 is an example.
+
+# Forward pass.
+images = torch.randn(64, 3, 224, 224)
+outputs = resnet(images)
+print (outputs.size())     # (64, 100)
+</code></pre>
+</li>
+</ol>
+<h3 id="保存以及加载模型">保存以及加载模型</h3>
+<pre><code class="language-python"># Save and load the entire model.
+torch.save(resnet, 'model.ckpt')
+model = torch.load('model.ckpt')
+
+# Save and load only the model parameters (recommended).
+torch.save(resnet.state_dict(), 'params.ckpt')
+resnet.load_state_dict(torch.load('params.ckpt'))
+</code></pre>
+<!-- more -->
+<!-- more -->
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[leetcode刷题--回溯]]></title>
         <id>https://AnonymityToAll.github.io/post/leetcode-shua-ti-hui-su/</id>
@@ -1852,131 +2333,6 @@ group by t1.city,t2.type
 爬虫<br>
 文本挖掘<br>
 UDF函数</p>
-</blockquote>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[第三讲 中小型企业数据分析工作]]></title>
-        <id>https://AnonymityToAll.github.io/post/di-san-jiang-zhong-xiao-xing-qi-ye-shu-ju-fen-xi-gong-zuo/</id>
-        <link href="https://AnonymityToAll.github.io/post/di-san-jiang-zhong-xiao-xing-qi-ye-shu-ju-fen-xi-gong-zuo/">
-        </link>
-        <updated>2020-08-10T11:39:42.000Z</updated>
-        <content type="html"><![CDATA[<p>###三个问题解答</p>
-<h5 id="流量波动">流量波动</h5>
-<blockquote>
-<p>举例：美团外卖近期订单量下降5%，需要分析师给出一些解释并提供下一步建议</p>
-<p>答案：<br>
-1.先对命题进行解析：<br>
-订单量下降5%属于什么水位，影响范围多大，如果发现对收入有重大影响，那么这个时候CEO都会关注这件事，所以就要更加全面的考虑这件事。</p>
-<p>2.具体的分析模块：</p>
-<ul>
-<li>常识判断：节假日啥的</li>
-<li>竞品数据：饿了么数据大涨</li>
-<li>外部事件：社会负面事件</li>
-<li>产品变化：产品是不是发布了新的版本</li>
-<li>用户行为：订单地域行为，全国都下降还是某个地区下降。</li>
-<li>数据问题：数据采集，是不是口径变化</li>
-</ul>
-<p>3.流量波动还可能是外部作弊</p>
-</blockquote>
-<h5 id="常见三个app-数据分析师的思考深度怎么样好奇心怎么样">常见三个app--数据分析师的思考深度怎么样，好奇心怎么样</h5>
-<blockquote>
-<p>参考答案：<br>
-这里的建议是：说跟应聘岗位相关的APP，比如应聘的产品的QQ音乐。<br>
-这个时候你就可以说常用的三款APP是网易云音乐、微信读书、知乎，尽量给面试官透露一些你的亮点。</p>
-<p>面试官进一步问：就以网易云来说，说一下你喜欢的点和想吐槽的点。</p>
-<p>面试官再问：好的，那么如果你是产品经理，你会怎么解决这个问题<br>
-回答：先看数据，再说对应措施。</p>
-<p>面试官再问：怎么评估这样做能够带来指标的提升<br>
-回答：这种先开始小流量AB测试，然后再慢慢放量，如果效果不错，就全量</p>
-<p>面试官再问：怎么进行ABtest，说一下对它的看法</p>
-</blockquote>
-<h5 id="商业化变现对商业的最终目的是否敏感">商业化变现：对商业的最终目的是否敏感</h5>
-<blockquote>
-<p>举例：能不能举例一款工具类产品说明其是如何商业化的。</p>
-<p>面试官问：目前产品的主要商业化收入来自哪里</p>
-<p>面试官问：当前产品商业化提升的痛点是什么，之前做过哪些优化方案，效果如何</p>
-<p>面试官问：能不能说一下这个项目</p>
-</blockquote>
-<h3 id="日常工作解析">日常工作解析</h3>
-<h5 id="角色-斜杠青年救火队员啥都干">角色--斜杠青年：救火队员啥都干</h5>
-<blockquote>
-<ul>
-<li>技术上
-<ul>
-<li>java，python，r都熟练，机器学习的书看了一本又一本</li>
-<li>觉得技术功底还可以，但是没有真正的落地果</li>
-</ul>
-</li>
-<li>研发埋点
-<ul>
-<li>字段格式，字段名，打点日志，文档沉淀</li>
-</ul>
-</li>
-<li>口径和指标梳理
-<ul>
-<li>dau,mau的定义和计算方法</li>
-<li>某产品的核心指标以及具体业务指标</li>
-</ul>
-</li>
-<li>报表统计
-<ul>
-<li>所有的报表增加、修改</li>
-<li>改来改去还是没完</li>
-</ul>
-</li>
-<li>专题分析
-<ul>
-<li>开展营销活动，需要做一次活动分析</li>
-<li>整体做单点分析，缺乏逻辑连贯性和全面性</li>
-</ul>
-</li>
-<li>平台研发
-<ul>
-<li>希望开发内部一套大数据平台，比如数据仓库，友盟这种</li>
-<li>参与开发或参与底层数据清洗</li>
-</ul>
-</li>
-</ul>
-<p>容易遇到的问题：</p>
-<ul>
-<li>自卑，学这学那，不落地学得快忘得快</li>
-<li>自信，想着跳槽，但是好像跳不出去</li>
-</ul>
-</blockquote>
-<h3 id="转型四步法">转型四步法</h3>
-<p>一定要去大的企业做事情。</p>
-<p>好工作：</p>
-<ul>
-<li>当前薪酬不错</li>
-<li>在行业中薪酬前列</li>
-</ul>
-<blockquote>
-<p>1.规划好自己，再评估和准备</p>
-<p>数据分析三条线：</p>
-<ul>
-<li>业务线：对事物好奇并深入研究，思维发散并且能收敛，喜欢展示自我，逻辑思维较强</li>
-<li>研发线：计算机功底好，天生的程序员基因</li>
-<li>算法线：适合做研究的同学，数学功底好</li>
-</ul>
-<p>2.评估自己</p>
-<p>业务型：</p>
-<ul>
-<li>产品理解能力：各种数据熟悉度，用户从哪里来，进来后做了什么</li>
-<li>分析方法论：常见方法有哪些，abtest，最大概率法则，28法则，幸存者偏差理解</li>
-<li>可视化能力</li>
-<li>演讲能力</li>
-<li>协作能力</li>
-<li>逻辑思维</li>
-<li>技术：excel常见操作，sql能不能闭着眼写，r能不能搭建模型并知道有哪些坑，python能否很好地用上</li>
-</ul>
-<p>3.优化自己1</p>
-<p>3.优化自己2<br>
-方法论：指标体系方法论，流量分析方法论，路径分析方法论，产品分析方法论，营销活动方法论，用户流失方法论</p>
-<p>4.寻找对象并实践</p>
-<p>挑选三家一般公司：面试训练<br>
-挑选2家规模较大，知名度高的：保底要进（简历一定要认真写，多打磨）<br>
-挑选2家业内知名公司--尝试</p>
 </blockquote>
 ]]></content>
     </entry>
