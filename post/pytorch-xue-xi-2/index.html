@@ -1,0 +1,283 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>pytorch学习-2 | maktubの圆</title>
+<link rel="shortcut icon" href="https://AnonymityToAll.github.io/favicon.ico?v=1605266240377">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://AnonymityToAll.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="pytorch学习-2 | maktubの圆 - Atom Feed" href="https://AnonymityToAll.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="pytorch-tutorial-tutorial-01-basics-pytorch_basics-main.py
+导入相关的包
+import torch
+import torch.nn as nn
+# import torchvisio..." />
+    <meta name="keywords" content="深度学习-pytorch" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://AnonymityToAll.github.io">
+  <img class="avatar" src="https://AnonymityToAll.github.io/images/avatar.png?v=1605266240377" alt="">
+  </a>
+  <h1 class="site-title">
+    maktubの圆
+  </h1>
+  <p class="site-description">
+    向死而生
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/AnonymityToAll?tab=repositories" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              pytorch学习-2
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-11-13
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://AnonymityToAll.github.io/tag/upx5jIUqD/" class="post-tag">
+                  # 深度学习-pytorch
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://AnonymityToAll.github.io/post-images/pytorch-xue-xi-2.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="pytorch-tutorial-tutorial-01-basics-pytorch_basics-mainpy">pytorch-tutorial-tutorial-01-basics-pytorch_basics-main.py</h1>
+<h5 id="导入相关的包">导入相关的包</h5>
+<pre><code class="language-python">import torch
+import torch.nn as nn
+# import torchvision 
+# import torchvision.transforms as transforms
+import numpy as np
+import matplotlib.pyplot as plt
+</code></pre>
+<h5 id="设置相关参数超参数">设置相关参数(超参数)</h5>
+<pre><code class="language-python">input_size = 1
+output_size = 1
+learning_rate = 0.01
+num_epochs = 60
+</code></pre>
+<h5 id="给出输入数据以及对应的labels">给出输入数据以及对应的labels</h5>
+<pre><code class="language-python">x_train = np.array([[3.3], [4.4], [5.5], [6.71], [6.93], [4.168], 
+                    [9.779], [6.182], [7.59], [2.167], [7.042], 
+                    [10.791], [5.313], [7.997], [3.1]], dtype=np.float32)
+
+y_train = np.array([[1.7], [2.76], [2.09], [3.19], [1.694], [1.573], 
+                    [3.366], [2.596], [2.53], [1.221], [2.827], 
+                    [3.465], [1.65], [2.904], [1.3]], dtype=np.float32)
+</code></pre>
+<h5 id="给出模型">给出模型</h5>
+<pre><code class="language-python">model = nn.Linear(input_size, out_size)
+</code></pre>
+<h5 id="设置损失函数和优化器">设置损失函数和优化器</h5>
+<pre><code class="language-python">criterion = nn.MSEloss()
+optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
+</code></pre>
+<h5 id="训练模型">训练模型</h5>
+<pre><code class="language-python">for epoch in range(num_epochs):
+    # Convert numpy arrays to torch tensors
+    # 转换numpy数列为torch张量
+    inputs = torch.from_numpy(x_train)
+    targets = torch.from_numpy(y_train)
+
+    # Forward pass
+    # 计算出模型的输出值
+    outputs = model(inputs)
+    # 计算出损失函数
+    loss = criterion(outputs, targets)
+    
+    # Backward and optimize
+    # 把梯度都设置为0
+    optimizer.zero_grad()
+    # 计算loss对各个参数的梯度
+    loss.backward()
+    # 用optim进行优化，即把各个参数根据梯度下降法进行更新
+    optimizer.step()
+    # 说到底，别管什么前馈不前馈的，其实就是计算梯度的一种方式
+    
+    if (epoch+1) % 5 == 0:
+        print ('Epoch [{}/{}], Loss: {:.4f}'.format(epoch+1, num_epochs, loss.item()))
+</code></pre>
+<h5 id="画出图像">画出图像</h5>
+<pre><code class="language-python"># 这句是啥意思没看懂，明天再看
+predicted = model(torch.from_numpy(x_train)).detach().numpy()
+plt.plot(x_train, y_train, 'ro', label='Original data')
+plt.plot(x_train, predicted, label='Fitted line')
+plt.legend()
+plt.show()
+</code></pre>
+<p>关于detach：https://www.cnblogs.com/wanghui-garcia/p/10677071.html</p>
+<blockquote>
+<p>说明：detach的目的是把该变量从网络中拿出来，并设置requires_grad为false。而且以后就算requires_grad设置为true。也不会再进行grad运算。</p>
+</blockquote>
+<h5 id="保存模型">保存模型</h5>
+<pre><code class="language-python">torch.save(model.state_dict(), 'model.ckpt')
+</code></pre>
+<h5 id="整体流程">整体流程</h5>
+<ul>
+<li>导入相关的包</li>
+<li>设置参数：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi>u</mi><mi>m</mi><mi mathvariant="normal">_</mi><mi>e</mi><mi>p</mi><mi>o</mi><mi>c</mi><mi>h</mi><mi>s</mi><mo separator="true">,</mo><mtext> </mtext><mi>n</mi><mi>u</mi><mi>m</mi><mi mathvariant="normal">_</mi><mi>b</mi><mi>a</mi><mi>t</mi><mi>c</mi><mi>h</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">num\_epochs,\, num\_batchs</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.00444em;vertical-align:-0.31em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault">e</span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">c</span><span class="mord mathdefault">h</span><span class="mord mathdefault">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault">b</span><span class="mord mathdefault">a</span><span class="mord mathdefault">t</span><span class="mord mathdefault">c</span><span class="mord mathdefault">h</span><span class="mord mathdefault">s</span></span></span></span>以及模型需要的参数</li>
+<li>导入数据</li>
+<li>设置模型</li>
+<li>设置损失函数和优化器</li>
+<li>训练模型
+<ul>
+<li>按照<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>e</mi><mi>p</mi><mi>o</mi><mi>c</mi><mi>h</mi><mi>s</mi><mi mathvariant="normal">_</mi><mi>n</mi><mi>u</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">epochs\_num</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.00444em;vertical-align:-0.31em;"></span><span class="mord mathdefault">e</span><span class="mord mathdefault">p</span><span class="mord mathdefault">o</span><span class="mord mathdefault">c</span><span class="mord mathdefault">h</span><span class="mord mathdefault">s</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathdefault">n</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span></span></span></span>来分几次训练</li>
+<li>每一次都把数据转换为tensor</li>
+<li>计算输出值，计算损失函数</li>
+<li>把初始梯度设置为0</li>
+<li>计算梯度</li>
+<li>优化</li>
+</ul>
+</li>
+<li>预测，画出图像</li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#pytorch-tutorial-tutorial-01-basics-pytorch_basics-mainpy">pytorch-tutorial-tutorial-01-basics-pytorch_basics-main.py</a><br>
+*<br>
+*<br>
+*<br>
+* <a href="#%E5%AF%BC%E5%85%A5%E7%9B%B8%E5%85%B3%E7%9A%84%E5%8C%85">导入相关的包</a><br>
+* <a href="#%E8%AE%BE%E7%BD%AE%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%E8%B6%85%E5%8F%82%E6%95%B0">设置相关参数(超参数)</a><br>
+* <a href="#%E7%BB%99%E5%87%BA%E8%BE%93%E5%85%A5%E6%95%B0%E6%8D%AE%E4%BB%A5%E5%8F%8A%E5%AF%B9%E5%BA%94%E7%9A%84labels">给出输入数据以及对应的labels</a><br>
+* <a href="#%E7%BB%99%E5%87%BA%E6%A8%A1%E5%9E%8B">给出模型</a><br>
+* <a href="#%E8%AE%BE%E7%BD%AE%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E5%92%8C%E4%BC%98%E5%8C%96%E5%99%A8">设置损失函数和优化器</a><br>
+* <a href="#%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B">训练模型</a><br>
+* <a href="#%E7%94%BB%E5%87%BA%E5%9B%BE%E5%83%8F">画出图像</a><br>
+* <a href="#%E4%BF%9D%E5%AD%98%E6%A8%A1%E5%9E%8B">保存模型</a><br>
+* <a href="#%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B">整体流程</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://AnonymityToAll.github.io/post/pytorch-xue-xi-1/">
+              <h3 class="post-title">
+                pytorch学习-1
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://AnonymityToAll.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
